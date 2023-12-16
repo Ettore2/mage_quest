@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#404040"
+    android:rotationY="0"
+    tools:context=".LevelActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_game"
+        android:layout_width="@dimen/game_layout_width"
+        android:layout_height="@dimen/game_layout_height"
+        android:background="#454545"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.144">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageButton
+        android:id="@+id/img_btm_left"
+        android:layout_width="@dimen/game_button_size"
+        android:layout_height="@dimen/game_button_size"
+        android:layout_marginTop="9dp"
+        android:alpha="@dimen/movement_button_visibility"
+        android:background="@color/movement_buttons_background"
+        android:onClick="movementBtn"
+        android:rotation="270"
+        android:scaleType="fitCenter"
+        android:src="@drawable/movement_arrow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.023"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.964" />
+
+    <ImageButton
+        android:id="@+id/img_btm_right"
+        android:layout_width="@dimen/game_button_size"
+        android:layout_height="@dimen/game_button_size"
+        android:layout_marginStart="@dimen/movement_button_v_space"
+        android:alpha="@dimen/movement_button_visibility"
+        android:background="@color/movement_buttons_background"
+        android:onClick="movementBtn"
+        android:rotation="90"
+        android:scaleType="fitCenter"
+        android:src="@drawable/movement_arrow"
+        app:layout_constraintBottom_toBottomOf="@+id/img_btm_left"
+        app:layout_constraintStart_toEndOf="@+id/img_btm_up"
+        app:layout_constraintTop_toTopOf="@+id/img_btm_left"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/img_btm_up"
+        android:layout_width="@dimen/game_button_size"
+        android:layout_height="@dimen/vertical_movement_button_height"
+        android:layout_marginStart="@dimen/movement_button_v_space"
+        android:alpha="@dimen/movement_button_visibility"
+        android:background="@color/movement_buttons_background"
+        android:onClick="movementBtn"
+        android:scaleType="fitCenter"
+        android:src="@drawable/movement_arrow"
+        app:layout_constraintStart_toEndOf="@+id/img_btm_left"
+        app:layout_constraintTop_toTopOf="@+id/img_btm_left" />
+
+    <ImageButton
+        android:id="@+id/img_btm_down"
+        android:layout_width="@dimen/game_button_size"
+        android:layout_height="@dimen/vertical_movement_button_height"
+        android:layout_marginStart="@dimen/movement_button_v_space"
+        android:alpha="@dimen/movement_button_visibility"
+        android:background="@color/movement_buttons_background"
+        android:onClick="movementBtn"
+        android:rotation="180"
+        android:scaleType="fitCenter"
+        android:src="@drawable/movement_arrow"
+        app:layout_constraintBottom_toBottomOf="@+id/img_btm_left"
+        app:layout_constraintStart_toEndOf="@+id/img_btm_left" />
+
+    <TextView
+        android:id="@+id/text_coins"
+        android:layout_width="148dp"
+        android:layout_height="48dp"
+        android:text="@string/coin_needed"
+        android:textAlignment="textEnd"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/img_btm_right"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.403"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/img_btm_right"
+        app:layout_constraintVertical_bias="0.666" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="@dimen/game_button_size"
+        android:layout_height="@dimen/game_button_size"
+        android:layout_marginStart="142dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_btm_left"
+        app:layout_constraintStart_toStartOf="@+id/text_coins"
+        app:layout_constraintTop_toTopOf="@+id/img_btm_left"
+        app:srcCompat="@drawable/coin_0" />
+
+    <ImageButton
+        android:id="@+id/img_btn_jump"
+        android:layout_width="@dimen/game_button_size"
+        android:layout_height="@dimen/game_button_size"
+        android:layout_marginEnd="16dp"
+        android:alpha="@dimen/movement_button_visibility"
+        android:background="@color/movement_buttons_background"
+        android:onClick="movementBtn"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/img_btm_left"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/img_btm_left"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/movement_circle" />
+
+    <ImageButton
+        android:id="@+id/img_btn_power_0"
+        android:layout_width="@dimen/game_button_size"
+        android:layout_height="@dimen/power_button_height"
+        android:layout_marginBottom="16dp"
+        android:alpha="@dimen/movement_button_visibility"
+        android:background="@color/movement_buttons_background"
+        android:onClick="powerBtn"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/img_btn_jump"
+        app:layout_constraintEnd_toEndOf="@+id/img_btn_jump"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/img_btn_jump"
+        app:srcCompat="@drawable/yellow_cube" />
+
+    <ImageButton
+        android:id="@+id/img_btn_power_4"
+        android:layout_width="@dimen/game_button_size"
+        android:layout_height="@dimen/power_button_height"
+        android:layout_marginBottom="@dimen/power_button_h_space"
+        android:alpha="@dimen/movement_button_visibility"
+        android:background="@color/movement_buttons_background"
+        android:onClick="powerBtn"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/img_btn_power_3"
+        app:layout_constraintEnd_toEndOf="@+id/img_btn_jump"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/img_btn_jump"
+        app:srcCompat="@drawable/yellow_cube" />
+
+    <ImageButton
+        android:id="@+id/img_btn_power_1"
+        android:layout_width="@dimen/game_button_size"
+        android:layout_height="@dimen/power_button_height"
+        android:layout_marginBottom="@dimen/power_button_h_space"
+        android:alpha="@dimen/movement_button_visibility"
+        android:background="@color/movement_buttons_background"
+        android:onClick="powerBtn"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/img_btn_power_0"
+        app:layout_constraintEnd_toEndOf="@+id/img_btn_jump"
+        app:layout_constraintStart_toStartOf="@+id/img_btn_jump"
+        app:srcCompat="@drawable/yellow_cube" />
+
+    <ImageButton
+        android:id="@+id/img_btn_power_2"
+        android:layout_width="@dimen/game_button_size"
+        android:layout_height="@dimen/power_button_height"
+        android:layout_marginBottom="@dimen/power_button_h_space"
+        android:alpha="@dimen/movement_button_visibility"
+        android:background="@color/movement_buttons_background"
+        android:onClick="powerBtn"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/img_btn_power_1"
+        app:layout_constraintEnd_toEndOf="@+id/img_btn_jump"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/img_btn_jump"
+        app:srcCompat="@drawable/yellow_cube" />
+
+    <ImageButton
+        android:id="@+id/img_btn_power_3"
+        android:layout_width="@dimen/game_button_size"
+        android:layout_height="@dimen/power_button_height"
+        android:layout_marginBottom="@dimen/power_button_h_space"
+        android:alpha="@dimen/movement_button_visibility"
+        android:background="@color/movement_buttons_background"
+        android:onClick="powerBtn"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/img_btn_power_2"
+        app:layout_constraintEnd_toEndOf="@+id/img_btn_jump"
+        app:layout_constraintStart_toStartOf="@+id/img_btn_jump"
+        app:srcCompat="@drawable/yellow_cube" />
+
+    <ImageButton
+        android:id="@+id/img_btn_reset"
+        android:layout_width="@dimen/game_button_size"
+        android:layout_height="@dimen/game_button_size"
+        android:layout_marginStart="12dp"
+        android:alpha="@dimen/movement_button_visibility"
+        android:background="@color/movement_buttons_background"
+        android:onClick="optionsBtn"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/img_btm_left"
+        app:layout_constraintStart_toEndOf="@+id/img_btn_quit"
+        app:layout_constraintTop_toTopOf="@+id/img_btm_left"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/reset" />
+
+    <ImageButton
+        android:id="@+id/img_btn_quit"
+        android:layout_width="@dimen/game_button_size"
+        android:layout_height="@dimen/game_button_size"
+        android:layout_marginStart="36dp"
+        android:alpha="@dimen/movement_button_visibility"
+        android:background="@color/movement_buttons_background"
+        android:onClick="optionsBtn"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/img_btm_left"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.686"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/img_btm_left"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/quit" />
+
+    <TextView
+        android:id="@+id/txt_power_0"
+        android:layout_width="@dimen/game_button_size"
+        android:layout_height="@dimen/power_text"
+        android:text="@string/power_number"
+        android:textAlignment="viewEnd"
+        app:layout_constraintEnd_toEndOf="@+id/img_btn_power_0"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_power_0" />
+
+    <TextView
+        android:id="@+id/txt_power_2"
+        android:layout_width="@dimen/game_button_size"
+        android:layout_height="@dimen/power_text"
+        android:text="@string/power_number"
+        android:textAlignment="viewEnd"
+        app:layout_constraintEnd_toEndOf="@+id/img_btn_power_2"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_power_2" />
+
+    <TextView
+        android:id="@+id/txt_power_3"
+        android:layout_width="@dimen/game_button_size"
+        android:layout_height="@dimen/power_text"
+        android:text="@string/power_number"
+        android:textAlignment="viewEnd"
+        app:layout_constraintEnd_toEndOf="@+id/img_btn_power_3"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_power_3" />
+
+    <TextView
+        android:id="@+id/txt_power_1"
+        android:layout_width="@dimen/game_button_size"
+        android:layout_height="@dimen/power_text"
+        android:text="@string/power_number"
+        android:textAlignment="viewEnd"
+        app:layout_constraintEnd_toEndOf="@+id/img_btn_power_1"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_power_1" />
+
+    <TextView
+        android:id="@+id/txt_power_4"
+        android:layout_width="@dimen/game_button_size"
+        android:layout_height="@dimen/power_text"
+        android:text="@string/power_number"
+        android:textAlignment="viewEnd"
+        app:layout_constraintEnd_toEndOf="@+id/img_btn_power_4"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_power_4" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

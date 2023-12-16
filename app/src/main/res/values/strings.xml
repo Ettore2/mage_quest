@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">game quest</string>
+    <string name="coin_needed">999/999</string>
+    <string name="power_number">XX</string>
+</resources>
