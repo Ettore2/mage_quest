@@ -79,9 +79,8 @@ public class Player extends GameObject{
         frames.add(new AnimationFrame<Integer>(R.drawable.player_jump_down_0, ANIM_FRAME_DURATION));
         animAirIdleDown = new BaseAnimation(frames);
 
-
-
         haveInitializedGraphic = true;
+
     }
 
 
@@ -131,6 +130,14 @@ public class Player extends GameObject{
         powers = new Vector<>();
 
     }
+    public void reset(){
+        super.reset();
+
+        alive = true;
+        removePowers();
+        setDefaultViewValues(spriteViewDown);
+
+    }
 
 
     //input methods
@@ -170,7 +177,12 @@ public class Player extends GameObject{
     }
     protected void die(){
         if(alive){
+            //debug("player die");
             alive = false;
+            game.currLevelState = LEVEL_LOST;
+            game.context.graphicUpdate();
+
+
             destroy();
         }
     }
@@ -355,7 +367,7 @@ public class Player extends GameObject{
                 }
 
                 if(isPushing()){//push start
-                    debug("push start");
+                    //debug("push start");
                     if(thisFramePushDir == DIR_RIGHT){
                         pushEndPos = getPosition().sum(new Point3D(game.CELL_SIZE,0,0));
                     }

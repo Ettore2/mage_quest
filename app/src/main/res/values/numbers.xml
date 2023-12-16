@@ -10,5 +10,4 @@
     <dimen name="vertical_movement_button_height">27dp</dimen>
     <dimen name="movement_button_v_space">4dp</dimen>
     <dimen name="power_text">20dp</dimen>
-    <integer name="val">300</integer>
 </resources>

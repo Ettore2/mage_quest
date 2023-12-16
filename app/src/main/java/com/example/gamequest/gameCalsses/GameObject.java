@@ -288,10 +288,15 @@ public abstract class GameObject extends EngineObjectModel {
     public void destroy(){
         if(!destroyed){
             spriteView.setVisibility(ImageView.INVISIBLE);
-            game.context.manager.removeObject(this);
-            game.context.graphicUpdate();
+            game.manager.removeObject(this);
             destroyed = true;
+            game.context.graphicUpdate();
         }
+    }
+    public void reset(){
+        destroyed = false;
+        setDefaultViewValues(spriteView);
+        game.manager.addObject(this);
     }
 
 

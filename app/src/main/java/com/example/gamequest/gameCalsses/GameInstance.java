@@ -1,7 +1,5 @@
 package com.example.gamequest.gameCalsses;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -70,6 +68,7 @@ public class GameInstance extends Thread{
                     "1 1,1 1,0 1,0 1,0 1,0 1_3 1,0 1_3 1,0 1,0 1_3 1,0 1,1 1,0 1,1 1,1 1,0 1,1 1,1 1,1 1,0 1,0 1,1 1,1 1\n" +
                     "1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1.";
 
+    public static final int LEVEL_PLAYING = 0, LEVEL_WON = 1, LEVEL_LOST = -1;
     //powers codes:
     public static final int
             ID_POWER_NOTHING = 0,
@@ -124,8 +123,9 @@ public class GameInstance extends Thread{
 
 
     public final int FIELD_WIDTH, FIELD_HEIGHT, CELL_SIZE;
+    public int currLevelState;
     public final EngineManager manager;
-    public final int levelId;
+    private int levelId;
     public final String levelStartDescr;
     public String levelCurrDescr;
     public LevelActivity context;
@@ -135,17 +135,17 @@ public class GameInstance extends Thread{
     public Player player;
     public Vector<GameObject> foreground;
     public Box yellowCube;
-    public int coinsForWin, coinCollected;
+    private int coinsForWin, coinCollected;
 
 
     //constructor
     public GameInstance(LevelActivity context, ViewGroup layout,EngineManager manager, int leveId){
         Collider3D.INVERTED_Y = true;
 
-        this.levelId = leveId;
         this.context = context;
         this.layout = layout;
         this.haveInitializedThings = false;
+        setLevelId(leveId);
 
         //initialize the game manager
         this.manager = manager;
@@ -163,19 +163,47 @@ public class GameInstance extends Thread{
 
 
         //TODO: read the level from file
+            this.levelId = leveId;
             levelStartDescr = exampleLevel.substring(0,exampleLevel.length()-1);//have to trim the '.'
         levelCurrDescr = levelStartDescr;
 
 
         //interprets the level start descr and instantiate all on screen
         //debug(":(!");
-        setLevelState(levelStartDescr);
+        setLevelDecr(levelStartDescr);
         //debug(":)!");
     }
 
 
+    //getters
+    public int getLevelId() {
+        return levelId;
+
+    }
+    public int getCoinsForWin() {
+        return coinsForWin;
+
+    }
+    public int getCoinCollected() {
+        return coinCollected;
+
+    }
+
+    //setters
+    public void setLevelId(int levelId) {
+        this.levelId = levelId;
+        //TODO: read the level from file
+
+    }
+    public void collectCoin(){
+        coinCollected++;
+        if(coinCollected >= coinsForWin){
+            currLevelState = LEVEL_WON;
+        }
+        context.graphicUpdate();
+    }
     //other methods
-    private void setLevelState(String stateDescr){
+    public void setLevelDecr(String stateDescr){
         manager.removeAllObjects();//remove all objects from the game manager
 
         String[] subCodes = stateDescr.split("\n");
@@ -213,7 +241,7 @@ public class GameInstance extends Thread{
 
         //elaborate the player powers
         if(haveInitializedThings){
-            player.removePowers();
+            player.reset();
 
         }else{
             if(availableImgs.size() > 1){
@@ -260,7 +288,7 @@ public class GameInstance extends Thread{
                     Point3D posTmp = new Point3D(CELL_SIZE * (x + xStart), CELL_SIZE * (rowNum+yStart), obj.getPosition().z);
                     obj.setPosition(posTmp);
 
-                    debug("      info blocco creato:"+obj.getTag() +"\t" + x +" " + rowNum+"\tpos z:"+obj.getPosition().z);
+                    //debug("      info blocco creato:"+obj.getTag() +"\t" + x +" " + rowNum+"\tpos z:"+obj.getPosition().z);
                 }
             }
             //debug("new row");
@@ -292,11 +320,18 @@ public class GameInstance extends Thread{
             manager.addObject(foreground.get(i));
         }
 
-
-        if(!haveInitializedThings){
+        currLevelState = LEVEL_PLAYING;
+        if(!haveInitializedThings){//set have haveInitializedThings
             haveInitializedThings = true;
 
-        }//set have haveInitializedThings
+        }else {
+            context.graphicUpdate();
+        }
+    }
+    public void resetLevel(){
+        setLevelDecr(levelStartDescr);
+
+
     }
 
 

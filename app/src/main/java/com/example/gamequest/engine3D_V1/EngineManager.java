@@ -130,6 +130,10 @@ public class EngineManager {
         }
         return false;
     }
+    synchronized public void removeAllObjects(){
+        managedObjects.clear();
+
+    }
     /**
      * returns true if the object is managed by this manager
      */
@@ -138,10 +142,6 @@ public class EngineManager {
             return true;
         }
         return false;
-    }
-    synchronized public void removeAllObjects(){
-        managedObjects.clear();
-
     }
 
 

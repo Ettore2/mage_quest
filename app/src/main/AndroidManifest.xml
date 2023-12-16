@@ -13,10 +13,14 @@
         android:theme="@style/Theme.GameQuest"
         tools:targetApi="31">
         <activity
+            android:name=".LevelsSelectionActivity"
+            android:exported="false"
+            android:label="@string/title_activity_levels_selection"
+            android:theme="@style/Theme.GameQuest" />
+        <activity
             android:name=".LevelActivity"
             android:exported="true"
             android:screenOrientation="landscape">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

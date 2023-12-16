@@ -43,7 +43,7 @@ public class Coin extends Box{
     //other methods
     public void collect(){
         if(!destroyed){
-            game.coinCollected++;
+            game.collectCoin();
 
             destroy();
         }
