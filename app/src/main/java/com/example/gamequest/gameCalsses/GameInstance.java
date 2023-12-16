@@ -172,6 +172,10 @@ public class GameInstance extends Thread{
         //debug(":(!");
         setLevelDecr(levelStartDescr);
         //debug(":)!");
+
+        //debug(background[0][0].getPosition().toString());
+        //debug(background[0][1].getPosition().toString());
+        //debug(background[1][0].getPosition().toString());
     }
 
 

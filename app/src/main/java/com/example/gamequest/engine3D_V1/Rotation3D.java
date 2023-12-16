@@ -57,6 +57,11 @@ public class Rotation3D{
         return new Vector3D(x,y,z);
 
     }
+
+    @Override
+    public String toString() {
+        return "x: "+x+"\ty: "+y+"\tz: "+z;
+    }
 }
 
 

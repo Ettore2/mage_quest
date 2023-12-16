@@ -84,4 +84,9 @@ public class Vector3D {
         return new Rotation3D(x,y,z);
 
     }
+
+    @Override
+    public String toString() {
+        return "x: "+x+"\ty: "+y+"\tz: "+z;
+    }
 }

@@ -17,7 +17,7 @@ import java.util.Vector;
 public abstract class GameObject extends EngineObjectModel {
     public static final float GRAVITY_FORCE = 3f, MAX_FALL_FORCE = 9f;
     public static final float PUDDING = 1/500f;
-    public static final float OVERLAPPING_DISTANCE = 1/4f;
+    public static final float OVERLAPPING_DISTANCE = 1/5f;
     int id;
     public ImageView spriteView;
     int priorityLevel;
@@ -295,6 +295,8 @@ public abstract class GameObject extends EngineObjectModel {
     }
     public void reset(){
         destroyed = false;
+        grounded = false;
+        currScaledYForce = 0;
         setDefaultViewValues(spriteView);
         game.manager.addObject(this);
     }
@@ -346,20 +348,32 @@ public abstract class GameObject extends EngineObjectModel {
             currScaledYForce = 0;
             setAdjacentTo(DIR_DOWN, thisFObstacleDown,game.CELL_SIZE* PUDDING);
             //if(id == ID_BLOCK_BOX)debug("grounded");
+            if(getTag().equals(TAG_PLAYER)){
+                //debug("adjacent down");
+            }
         }
         if(thisFObstacleUp != null && thisFObstacleDown == null){
             if(currScaledYForce < 0){
                 currScaledYForce = 0;
+            }
+            if(getTag().equals(TAG_PLAYER)){
+                //debug("adjacent up");
             }
             setAdjacentTo(DIR_UP, thisFObstacleUp,-game.CELL_SIZE* PUDDING);
         }
         if(thisFObstacleRight != null && thisFMovementDir != DIR_LEFT && !ignoreHorizontalClipping){
             thisFMovementDir = DIR_STOP;
             setAdjacentTo(DIR_RIGHT, thisFObstacleRight,game.CELL_SIZE* PUDDING);
+            if(getTag().equals(TAG_PLAYER)){
+                //debug("adjacent right");
+            }
         }
         if(thisFObstacleLeft != null && thisFMovementDir != DIR_RIGHT && !ignoreHorizontalClipping){
             thisFMovementDir = DIR_STOP;
             setAdjacentTo(DIR_LEFT, thisFObstacleLeft,-game.CELL_SIZE* PUDDING);
+            if(getTag().equals(TAG_PLAYER)){
+                //debug("adjacent left");
+            }
         }
     }
     protected void horizontalMovement(float deltaT){}
@@ -373,13 +387,11 @@ public abstract class GameObject extends EngineObjectModel {
 
     }
     public boolean sameRow(GameObject obj){
-        return Math.abs(this.getPosition().y - obj.getPosition().y) <= game.CELL_SIZE/2f-PUDDING*game.CELL_SIZE;
-        //return this.getGreedY() == obj.getGreedY();
+        return Math.abs(this.getPosition().y - obj.getPosition().y) <= game.CELL_SIZE/2f+PUDDING*game.CELL_SIZE;
 
     }
     public boolean sameColum(GameObject obj){
-        return Math.abs(this.getPosition().x - obj.getPosition().x) <= game.CELL_SIZE/2f-PUDDING*game.CELL_SIZE;
-        //return this.getGreedX() == obj.getGreedX();
+        return Math.abs(this.getPosition().x - obj.getPosition().x) <= game.CELL_SIZE/2f+PUDDING*game.CELL_SIZE;
 
     }
     protected void resolveOverlapped(GameObject obj){}
@@ -463,7 +475,9 @@ public abstract class GameObject extends EngineObjectModel {
                 float rightVal = otherObj.getPosition().x - this.getPosition().x;
                 float upVal = otherObj.getPosition().y - this.getPosition().y;
                 if(sameCell(otherObj)){//same cell
-                    if(this.getPosition().distanceXY(otherObj.getPosition()) >= OVERLAPPING_DISTANCE*game.CELL_SIZE){//clipping from the angle or getting crushed
+                    Vector3D distances = getPosition().aziDistances(otherObj.getPosition());
+                    //debug(game.CELL_SIZE +"| "+distances.x +"   "+ distances.y +"   "+OVERLAPPING_DISTANCE*game.CELL_SIZE);
+                    if(distances.x >= OVERLAPPING_DISTANCE*game.CELL_SIZE || distances.y >= OVERLAPPING_DISTANCE*game.CELL_SIZE){//clipping from the angle
                         if(Math.abs(getPosition().x - otherObj.getPosition().x)+(myCol.size.x-game.CELL_SIZE)/2 < Math.abs(getPosition().y - otherObj.getPosition().y) && Math.abs(getPosition().x - otherObj.getPosition().x)+(myCol.size.x-game.CELL_SIZE)/2 < game.CELL_SIZE*PUDDING){
                             if(!objectUp){
                                 thisFObstacleDown = otherObj;
@@ -477,13 +491,26 @@ public abstract class GameObject extends EngineObjectModel {
                                 thisFObstacleLeft = otherObj;
                             }
                         }
-                        //debug("not resolveOverlapped in gameObject");
-                    }else{
-                        //debug("resolveOverlapped in gameObject");
+                        //if(getTag().equals(TAG_PLAYER)){
+                            //debug("clipping from the angle!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! with tag:"+otherObj.getTag());
+                            //debug(getPosition().toString()+"   "+otherObj.getPosition().toString());
+                            //debug(getGreedX()+"   "+getGreedY()+"   "+otherObj.getGreedX()+"   "+ otherObj.getGreedY());
+                        //}
+                    }else{//actually overlapped
+                        //if(getTag().equals(TAG_PLAYER)){
+                            //debug("overlapping!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! with tag:"+otherObj.getTag());
+                            //debug(getPosition().toString()+"   "+otherObj.getPosition().toString());
+                            //debug(getGreedX()+"   "+getGreedY()+"   "+otherObj.getGreedX()+"   "+ otherObj.getGreedY());
+                        //}
                         resolveOverlapped(otherObj);
                     }
-                }else{//diagonal collision
+                }else{//normal collision
                     if(Math.abs(this.getPosition().x - otherObj.getPosition().x)+(myCol.size.x-game.CELL_SIZE)/2 < Math.abs(this.getPosition().y - otherObj.getPosition().y)){
+                        //if(getTag().equals(TAG_PLAYER)){
+                            //debug("collide vertically!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! with tag:"+otherObj.getTag());
+                            //debug(getPosition().toString()+"   "+otherObj.getPosition().toString());
+                            //debug(getGreedX()+"   "+getGreedY()+"   "+otherObj.getGreedX()+"   "+ otherObj.getGreedY());
+                        //}
                         //collide vertically
                         if(sameColum(otherObj)){
                             if(!objectUp){//may above the block (grounded)
@@ -499,6 +526,11 @@ public abstract class GameObject extends EngineObjectModel {
                             }
                         }
                     }else {
+                        //if(getTag().equals(TAG_PLAYER)){
+                            //debug("collide horizontally!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! with tag:"+otherObj.getTag());
+                            //debug(getPosition().toString()+"   "+otherObj.getPosition().toString());
+                            //debug(getGreedX()+"   "+getGreedY()+"   "+otherObj.getGreedX()+"   "+ otherObj.getGreedY());
+                        //}
                         //collide horizontally
                         if(sameRow(otherObj)){
                             if(objectRight){//(can't go right
@@ -523,7 +555,7 @@ public abstract class GameObject extends EngineObjectModel {
             }
         }
 
-        collisionResolve(deltaT);
+        collisionResolve(deltaT);//need to be there
     }
 
     @Override

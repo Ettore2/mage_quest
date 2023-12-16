@@ -25,7 +25,7 @@ public class Player extends GameObject{
     protected Vector<Power> powers;
     protected ImageView spriteViewDown;
 
-    protected boolean alive;
+    public boolean alive;
     protected int thisFrameMoveIntent;
     protected boolean inputMoveUp, inputMoveDown, inputMoveLeft, inputMoveRight;
     protected boolean inputJump;

@@ -1,5 +1,7 @@
 package com.example.gamequest.engine3D_V1;
 
+import androidx.annotation.NonNull;
+
 public class Point3D {
     public float x, y, z;
 
@@ -54,6 +56,10 @@ public class Point3D {
         return (float) Math.sqrt(Math.pow(x - p.x,2) + Math.pow(y - p.y,2));
 
     }
+    public Vector3D aziDistances(Point3D p){
+        return new Vector3D(Math.abs(x-p.x),Math.abs(y-p.y),Math.abs(z-p.z));
+
+    }
     public float distance(Point3D p){
         return  (float) Math.sqrt(distanceXY(p) + Math.pow(z - p.z,2));
     }
@@ -67,6 +73,11 @@ public class Point3D {
     public Vector3D getVector(){
         return new Vector3D(x,y,z);
 
+    }
+
+    @Override
+    public String toString() {
+        return "x: "+x+"\ty: "+y+"\tz: "+z;
     }
 }
 

@@ -152,15 +152,14 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
 
     }
     public void powerBtn(View view){}
-    public void optionsBtn(View view){}
-    public void menuBtn(View view){
-        if(view.equals(btnMenuQuit)){
+    public void optionsBtn(View view){
+        if(view.equals(btnMenuQuit) || view.equals(btnQuit)){
             if(managerT != null){
                 managerT.interrupt();
             }
             startActivity(new Intent(this, LevelsSelectionActivity.class));
         }
-        if(view.equals(btnMenuRedo)){
+        if(view.equals(btnMenuRedo) || view.equals(btnReset)){
             game.setLevelDecr(game.levelStartDescr);
         }
         if(view.equals(btnMenuNext)){
@@ -201,7 +200,9 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
+                            //debug("player start pos: "+game.player.getPosition().toString());
                             manager.doCycle();
+                            //debug("player end pos: "+game.player.getPosition().toString()+"grounded:"+game.player.grounded);
                         }
                     });
                 }//execute a frame
