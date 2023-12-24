@@ -18,7 +18,7 @@ public abstract class GameObject extends EngineObjectModel {
     public static final float GRAVITY_FORCE = 3f, MAX_FALL_FORCE = 9f;
     public static final float PUDDING = 1/500f;
     public static final float OVERLAPPING_DISTANCE = 1/5f;
-    int id;
+    char id;
     public ImageView spriteView;
     int priorityLevel;
     public int imgRes, imgResPh;
@@ -36,7 +36,7 @@ public abstract class GameObject extends EngineObjectModel {
 
 
     //constructors
-    public GameObject(Point3D pos, int id, String tag,GameInstance game, ImageView view, int imgRes, int imgResPh) {
+    public GameObject(Point3D pos, char id, String tag,GameInstance game, ImageView view, int imgRes, int imgResPh) {
         super(tag);
         destroyed = false;
         currScaledYForce = 0;
@@ -80,7 +80,7 @@ public abstract class GameObject extends EngineObjectModel {
 
     }
     public GameObject(Point3D pos, String tag,GameInstance game) {
-        this(pos, -1, tag, game, null, R.drawable.default_img, R.drawable.default_img);
+        this(pos, '!', tag, game, null, R.drawable.default_img, R.drawable.default_img);
 
     }
 

@@ -8,7 +8,7 @@ import com.example.gamequest.R;
 import com.example.gamequest.engine3D_V1.Point3D;
 
 public class Wall extends GameObject{
-    public Wall(Point3D pos, int id, String tag,GameInstance game, ImageView view, int imgRes, int imgResPh) {
+    public Wall(Point3D pos, char id, String tag,GameInstance game, ImageView view, int imgRes, int imgResPh) {
         super(pos, id, tag, game, view, imgRes, imgResPh);
         createDefaultCollider();
         isObstacle = true;

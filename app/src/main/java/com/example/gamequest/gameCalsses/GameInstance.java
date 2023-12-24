@@ -56,44 +56,41 @@ public class GameInstance extends Thread{
     public static final String exampleLevel =
             "1 2 3 4 2 -1\n" +
                     "5 2 1\n" +
-                    "1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1\n" +
-                    "1 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1_10 1,0 1_10 1,0 1_10 1,0 1_10 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,1 1\n" +
-                    "1 1,0 1,0 1,0 1,0 1_4 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,1 1\n" +
-                    "1 1,0 1,0 1,0 1,0 1_4 1,0 1_7 1,0 1,0 1_2 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1_4 1,0 1_3 1,1 1\n" +
-                    "1 1,0 1,0 1,0 1,1 1,1 1,1 1,1 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,1 1\n" +
-                    "1 1,0 1,0 1,0 1,1 1,1 1,1 1,1 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,1 1,1 1\n" +
-                    "1 1,0 1,0 1,0 1,1 1,1 1,1 1,1 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,1 1,1 1\n" +
-                    "1 1,0 1,0 1,0 1,1 1,1 1,1 1,1 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,1 1,0 1,0 1_11 1,1 1\n" +
-                    "1 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,1 1,0 1,0 1,0 1,0 1,1 1\n" +
-                    "1 1,1 1,0 1,0 1,0 1,0 1_3 1,0 1_3 1,0 1,0 1_3 1,0 1,1 1,0 1,1 1,1 1,0 1,1 1,1 1,1 1,0 1,0 1,1 1,1 1\n" +
-                    "1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1.";
+                    "X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,\n" +
+                    "X 1,X 1,E 1_R 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,X 1,\n" +
+                    "X 1,X 1,E 1_R 1,E 1,X 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,X 1,\n" +
+                    "X 1,X 1,E 1_R 1,E 1,X 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,X 1,\n" +
+                    "X 1,X 1,E 1_R 1,E 1,E 1,E 1_C 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,X 1,\n" +
+                    "X 1,X 1,E 1_R 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,X 1,\n" +
+                    "X 1,X 1,E 1_U 1,E 1_U 1,E 1_U 1,E 1,E 1,E 1,E 1,E 1_P 1,E 1,E 1,E 1,E 1_M 1,X 1,\n" +
+                    "X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 10.\n";
 
     public static final int LEVEL_PLAYING = 0, LEVEL_WON = 1, LEVEL_LOST = -1;
     //powers codes:
-    public static final int
-            ID_POWER_NOTHING = 0,
-            ID_POWER_Y_CUBE = 1,
-            ID_POWER_B_CUBE = 2,
-            ID_POWER_TELEPORT = 3,
-            ID_POWER_PHASE = 4,
-            ID_POWER_GRAPPLE = 5;
+    public static final char
+            ID_POWER_NOTHING = '0',
+            ID_POWER_Y_CUBE = '1',
+            ID_POWER_B_CUBE = '2',
+            ID_POWER_TELEPORT = '3',
+            ID_POWER_PHASE = '4',
+            ID_POWER_GRAPPLE = '5';
 
     //blocks codes:
-    public static final int
-            ID_BLOCK_EMPTY = 0,//bg
-            ID_BLOCK_WALL = 1,//bg
-            ID_BLOCK_PLAYER = 2,//fg
-            ID_BLOCK_COIN = 3,//fg
-            ID_BLOCK_BOX = 4,//fg
-            ID_BLOCK_BUTTON = 5,//fg
-            ID_BLOCK_ACTIVATION_WALL = 6,//fg
-            ID_BLOCK_Y_CUBE = 7,//fg
-            ID_BLOCK_B_CUBE = 8,//fg
-            ID_BLOCK_SPIKE_UP = 9,//bg
-            ID_BLOCK_SPIKE_DOWN = 10,//bg
-            ID_BLOCK_SPIKE_LEFT = 11,//bg
-            ID_BLOCK_SPIKE_RIGHT = 12,//bg
-            ID_BLOCK_NON_GRABBABLE_WALL = 13;//bg
+    public static final char
+            ID_BLOCK_EMPTY = 'E',//bg
+            ID_BLOCK_WALL = 'X',//bg
+            ID_BLOCK_PLAYER = 'P',//fg
+            ID_BLOCK_COIN = 'C',//fg
+            ID_BLOCK_BOX = 'M',//fg
+            ID_BLOCK_BUTTON = 'O',//fg
+            ID_BLOCK_ACTIVATION_WALL = 'A',//fg
+            ID_BLOCK_Y_CUBE = 'Y',//fg
+            ID_BLOCK_B_CUBE = 'B',//fg
+            ID_BLOCK_SPIKE_UP = 'U',//bg
+            ID_BLOCK_SPIKE_DOWN = 'D',//bg
+            ID_BLOCK_SPIKE_LEFT = 'L',//bg
+            ID_BLOCK_SPIKE_RIGHT = 'R',//bg
+            ID_BLOCK_NON_GRABBABLE_WALL = 'G';//bg
     public final static int[] BACKGROUND_BLOCKS = {ID_BLOCK_EMPTY, ID_BLOCK_WALL, ID_BLOCK_NON_GRABBABLE_WALL};
 
 
@@ -118,7 +115,7 @@ public class GameInstance extends Thread{
             {ID_BLOCK_COIN}
     };
     public static final float LEVEL_JUMP = 1, PHASING_JUMP = 0.5f;
-    public static final int PHASING_CODE = 0;
+    public static final char PHASING_CODE = '0';
 
 
 
@@ -245,7 +242,7 @@ public class GameInstance extends Thread{
         }//gather the already created images of foreground elements
         foreground = new Vector<>();
 
-        //elaborate the player powers
+        //reset player
         if(haveInitializedThings){
             player.reset();
 
@@ -261,9 +258,10 @@ public class GameInstance extends Thread{
         }
 
         //debug(":|");
+        //elaborate the player powers
         strs = subCodes[0].split(" ");
         for(int i = 0; i < strs.length; i += 2){
-            int powerId = Integer.parseInt(strs[i]);
+            char powerId = strs[i].charAt(0);
             int powerAmount = Integer.parseInt(strs[i+1]);
 
             //debug("power info:"+powerId+", "+powerAmount);
@@ -271,7 +269,7 @@ public class GameInstance extends Thread{
         }
 
         //debug("ddd");
-        //elaborate puzzle starting position
+        //elaborate puzzle starting position and coinsForWin
         strs = subCodes[1].split(" ");
         int xStart = Integer.parseInt(strs[0]);
         int yStart = Integer.parseInt(strs[1]);
@@ -293,6 +291,7 @@ public class GameInstance extends Thread{
 
                     Point3D posTmp = new Point3D(CELL_SIZE * (x + xStart), CELL_SIZE * (rowNum+yStart), obj.getPosition().z);
                     obj.setPosition(posTmp);
+                    debug("block pos:"+obj.getPosition().toString()+" |obj id:"+obj.id);
 
                     //debug("      info blocco creato:"+obj.getTag() +"\t" + x +" " + rowNum+"\tpos z:"+obj.getPosition().z);
                 }
@@ -345,11 +344,12 @@ public class GameInstance extends Thread{
     private GameObject elaborateObjectsString(String sBlock, Vector<ImageView> availableImgs, int x, int y, int xStart,int yStart){
         GameObject objTmp;
         String[] numbers = sBlock.split(" ");
-        int valTmp = Integer.parseInt(numbers[0]);//valTmp = block id
+        char valTmp = numbers[0].charAt(0);//valTmp = block id
 
-        //debug(sBlock+"");
+        debug("block str:"+sBlock+" block id:"+valTmp);
 
         if(valTmp == ID_BLOCK_PLAYER){
+            debug("player");
             if(player == null){
                 if(availableImgs.size() > 1){
                     player = new Player(new Point3D(), this, availableImgs.get(0), availableImgs.get(1));
@@ -362,14 +362,14 @@ public class GameInstance extends Thread{
             objTmp = player;
         }else{
             //create empty for objects that need it
-            //debug("non player");
+            debug("non player");
 
             if(isBackground(valTmp)){
-                //debug("background");
+                debug("background");
                 objTmp = createObjNotPlayer(valTmp, background[x+xStart][y+yStart].getImageView());
                 background[x+xStart][y+yStart] = objTmp;
             }else{
-                //debug("non background");
+                debug("non background");
                 if(availableImgs.size() > 0){
                     //debug("have resource");
                     objTmp = createObjNotPlayer(valTmp, availableImgs.get(0));
@@ -383,16 +383,18 @@ public class GameInstance extends Thread{
             }
         }
 
-        objTmp.setPhasing(Integer.parseInt(numbers[1]) == PHASING_CODE);
+        objTmp.setPhasing(numbers[1].charAt(0) == PHASING_CODE);
         for(int i = 2; i < numbers.length; i++){
             objTmp.lineConnections.add(Integer.parseInt(numbers[i]));
 
         }
 
+
         return objTmp;
     }
-    private GameObject createObjNotPlayer(int id, ImageView view){
+    private GameObject createObjNotPlayer(char id, ImageView view){
         Point3D pos = new Point3D();
+        debug("create block with id:"+id);
 
         switch (id){
             case ID_BLOCK_EMPTY:
@@ -421,7 +423,7 @@ public class GameInstance extends Thread{
         }
         return null;
     }
-    private boolean isBackground(int blockId){
+    private boolean isBackground(char blockId){
         for(int i = 0; i < BACKGROUND_BLOCKS.length; i++){
             if(blockId == BACKGROUND_BLOCKS[i]){
                 return true;

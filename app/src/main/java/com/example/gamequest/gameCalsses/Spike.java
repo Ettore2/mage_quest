@@ -34,7 +34,7 @@ public class Spike extends GameObject{
                 colliders.add(new BoxCollider(this, new Point3D(-game.CELL_SIZE/4f,0,0),new Vector3D(game.CELL_SIZE/2f,game.CELL_SIZE,0)));
                 break;
         }
-        debug("create spike at: "+this.getPosition().toString());
+        //debug("create spike at: "+this.getPosition().toString());
 
         //setPosition(getPosition());//update the level
         usePhysic = false;

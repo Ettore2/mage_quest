@@ -5,7 +5,8 @@ import static com.example.gamequest.gameCalsses.GameInstance.*;
 import com.example.gamequest.R;
 
 public abstract class Power {
-    private int id, imgRes, amount;// amount neg = infinite
+    private char id;
+    int imgRes, amount;// amount neg = infinite
     GameInstance game;
 
     public static class Nothing extends Power{
@@ -72,7 +73,7 @@ public abstract class Power {
 
 
     //constructors
-    public Power(int id, int amount, GameInstance game, int ImgRes){
+    public Power(char id, int amount, GameInstance game, int ImgRes){
         this.id = id;
         this.amount = amount;
         this.game = game;
@@ -94,7 +95,7 @@ public abstract class Power {
         return amount;
 
     }
-    public static Power getPower(int id, int amount, GameInstance game){
+    public static Power getPower(char id, int amount, GameInstance game){
         switch (id){
             case ID_POWER_B_CUBE: return new BlackCube(amount,game);
             case ID_POWER_TELEPORT: return new Teleport(amount,game);
