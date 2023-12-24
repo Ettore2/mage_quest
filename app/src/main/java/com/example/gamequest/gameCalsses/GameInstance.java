@@ -56,14 +56,14 @@ public class GameInstance extends Thread{
     public static final String exampleLevel =
             "1 2 3 4 2 -1\n" +
                     "5 2 1\n" +
-                    "X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,\n" +
-                    "X 1,X 1,E 1_R 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,X 1,\n" +
-                    "X 1,X 1,E 1_R 1,E 1,X 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,X 1,\n" +
-                    "X 1,X 1,E 1_R 1,E 1,X 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,X 1,\n" +
-                    "X 1,X 1,E 1_R 1,E 1,E 1,E 1_C 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,X 1,\n" +
-                    "X 1,X 1,E 1_R 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,E 1,X 1,\n" +
-                    "X 1,X 1,E 1_U 1,E 1_U 1,E 1_U 1,E 1,E 1,E 1,E 1,E 1_P 1,E 1,E 1,E 1,E 1_M 1,X 1,\n" +
-                    "X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 1,X 10.\n";
+                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,\n" +
+                    "X1,X1,E1_R1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
+                    "X1,X1,E1_R1,E1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
+                    "X1,X1,E1_R1,E1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
+                    "X1,X1,E1_R1,E1,E1,E1_C1,E1,E1,E1,E1,E1,E1,E1,E1,X 1,\n" +
+                    "X1,X1,E1_R1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
+                    "X1,X1,E1_U1,E1_U1,E1_U1,E1,E1,E1,E1,E1_P1,E1,E1,E1,E1_M1,X1,\n" +
+                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X10.\n";
 
     public static final int LEVEL_PLAYING = 0, LEVEL_WON = 1, LEVEL_LOST = -1;
     //powers codes:
@@ -343,8 +343,7 @@ public class GameInstance extends Thread{
     //function methods
     private GameObject elaborateObjectsString(String sBlock, Vector<ImageView> availableImgs, int x, int y, int xStart,int yStart){
         GameObject objTmp;
-        String[] numbers = sBlock.split(" ");
-        char valTmp = numbers[0].charAt(0);//valTmp = block id
+        char valTmp = sBlock.charAt(0);//valTmp = block id
 
         debug("block str:"+sBlock+" block id:"+valTmp);
 
@@ -383,9 +382,9 @@ public class GameInstance extends Thread{
             }
         }
 
-        objTmp.setPhasing(numbers[1].charAt(0) == PHASING_CODE);
-        for(int i = 2; i < numbers.length; i++){
-            objTmp.lineConnections.add(Integer.parseInt(numbers[i]));
+        objTmp.setPhasing(sBlock.charAt(1) == PHASING_CODE);
+        for(int i = 2; i < sBlock.length(); i++){
+            objTmp.lineConnections.add((int)sBlock.charAt(i));
 
         }
 
