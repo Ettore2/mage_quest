@@ -30,7 +30,7 @@ public class Player extends GameObject{
     protected boolean inputMoveUp, inputMoveDown, inputMoveLeft, inputMoveRight;
     protected boolean inputJump;
     protected Power inputPower;
-    protected BaseAnimation animMove, animIdle, animAirIdle, animAirIdleDown, animAirMove;
+    protected BaseAnimation animMove, animIdle, animAirIdle, animAirIdleDown, animAirMove, animAirMoveDown;
     protected int thisFramePushDir, pushingFrames;
     protected Point3D pushEndPos;
 
@@ -78,6 +78,14 @@ public class Player extends GameObject{
         frames = new Vector<>();
         frames.add(new AnimationFrame<Integer>(R.drawable.player_jump_down_0, ANIM_FRAME_DURATION));
         animAirIdleDown = new BaseAnimation(frames);
+
+        frames = new Vector<>();
+        frames.add(new AnimationFrame<Integer>(R.drawable.player_jump_move_0, ANIM_FRAME_DURATION));
+        animAirMove = new BaseAnimation(frames);
+
+        frames = new Vector<>();
+        frames.add(new AnimationFrame<Integer>(R.drawable.player_jump_move_down_0, ANIM_FRAME_DURATION));
+        animAirMoveDown = new BaseAnimation(frames);
 
         haveInitializedGraphic = true;
 
@@ -176,7 +184,7 @@ public class Player extends GameObject{
 
     }
     protected void die(){
-        if(alive){
+        if(alive && game.currLevelState == LEVEL_PLAYING){
             //debug("player die");
             alive = false;
             game.currLevelState = LEVEL_LOST;
@@ -324,6 +332,11 @@ public class Player extends GameObject{
     public void collision(EngineObjectModel obj, float deltaT) {
         super.collision(obj, deltaT);
 
+        if(obj.getTag().equals(TAG_SPIKE)){
+            die();
+
+        }
+
     }
 
     @Override
@@ -443,10 +456,10 @@ public class Player extends GameObject{
                     animMove.update(deltaT);
                     spriteView.setImageResource((Integer)(animMove.getCurrFrame().info));
                 }else {
-                    animAirIdle.update(deltaT);
-                    animAirIdleDown.update(deltaT);
-                    spriteView.setImageResource((Integer)(animAirIdle.getCurrFrame().info));
-                    spriteViewDown.setImageResource((Integer)(animAirIdleDown.getCurrFrame().info));
+                    animAirMove.update(deltaT);
+                    animAirMoveDown.update(deltaT);
+                    spriteView.setImageResource((Integer)(animAirMove.getCurrFrame().info));
+                    spriteViewDown.setImageResource((Integer)(animAirMoveDown.getCurrFrame().info));
                 }
             }
         }

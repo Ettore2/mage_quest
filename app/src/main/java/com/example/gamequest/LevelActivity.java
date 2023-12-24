@@ -21,7 +21,9 @@ import com.example.gamequest.gameCalsses.Power;
 import java.util.Vector;
 
 public class LevelActivity extends AppCompatActivity implements Runnable{
+    public static final int CUSTOM_LEVEL_ID = -1;
     public static final String INTENT_EXTRA_LEVEL_ID = "level id";
+    public static final String INTENT_EXTRA_LEVEL_DESCR = "level descr";
     public static final String STR_WIN = "LEVEL COMPLETED", STR_LOST = "LEVEL FAILED";
     public EngineManager manager;
     Handler handler;
@@ -64,10 +66,11 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
         btnMenuNext = findViewById(R.id.img_btn_menu_next);
 
 
-        int levelId = getIntent().getIntExtra(INTENT_EXTRA_LEVEL_ID,0);
+        int levelId = getIntent().getIntExtra(INTENT_EXTRA_LEVEL_ID,CUSTOM_LEVEL_ID);
+        String levelDescr = getIntent().getStringExtra(INTENT_EXTRA_LEVEL_DESCR);
         handler = new Handler(Looper.getMainLooper());
         manager = new EngineManager(180, false);
-        game = new GameInstance(this,(ViewGroup) findViewById(R.id.layout_game),manager,levelId);
+        game = new GameInstance(this,(ViewGroup) findViewById(R.id.layout_game),manager,levelId,levelDescr);
 
         graphicUpdate();
 
@@ -112,7 +115,8 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
         switch (levelState){
             case LEVEL_WON:
                 //TODO: check if the level was already completed (info gained from in a txt)
-                btnMenuNext.setEnabled(true);
+
+                btnMenuNext.setEnabled(game.getLevelId()!=CUSTOM_LEVEL_ID);
                 menuResultsView.setText(STR_WIN);
                 break;
             case LEVEL_LOST:
@@ -160,10 +164,10 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
             startActivity(new Intent(this, LevelsSelectionActivity.class));
         }
         if(view.equals(btnMenuRedo) || view.equals(btnReset)){
-            game.setLevelDecr(game.levelStartDescr);
+            game.applyLevelDecr(game.levelDescr);
         }
         if(view.equals(btnMenuNext)){
-            game.setLevelId(game.getLevelId()+1);
+            game.setLevelById(game.getLevelId()+1);
             game.resetLevel();
 
         }

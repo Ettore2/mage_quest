@@ -16,7 +16,8 @@
             android:name=".LevelsSelectionActivity"
             android:exported="false"
             android:label="@string/title_activity_levels_selection"
-            android:theme="@style/Theme.GameQuest" />
+            android:theme="@style/Theme.GameQuest"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".LevelActivity"
             android:exported="true"

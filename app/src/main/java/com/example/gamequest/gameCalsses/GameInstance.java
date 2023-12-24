@@ -57,13 +57,13 @@ public class GameInstance extends Thread{
             "1 2 3 4 2 -1\n" +
                     "5 2 1\n" +
                     "1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1\n" +
-                    "1 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,1 1\n" +
+                    "1 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1_10 1,0 1_10 1,0 1_10 1,0 1_10 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,1 1\n" +
                     "1 1,0 1,0 1,0 1,0 1_4 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,1 1\n" +
                     "1 1,0 1,0 1,0 1,0 1_4 1,0 1_7 1,0 1,0 1_2 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1_4 1,0 1_3 1,1 1\n" +
                     "1 1,0 1,0 1,0 1,1 1,1 1,1 1,1 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,1 1\n" +
                     "1 1,0 1,0 1,0 1,1 1,1 1,1 1,1 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,1 1,1 1\n" +
                     "1 1,0 1,0 1,0 1,1 1,1 1,1 1,1 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,1 1,1 1\n" +
-                    "1 1,0 1,0 1,0 1,1 1,1 1,1 1,1 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,1 1,0 1,0 1,1 1\n" +
+                    "1 1,0 1,0 1,0 1,1 1,1 1,1 1,1 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,1 1,0 1,0 1_11 1,1 1\n" +
                     "1 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,0 1,1 1,0 1,0 1,0 1,0 1,1 1\n" +
                     "1 1,1 1,0 1,0 1,0 1,0 1_3 1,0 1_3 1,0 1,0 1_3 1,0 1,1 1,0 1,1 1,1 1,0 1,1 1,1 1,1 1,0 1,0 1,1 1,1 1\n" +
                     "1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1,1 1.";
@@ -126,7 +126,7 @@ public class GameInstance extends Thread{
     public int currLevelState;
     public final EngineManager manager;
     private int levelId;
-    public final String levelStartDescr;
+    public String levelDescr;
     public String levelCurrDescr;
     public LevelActivity context;
     public ViewGroup layout;
@@ -139,13 +139,13 @@ public class GameInstance extends Thread{
 
 
     //constructor
-    public GameInstance(LevelActivity context, ViewGroup layout,EngineManager manager, int leveId){
+    public GameInstance(LevelActivity context, ViewGroup layout,EngineManager manager, int leveId,String levelDescr){
         Collider3D.INVERTED_Y = true;
 
         this.context = context;
         this.layout = layout;
         this.haveInitializedThings = false;
-        setLevelId(leveId);
+        setLevelById(leveId);
 
         //initialize the game manager
         this.manager = manager;
@@ -162,15 +162,15 @@ public class GameInstance extends Thread{
         foreground = new Vector<>();
 
 
-        //TODO: read the level from file
-            this.levelId = leveId;
-            levelStartDescr = exampleLevel.substring(0,exampleLevel.length()-1);//have to trim the '.'
-        levelCurrDescr = levelStartDescr;
+        this.levelId = leveId;
+        this.levelDescr = exampleLevel.substring(0,exampleLevel.length()-1);//have to trim the '.'
+        //this.levelDescr = levelDescr.substring(0,levelDescr.length()-1);//have to trim the '.'
+        levelCurrDescr = this.levelDescr;
 
 
         //interprets the level start descr and instantiate all on screen
         //debug(":(!");
-        setLevelDecr(levelStartDescr);
+        applyLevelDecr(this.levelDescr);
         //debug(":)!");
 
         //debug(background[0][0].getPosition().toString());
@@ -194,9 +194,11 @@ public class GameInstance extends Thread{
     }
 
     //setters
-    public void setLevelId(int levelId) {
-        this.levelId = levelId;
-        //TODO: read the level from file
+    public void setLevelById(int levelId) {
+        if(levelId != LevelActivity.CUSTOM_LEVEL_ID){
+            this.levelId = levelId;
+            //TODO: read the level from file
+        }
 
     }
     public void collectCoin(){
@@ -207,7 +209,7 @@ public class GameInstance extends Thread{
         context.graphicUpdate();
     }
     //other methods
-    public void setLevelDecr(String stateDescr){
+    public void applyLevelDecr(String stateDescr){
         manager.removeAllObjects();//remove all objects from the game manager
 
         String[] subCodes = stateDescr.split("\n");
@@ -333,7 +335,7 @@ public class GameInstance extends Thread{
         }
     }
     public void resetLevel(){
-        setLevelDecr(levelStartDescr);
+        applyLevelDecr(levelDescr);
 
 
     }
