@@ -1,8 +1,11 @@
 package com.example.gamequest.gameCalsses;
 
+import static com.example.gamequest.engine3D_V1.EngineObjectModel.*;
 import static com.example.gamequest.gameCalsses.GameInstance.*;
 
 import com.example.gamequest.R;
+import com.example.gamequest.engine3D_V1.Point3D;
+import com.example.gamequest.engine3D_V1.Vector3D;
 
 import java.util.Vector;
 
@@ -23,16 +26,46 @@ public abstract class Power {
         }
     }
     public static class YellowCube extends Power{
+        private static GameObject instance;
         public YellowCube(int amount, GameInstance game){
             super(ID_POWER_Y_CUBE, amount, game, R.drawable.yellow_cube);
-            availableDirs.add(GameObject.DIR_UP);
-            availableDirs.add(GameObject.DIR_DOWN);
-            availableDirs.add(GameObject.DIR_LEFT);
-            availableDirs.add(GameObject.DIR_RIGHT);
+            availableDirs.add(DIR_UP);
+            availableDirs.add(DIR_DOWN);
+            availableDirs.add(DIR_LEFT);
+            availableDirs.add(DIR_RIGHT);
         }
         @Override
         protected void active(int dir) {
+            decreaseAmount();
+            if(instance != null){
+                game.destroyDynamicForegroundObj(instance);
+                instance = null;
+            }
 
+            if(dir == DIR_UP){
+                if(game.isBackgroundFree(game.player.getGreedX(), game.player.getGreedY()-1)){
+                    Point3D pos = game.player.getPosition().sum(new Point3D(0,-game.CELL_SIZE,0));
+                    instance = game.instantiateDynamicForegroundObj(ID_BLOCK_Y_CUBE, pos);
+                }
+            }
+            if(dir == DIR_DOWN){
+                if(game.isBackgroundFree(game.player.getGreedX(), game.player.getGreedY()+1)){
+                    Point3D pos = game.player.getPosition().sum(new Point3D(0,game.CELL_SIZE,0));
+                    instance = game.instantiateDynamicForegroundObj(ID_BLOCK_Y_CUBE, pos);
+                }
+            }
+            if(dir == DIR_LEFT){
+                if(game.isBackgroundFree(game.player.getGreedX()-1, game.player.getGreedY())){
+                    Point3D pos = game.player.getPosition().sum(new Point3D(-game.CELL_SIZE,0,0));
+                    instance = game.instantiateDynamicForegroundObj(ID_BLOCK_Y_CUBE, pos);
+                }
+            }
+            if(dir == DIR_RIGHT){
+                if(game.isBackgroundFree(game.player.getGreedX()+1, game.player.getGreedY())){
+                    Point3D pos = game.player.getPosition().sum(new Point3D(game.CELL_SIZE,0,0));
+                    instance = game.instantiateDynamicForegroundObj(ID_BLOCK_Y_CUBE, pos);
+                }
+            }
         }
     }
     public static class BlackCube extends Power{
@@ -52,7 +85,7 @@ public abstract class Power {
     public static class Teleport extends Power{
         public Teleport(int amount, GameInstance game){
             super(ID_POWER_TELEPORT, amount, game, R.drawable.teleport);
-            availableDirs.add(GameObject.DIR_UP);
+            availableDirs.add(DIR_UP);
             availableDirs.add(GameObject.DIR_DOWN);
             availableDirs.add(GameObject.DIR_LEFT);
             availableDirs.add(GameObject.DIR_RIGHT);
@@ -65,8 +98,7 @@ public abstract class Power {
     public static class Grapple extends Power{
         public Grapple(int amount, GameInstance game){
             super(ID_POWER_GRAPPLE, amount, game, R.drawable.grapple);
-            availableDirs.add(GameObject.DIR_UP);
-            availableDirs.add(GameObject.DIR_DOWN);
+            availableDirs.add(DIR_UP);
             availableDirs.add(GameObject.DIR_LEFT);
             availableDirs.add(GameObject.DIR_RIGHT);
         }
@@ -78,7 +110,7 @@ public abstract class Power {
     public static class Phase extends Power{
         public Phase(int amount, GameInstance game){
             super(ID_POWER_PHASE, amount, game, R.drawable.phase);
-            availableDirs.add(GameObject.DIR_UP);
+            availableDirs.add(DIR_UP);
             availableDirs.add(GameObject.DIR_DOWN);
             availableDirs.add(GameObject.DIR_LEFT);
             availableDirs.add(GameObject.DIR_RIGHT);

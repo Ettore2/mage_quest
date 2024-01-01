@@ -26,10 +26,7 @@ public class PowerBullet extends GameObject{
             destroy();
 
             Point3D pos = getSpawnPos(impactObj);
-            GameObject objTmp = new BCube(pos,game,this.spriteView);
-            objTmp.snapToGreed();
-            game.engineManager.addObject(objTmp);
-            game.foreground.add(objTmp);
+            game.instantiateDynamicForegroundObj(ID_BLOCK_B_CUBE, pos);
         }
     }
 

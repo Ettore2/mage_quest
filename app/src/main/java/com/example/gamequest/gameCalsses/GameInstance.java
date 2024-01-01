@@ -331,6 +331,27 @@ public class GameInstance extends Thread{
     }
 
 
+    //other methods
+    public Vector<GameObject> getCellForeground(int x, int y){
+        Vector<GameObject> result = new Vector<>();
+
+        for(int i = 0; i < foreground.size(); i++){
+            if(foreground.get(i).getGreedX() == x && foreground.get(i).getGreedY() == y){
+                result.add(foreground.get(i));
+            }
+        }
+
+        return result;
+    }
+    public boolean isBackgroundFree(int x, int y){
+        if(x < 0 || x >= background.length || y < 0 || y >= background.length){
+            return false;
+        }
+        return !background[x][y].isObstacle || background[x][y].phasing;
+
+    }
+
+
     //function methods
     private GameObject elaborateObjectsString(String sBlock, Vector<ImageView> availableImgs, int x, int y, int xStart,int yStart){
         GameObject objTmp;
@@ -427,5 +448,26 @@ public class GameInstance extends Thread{
     public static void debug(String msg){
         Log.d(debugStr, msg);
 
+    }
+    public GameObject instantiateDynamicForegroundObj(char objId, Point3D pos){
+        if(objId != ID_BLOCK_PLAYER && !isBackground(objId)){
+            GameObject objTmp = createObjNotPlayer(objId, null);
+            foreground.add(objTmp);
+            objTmp.setPosition(pos);
+            objTmp.snapToGreed();
+            engineManager.addObject(objTmp);
+            foreground.add(objTmp);
+
+            return objTmp;
+        }
+        return null;
+
+    }
+    public void destroyDynamicForegroundObj(GameObject obj){
+        if(obj != null && obj.id != ID_BLOCK_PLAYER && !isBackground(obj.id)){
+            engineManager.removeObject(obj);
+            availableImgs.add(obj.getImageView());
+            obj.spriteView.setVisibility(View.INVISIBLE);
+        }
     }
 }
