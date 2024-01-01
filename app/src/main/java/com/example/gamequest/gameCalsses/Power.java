@@ -26,7 +26,7 @@ public abstract class Power {
         }
     }
     public static class YellowCube extends Power{
-        private static GameObject instance;
+        public static GameObject instance;
         public YellowCube(int amount, GameInstance game){
             super(ID_POWER_Y_CUBE, amount, game, R.drawable.yellow_cube);
             availableDirs.add(DIR_UP);

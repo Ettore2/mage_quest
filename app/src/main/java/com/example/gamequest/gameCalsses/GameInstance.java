@@ -133,7 +133,6 @@ public class GameInstance extends Thread{
     public Player player;
     public Vector<GameObject> foreground;
     public Vector<ImageView> availableImgs;
-    public Box yellowCube;
     private int coinsForWin, coinCollected;
 
 
@@ -197,6 +196,11 @@ public class GameInstance extends Thread{
     }
     //other methods
     public void applyLevelDecr(String stateDescr){
+        if(Power.YellowCube.instance != null){
+            destroyDynamicForegroundObj(Power.YellowCube.instance);
+            Power.YellowCube.instance = null;
+        }
+
         engineManager.removeAllObjects();//remove all objects from the game manager
 
         String[] subCodes = stateDescr.split("\n");
@@ -224,9 +228,6 @@ public class GameInstance extends Thread{
         if(haveInitializedThings){
             for(int i = 0; i < foreground.size(); i++){
                 availableImgs.add(foreground.get(i).getImageView());
-            }
-            if(yellowCube != null){
-                availableImgs.add(yellowCube.getImageView());
             }
         }//gather the already created images of foreground elements
         foreground = new Vector<>();
@@ -456,7 +457,6 @@ public class GameInstance extends Thread{
             objTmp.setPosition(pos);
             objTmp.snapToGreed();
             engineManager.addObject(objTmp);
-            foreground.add(objTmp);
 
             return objTmp;
         }
@@ -465,9 +465,11 @@ public class GameInstance extends Thread{
     }
     public void destroyDynamicForegroundObj(GameObject obj){
         if(obj != null && obj.id != ID_BLOCK_PLAYER && !isBackground(obj.id)){
-            engineManager.removeObject(obj);
-            availableImgs.add(obj.getImageView());
-            obj.spriteView.setVisibility(View.INVISIBLE);
+            if(!obj.destroyed){
+                foreground.remove(obj);
+                availableImgs.add(obj.getImageView());
+            }
+            obj.destroy();
         }
     }
 }

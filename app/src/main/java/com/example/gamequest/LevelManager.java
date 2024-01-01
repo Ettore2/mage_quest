@@ -104,7 +104,27 @@ public class LevelManager {
                     "E1,E1,E1,E1,E1,E1,E1,E1,E1_P1,E1,E1,E1,E1,E1,E1,X1,\n" +
                     "E1_C1,E1,E1,E1,E1,E1,E1,E1,X1,E1,E1,E1,E1,E1,E1,E1_C1,\n" +
                     "X1,X1,X1,E1,E1,E1,E1,E1,X1,E1,E1_C1,E1,E1,E1,X1,X1,\n" +
-                    "X1,X1,E1,E1,E1,E1,X1,X1,X1,X1,X1,E1,E1,E1,E1_C1,X1"
+                    "X1,X1,E1,E1,E1,E1,X1,X1,X1,X1,X1,E1,E1,E1,E1_C1,X1",
+            "level 9\n" +
+                    "level 9\n" +
+                    "1 -1\n" +
+                    "6 5 1\n" +
+                    "X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,\n" +
+                    "X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,\n" +
+                    "X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,\n" +
+                    "E1,E1,E1_P1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,E1,E1,E1,\n" +
+                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,E1_U1,E1_U1,X1,E1,E1,E1_C1",
+            "level 10\n" +
+                    "level 10\n" +
+                    "1 1 2 1\n" +
+                    "6 5 4\n" +
+                    "X1,X1,X1,X1,E1_C1,E1,E1_P1,E1,E1,E1,E1,X1,\n" +
+                    "X1,X1,X1,X1,E1,X1,X1,X1,X1,E1,E1,X1,\n" +
+                    "E1,E1,E1,X1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
+                    "E1_C1,E1_C1,E1,X1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
+                    "X1,X1,E1,E1,E1,E1,E1,E1,E1,X1,E1,E1_C1,\n" +
+                    "X1,X1,X1,X1,E1,E1,E1,E1,X1,X1,X1,X1,\n" +
+                    "X1,X1,X1,X1,E1_U1,E1_U1,E1_U1,E1_U1,X1,X1,X1,X1"
     };
 
     public static class Level{

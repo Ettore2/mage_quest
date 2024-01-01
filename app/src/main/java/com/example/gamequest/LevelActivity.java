@@ -327,7 +327,7 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
                             debug(""+count);
 
                              */
-                            //debug(game.availableImgs.size()+"");
+                            //debug(game.availableImgs.size()+" | "+game.foreground.size());
                         }
                     });
                 }//execute a frame
