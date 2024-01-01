@@ -38,6 +38,7 @@ public abstract class GameObject extends EngineObjectModel {
     //constructors
     public GameObject(Point3D pos, char id, String tag,GameInstance game, ImageView view, int imgRes, int imgResPh) {
         super(tag);
+        //debug("GameObject constructor flag 0");
         destroyed = false;
         currScaledYForce = 0;
         grounded = false;
@@ -59,24 +60,35 @@ public abstract class GameObject extends EngineObjectModel {
                 }
             }
         }
+        //debug("GameObject constructor flag 1");
 
         this.game = game;
-        spriteView = view;
-        if(spriteView == null){
-            spriteView = new ImageView(game.context);
-            game.layout.addView(this.spriteView);
+        this.spriteView = view;
+        if(this.spriteView == null){
+            if(game.availableImgs.size() > 0){
+                //debug("have available img");
+                this.spriteView = game.availableImgs.remove(0);
+            }else {
+                //debug("do not have available img");
+                this.spriteView = new ImageView(game.context);
+                game.layout.addView(this.spriteView);
+            }
         }
+        //debug("GameObject constructor flag 2");
 
         this.imgRes = imgRes;
         this.imgResPh = imgResPh;
         spriteView.setImageResource(imgRes);
         setDefaultViewValues(spriteView);
+        //debug("GameObject constructor flag 3");
 
         lineConnections = new Vector<>();
         grounded = false;
         setPosition(pos);
         setPhasing(false);
+        //debug("GameObject constructor flag 4");
         graphicUpdate(0);
+        //debug("GameObject constructor flag 5");
 
     }
     public GameObject(Point3D pos, String tag,GameInstance game) {
@@ -286,8 +298,10 @@ public abstract class GameObject extends EngineObjectModel {
     }
     public void destroy(){
         if(!destroyed){
+            game.engineManager.removeObject(this);
+
             spriteView.setVisibility(ImageView.INVISIBLE);
-            game.manager.removeObject(this);
+
             destroyed = true;
             game.context.graphicUpdate();
         }
@@ -297,7 +311,8 @@ public abstract class GameObject extends EngineObjectModel {
         grounded = false;
         currScaledYForce = 0;
         setDefaultViewValues(spriteView);
-        game.manager.addObject(this);
+
+        game.engineManager.addObject(this);
     }
 
 

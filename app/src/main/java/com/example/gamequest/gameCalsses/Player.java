@@ -35,7 +35,7 @@ public class Player extends GameObject{
     protected Point3D pushEndPos;
 
 
-    protected PowerBullet bullet;
+    public PowerBullet bullet;
 
 
     //constructors
@@ -138,14 +138,6 @@ public class Player extends GameObject{
         powers = new Vector<>();
 
     }
-    public void reset(){
-        super.reset();
-
-        alive = true;
-        removePowers();
-        setDefaultViewValues(spriteViewDown);
-
-    }
 
 
     //input methods
@@ -187,10 +179,10 @@ public class Player extends GameObject{
         /*
 
          */
-        if(alive && game.currLevelState == LEVEL_PLAYING){
+        if(alive && game.currState == STATE_PLAYING){
             //debug("player die");
             alive = false;
-            game.currLevelState = LEVEL_LOST;
+            game.currState = STATE_LOST;
             game.context.graphicUpdate();
 
 
@@ -208,6 +200,15 @@ public class Player extends GameObject{
         }
         super.destroy();
     }
+    @Override
+    public void reset(){
+        alive = true;
+        removePowers();
+        setDefaultViewValues(spriteViewDown);
+
+        super.reset();
+    }
+
 
     @Override
     protected void horizontalMovement(float deltaT){

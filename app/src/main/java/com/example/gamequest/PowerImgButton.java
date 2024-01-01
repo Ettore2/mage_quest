@@ -24,6 +24,7 @@ public class PowerImgButton {
     public void graphicUpdate(){
         if(power != null){
             button.setImageResource(power.getImgRes());
+            button.setVisibility(View.VISIBLE);
 
             button.setEnabled(power.isUsable());
 

@@ -3,4 +3,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="movement_buttons_background">#A6A6A6</color>
+    <color name="selected_power_background">#B8AD45</color>
 </resources>

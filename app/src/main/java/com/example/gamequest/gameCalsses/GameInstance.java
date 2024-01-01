@@ -1,6 +1,7 @@
 package com.example.gamequest.gameCalsses;
 
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -65,7 +66,7 @@ public class GameInstance extends Thread{
                     "X1,X1,E1_U1,E1_U1,E1_U1,E1,E1,E1,E1,E1_P1,E1,E1,E1,E1_M1,X1,\n" +
                     "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X10\n";
 
-    public static final int LEVEL_PLAYING = 0, LEVEL_WON = 1, LEVEL_LOST = -1;
+    public static final int STATE_PLAYING = 0, STATE_WON = 1, STATE_LOST = -1;
     //powers codes:
     public static final char
             ID_POWER_NOTHING = '0',
@@ -90,7 +91,8 @@ public class GameInstance extends Thread{
             ID_BLOCK_SPIKE_DOWN = 'D',//bg
             ID_BLOCK_SPIKE_LEFT = 'L',//bg
             ID_BLOCK_SPIKE_RIGHT = 'R',//bg
-            ID_BLOCK_NON_GRABBABLE_WALL = 'G';//bg
+            ID_BLOCK_NON_GRABBABLE_WALL = 'G',
+            ID_BLOCK_POWER_BULLET = 'Q';//bg
     public final static int[] BACKGROUND_BLOCKS = {ID_BLOCK_EMPTY, ID_BLOCK_WALL, ID_BLOCK_NON_GRABBABLE_WALL};
 
 
@@ -105,6 +107,7 @@ public class GameInstance extends Thread{
     public static final String TAG_ACTIVATION_WALL = "act_wall";
     public static final String TAG_COIN = "coin";
     public static final String TAG_NON_GRABBABLE_WALL = "n_g_wall";
+    public static final String TAG_POWER_BULLET = "n_g_wall";
     public static final int[][] OBJECTS_PRIORITY_LEVELS = {
             {ID_BLOCK_EMPTY},
             {ID_BLOCK_SPIKE_DOWN,ID_BLOCK_SPIKE_UP,ID_BLOCK_SPIKE_LEFT,ID_BLOCK_SPIKE_RIGHT},
@@ -112,7 +115,7 @@ public class GameInstance extends Thread{
             {ID_BLOCK_PLAYER},
             {ID_BLOCK_BOX,ID_POWER_B_CUBE,ID_BLOCK_Y_CUBE},
             {ID_BLOCK_WALL,ID_BLOCK_NON_GRABBABLE_WALL,ID_BLOCK_ACTIVATION_WALL},
-            {ID_BLOCK_COIN}
+            {ID_BLOCK_COIN,ID_BLOCK_POWER_BULLET}
     };
     public static final float LEVEL_JUMP = 1, PHASING_JUMP = 0.5f;
     public static final char PHASING_CODE = '0';
@@ -120,8 +123,8 @@ public class GameInstance extends Thread{
 
 
     public final int FIELD_WIDTH, FIELD_HEIGHT, CELL_SIZE;
-    public int currLevelState;
-    public final EngineManager manager;
+    public int currState;
+    public final EngineManager engineManager;
     public LevelManager.Level level;
     public LevelActivity context;
     public ViewGroup layout;
@@ -129,6 +132,7 @@ public class GameInstance extends Thread{
     public GameObject [][] background;// [x][y] | for empty and walls
     public Player player;
     public Vector<GameObject> foreground;
+    public Vector<ImageView> availableImgs;
     public Box yellowCube;
     private int coinsForWin, coinCollected;
 
@@ -139,19 +143,17 @@ public class GameInstance extends Thread{
         this.context = context;
         this.layout = layout;
         this.haveInitializedThings = false;
+        availableImgs = new Vector();
 
         //initialize the game manager
-        this.manager = manager;
+        this.engineManager = manager;
 
         CELL_SIZE = context.getResources().getDimensionPixelSize(R.dimen.cell_size);
         FIELD_WIDTH = context.getResources().getDimensionPixelSize(R.dimen.game_layout_width)/CELL_SIZE;
         FIELD_HEIGHT = context.getResources().getDimensionPixelSize(R.dimen.game_layout_height)/CELL_SIZE;
         //debug("FIELD_WIDTH:" + FIELD_WIDTH + "   FIELD_HEIGHT:" + FIELD_HEIGHT + "   CELL_SIZE:" + CELL_SIZE);
 
-        background = new GameObject[FIELD_WIDTH][];
-        for(int i = 0; i < background.length; i++){
-            background[i] = new GameObject[FIELD_HEIGHT];
-        }
+        background = new GameObject[FIELD_WIDTH][FIELD_HEIGHT];
         foreground = new Vector<>();
 
 
@@ -189,17 +191,16 @@ public class GameInstance extends Thread{
     public void collectCoin(){
         coinCollected++;
         if(coinCollected >= coinsForWin){
-            currLevelState = LEVEL_WON;
+            currState = STATE_WON;
         }
         context.graphicUpdate();
     }
     //other methods
     public void applyLevelDecr(String stateDescr){
-        manager.removeAllObjects();//remove all objects from the game manager
+        engineManager.removeAllObjects();//remove all objects from the game manager
 
         String[] subCodes = stateDescr.split("\n");
         String[] strs;
-        Vector<ImageView> availableImgs = new Vector();
         coinCollected = 0;
 
         //set all background to walls
@@ -232,15 +233,15 @@ public class GameInstance extends Thread{
 
         //reset player
         if(haveInitializedThings){
-            player.reset();
+            this.player.reset();
 
         }else{
             if(availableImgs.size() > 1){
-                player = new Player(new Point3D(), this, availableImgs.get(0), availableImgs.get(1));
+                this.player = new Player(new Point3D(), this, availableImgs.get(0), availableImgs.get(1));
                 availableImgs.remove(0);
                 availableImgs.remove(0);
             }else{
-                player = new Player(new Point3D(), this, null, null);
+                this.player = new Player(new Point3D(), this, null, null);
             }
 
         }
@@ -287,21 +288,21 @@ public class GameInstance extends Thread{
             //debug("new row");
         }
 
-        while(availableImgs.size() > 0){
-            layout.removeView(availableImgs.remove(0));
+        for(int i = 0; i < availableImgs.size(); i++){
+            availableImgs.get(i).setVisibility(View.INVISIBLE);
 
-        }//delete remaining views
+        }//make remaining views invisible
 
 
         //add new objects to the game manager
-        manager.addObject(player);
+        engineManager.addObject(player);
         for(int x = 0; x < background.length; x++){
             for(int y = 0; y < background[0].length; y++){
                 if(background[x][y].id == ID_BLOCK_EMPTY){
                     for(int x2 = -2; x2 < 3; x2++){
                         for(int y2 = -2; y2 < 3; y2++){
                             if(x+x2 >= 0 && x+x2 < background.length && y+y2 >= 0 && y+y2 <background[0].length && background[x+x2][y+y2].id != ID_BLOCK_EMPTY){
-                                manager.addObject(background[x+x2][y+y2]);
+                                engineManager.addObject(background[x+x2][y+y2]);
                             }
 
                         }
@@ -310,10 +311,10 @@ public class GameInstance extends Thread{
             }
         }
         for(int i = 0; i < foreground.size(); i++){
-            manager.addObject(foreground.get(i));
+            engineManager.addObject(foreground.get(i));
         }
 
-        currLevelState = LEVEL_PLAYING;
+        currState = STATE_PLAYING;
         if(!haveInitializedThings){//set have haveInitializedThings
             haveInitializedThings = true;
 
@@ -409,6 +410,9 @@ public class GameInstance extends Thread{
                 return new Spike(pos, this, view, id);
             case ID_BLOCK_NON_GRABBABLE_WALL:
                 return new NonGrabbableWall(pos, this, view);
+            case ID_BLOCK_POWER_BULLET:
+                return null;
+                //return new PowerBullet.BulletBCube(pos,this, view, EngineObjectModel.DIR_STOP);
         }
         return null;
     }

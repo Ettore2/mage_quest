@@ -72,7 +72,39 @@ public class LevelManager {
                     "E1_R1,E1,E1,E1,E1,E1,E1,E1,E1,E1_L1,\n" +
                     "E1_R1,E1,E1,E1,E1,E1,E1,E1,E1,E1_L1,\n" +
                     "E1_R1,E1,E1,E1,X1,X1,E1,E1,E1,E1_L1,\n" +
-                    "E1_R1,E1,E1_P1,E1,X1,X1,E1,E1_C1,E1,E1_L1"
+                    "E1_R1,E1,E1_P1,E1,X1,X1,E1,E1_C1,E1,E1_L1",
+
+            "level 6\n" +
+                    "level 6\n" +
+                    "2 2\n" +
+                    "10 4 1\n" +
+                    "X1,X1,E1,E1,E1,E1,E1,E1,X1,X1,\n" +
+                    "E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,\n" +
+                    "E1,E1,E1,E1_C1,E1,E1,E1,E1,E1,E1,\n" +
+                    "E1,X1,X1,X1,X1,E1,E1,E1,E1,E1,\n" +
+                    "E1,E1,X1,E1,X1,E1,E1,E1,E1,E1,\n" +
+                    "E1_P1,E1_M1,E1,E1,E1,E1,E1,E1,E1,E1",
+            "level 7\n" +
+                    "level 7\n" +
+                    "2 3\n" +
+                    "5 5 3\n" +
+                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,\n" +
+                    "X1,X1,E1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
+                    "X1,E1,E1,E1,X1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,E1,E1,E1,E1,\n" +
+                    "E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,E1,E1,E1,E1,X1,\n" +
+                    "X1,E1,E1,E1,E1,E1,E1,E1_C1,E1,E1,E1,E1_C1,X1,X1,X1,X1,E1,E1,E1,E1,\n" +
+                    "X1,X1,E1,E1,E1_P1,E1,E1,E1_M1,E1,E1,E1,X1,X1,X1,E1_C1,E1_U1_D1,E1,E1,E1,X1",
+            "level 8\n" +
+                    "level 8\n" +
+                    "2 2\n" +
+                    "7 4 4\n" +
+                    "X1,X1,E1_D1,E1_D1,X1,X1,X1,X1,E1_D1,X1,X1,X1,X1,X1,X1,X1,\n" +
+                    "X1,X1,E1,E1,E1,X1,X1,E1,E1,E1,X1,X1,X1,X1,X1,X1,\n" +
+                    "X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1_D1,X1,X1,X1,X1,\n" +
+                    "E1,E1,E1,E1,E1,E1,E1,E1,E1_P1,E1,E1,E1,E1,E1,E1,X1,\n" +
+                    "E1_C1,E1,E1,E1,E1,E1,E1,E1,X1,E1,E1,E1,E1,E1,E1,E1_C1,\n" +
+                    "X1,X1,X1,E1,E1,E1,E1,E1,X1,E1,E1_C1,E1,E1,E1,X1,X1,\n" +
+                    "X1,X1,E1,E1,E1,E1,X1,X1,X1,X1,X1,E1,E1,E1,E1_C1,X1"
     };
 
     public static class Level{

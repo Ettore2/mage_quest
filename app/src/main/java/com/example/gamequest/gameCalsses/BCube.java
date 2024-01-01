@@ -11,8 +11,12 @@ public class BCube extends Box{
     public BCube(Point3D pos, GameInstance game, ImageView view) {
         super(pos, ID_BLOCK_WALL, TAG_B_CUBE, game, view, R.drawable.black_cube, R.drawable.black_cube_ph);
         canCollectCoin = true;
+        //debug("black cube constructor end |pos: "+getPosition().toString());
 
     }
 
-
+    @Override
+    public void setPosition(Point3D p) {
+        super.setPosition(p);
+    }
 }

@@ -134,6 +134,9 @@ public class EngineManager {
         managedObjects.clear();
 
     }
+    synchronized public Vector<EngineObjectModel> getManagedObjects(){
+        return  managedObjects;
+    }
     /**
      * returns true if the object is managed by this manager
      */
