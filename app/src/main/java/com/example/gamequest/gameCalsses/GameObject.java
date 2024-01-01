@@ -165,7 +165,6 @@ public abstract class GameObject extends EngineObjectModel {
                 }
             }else {
                 if(pushingObj.isObstacle){
-                    //debug("obstacle X non obstacle");
                     return true;
                 }else {
                     //debug("non obstacle X non obstacle");
@@ -271,7 +270,7 @@ public abstract class GameObject extends EngineObjectModel {
             }
             for(int i = 0; i < thisFNonObstacleColls.size(); i++){
                 GameObject currObj = thisFNonObstacleColls.get(i);
-                if(currObj.canBePushed(this) && sameRow(currObj)){
+                if(sameRow(currObj) && currObj.movable){
                     if(dir == DIR_RIGHT && this.getPosition().x < currObj.getPosition().x){
                         currObj.endPush(this);
                     }
@@ -379,7 +378,7 @@ public abstract class GameObject extends EngineObjectModel {
     protected void horizontalMovement(float deltaT){}
     protected void verticalMovement(float deltaT){
         //Y = 0 -> up (fall = augment the y)
-        translate(new Vector3D(0, currScaledYForce *game.context.manager.getFramesDelay()/deltaT,0));
+        translate(new Vector3D(0, currScaledYForce *game.context.engineManager.getFramesDelay()/deltaT,0));
 
     }
     public boolean sameCell(GameObject obj){

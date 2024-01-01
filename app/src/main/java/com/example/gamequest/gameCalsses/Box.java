@@ -3,6 +3,7 @@ package com.example.gamequest.gameCalsses;
 import static com.example.gamequest.gameCalsses.GameInstance.ID_BLOCK_BOX;
 import static com.example.gamequest.gameCalsses.GameInstance.debug;
 
+import android.view.View;
 import android.widget.ImageView;
 
 import com.example.gamequest.R;

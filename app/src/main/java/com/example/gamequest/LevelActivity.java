@@ -18,14 +18,16 @@ import com.example.gamequest.gameCalsses.GameInstance;
 import com.example.gamequest.gameCalsses.GameObject;
 import com.example.gamequest.gameCalsses.Power;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStream;
 import java.util.Vector;
 
 public class LevelActivity extends AppCompatActivity implements Runnable{
-    public static final int CUSTOM_LEVEL_ID = -1;
     public static final String INTENT_EXTRA_LEVEL_ID = "level id";
-    public static final String INTENT_EXTRA_LEVEL_DESCR = "level descr";
     public static final String STR_WIN = "LEVEL COMPLETED", STR_LOST = "LEVEL FAILED";
-    public EngineManager manager;
+    public EngineManager engineManager;
+    public LevelManager levelManager;
     Handler handler;
     GameInstance game;
     public TextView coinsView, menuResultsView;
@@ -42,7 +44,10 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
         //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);// done in xml values/themes (hide up bar)
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);//(hide softkey)
         setContentView(R.layout.activity_level);
-
+        //debug("level activity");
+        //debug("about to get level manager");
+        levelManager = LevelManager.getInstance(this);
+        //debug("got level manager");
 
         //gather commands views
         btnMoveRight = findViewById(R.id.img_btm_right);
@@ -65,12 +70,11 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
         btnMenuRedo = findViewById(R.id.img_btn_menu_reset);
         btnMenuNext = findViewById(R.id.img_btn_menu_next);
 
-
-        int levelId = getIntent().getIntExtra(INTENT_EXTRA_LEVEL_ID,CUSTOM_LEVEL_ID);
-        String levelDescr = getIntent().getStringExtra(INTENT_EXTRA_LEVEL_DESCR);
+        int levelId = getIntent().getIntExtra(INTENT_EXTRA_LEVEL_ID,1);
         handler = new Handler(Looper.getMainLooper());
-        manager = new EngineManager(180, false);
-        game = new GameInstance(this,(ViewGroup) findViewById(R.id.layout_game),manager,levelId,levelDescr);
+        engineManager = new EngineManager(180, false);
+        game = new GameInstance(this,(ViewGroup) findViewById(R.id.layout_game), engineManager,levelId);
+        //debug("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
 
         graphicUpdate();
 
@@ -114,18 +118,21 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
 
         switch (levelState){
             case LEVEL_WON:
-                //TODO: check if the level was already completed (info gained from in a txt)
+                LevelManager.getInstance().setLevelCompletion(game.getLevelId(),true,true);
+                //debug(""+LevelManager.getInstance().getLastCompletedLevel(true));
 
-                btnMenuNext.setEnabled(game.getLevelId()!=CUSTOM_LEVEL_ID);
                 menuResultsView.setText(STR_WIN);
                 break;
             case LEVEL_LOST:
-                btnMenuNext.setEnabled(false);
                 menuResultsView.setText(STR_LOST);
                 break;
-
         }
         //debug("g update LevelActivity5");
+
+        //debug(String.valueOf(game.level == null));
+        btnMenuNext.setEnabled(LevelManager.getInstance().isCompleted(game.level.id,game.level.isDefault));
+        //debug("g update LevelActivity6");
+
     }
 
 
@@ -161,14 +168,27 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
             if(managerT != null){
                 managerT.interrupt();
             }
+            runManager = false;
+
             startActivity(new Intent(this, LevelsSelectionActivity.class));
+            finish();
         }
         if(view.equals(btnMenuRedo) || view.equals(btnReset)){
-            game.applyLevelDecr(game.levelDescr);
+            game.resetLevel();
         }
         if(view.equals(btnMenuNext)){
-            game.setLevelById(game.getLevelId()+1);
-            game.resetLevel();
+            if(levelManager.isLevel(game.getLevelId()+1, true)){
+                game.setLevelById(game.getLevelId()+1, true);
+                game.resetLevel();
+            }else {
+                if(managerT != null){
+                    managerT.interrupt();
+                }
+                runManager = false;
+
+                startActivity(new Intent(this, LevelsSelectionActivity.class));
+                finish();
+            }
 
         }
     }
@@ -177,9 +197,9 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
     //run
     @Override
     public void run() {
-        while (runManager){
+        while (runManager && ! Thread.interrupted()){
             //debug("thread start");
-            if(game != null && manager != null && game.player != null){
+            if(game != null && engineManager != null && game.player != null){
 
                 if(game.currLevelState == LEVEL_PLAYING){
                     if(btnMoveRight.isPressed()){
@@ -199,13 +219,13 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
                     }
                 }//set inputs
 
-                if(manager.shouldCycle()){
+                if(engineManager.shouldCycle()){
                     //debug("  post");
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
                             //debug("player start pos: "+game.player.getPosition().toString());
-                            manager.doCycle();
+                            engineManager.doCycle();
                             //debug("player end pos: "+game.player.getPosition().toString()+"grounded:"+game.player.grounded);
                         }
                     });

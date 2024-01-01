@@ -60,10 +60,10 @@ public class GameInstance extends Thread{
                     "X1,X1,E1_R1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
                     "X1,X1,E1_R1,E1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
                     "X1,X1,E1_R1,E1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
-                    "X1,X1,E1_R1,E1,E1,E1_C1,E1,E1,E1,E1,E1,E1,E1,E1,X 1,\n" +
+                    "X1,X1,E1_R1,E1,E1,E1_C1,E1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
                     "X1,X1,E1_R1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
                     "X1,X1,E1_U1,E1_U1,E1_U1,E1,E1,E1,E1,E1_P1,E1,E1,E1,E1_M1,X1,\n" +
-                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X10.\n";
+                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X10\n";
 
     public static final int LEVEL_PLAYING = 0, LEVEL_WON = 1, LEVEL_LOST = -1;
     //powers codes:
@@ -122,9 +122,7 @@ public class GameInstance extends Thread{
     public final int FIELD_WIDTH, FIELD_HEIGHT, CELL_SIZE;
     public int currLevelState;
     public final EngineManager manager;
-    private int levelId;
-    public String levelDescr;
-    public String levelCurrDescr;
+    public LevelManager.Level level;
     public LevelActivity context;
     public ViewGroup layout;
     private boolean haveInitializedThings;
@@ -136,13 +134,11 @@ public class GameInstance extends Thread{
 
 
     //constructor
-    public GameInstance(LevelActivity context, ViewGroup layout,EngineManager manager, int leveId,String levelDescr){
+    public GameInstance(LevelActivity context, ViewGroup layout,EngineManager manager, int leveId){
         Collider3D.INVERTED_Y = true;
-
         this.context = context;
         this.layout = layout;
         this.haveInitializedThings = false;
-        setLevelById(leveId);
 
         //initialize the game manager
         this.manager = manager;
@@ -159,26 +155,17 @@ public class GameInstance extends Thread{
         foreground = new Vector<>();
 
 
-        this.levelId = leveId;
-        this.levelDescr = exampleLevel.substring(0,exampleLevel.length()-1);//have to trim the '.'
-        //this.levelDescr = levelDescr.substring(0,levelDescr.length()-1);//have to trim the '.'
-        levelCurrDescr = this.levelDescr;
-
-
         //interprets the level start descr and instantiate all on screen
         //debug(":(!");
-        applyLevelDecr(this.levelDescr);
+        setLevelById(leveId, true);
         //debug(":)!");
 
-        //debug(background[0][0].getPosition().toString());
-        //debug(background[0][1].getPosition().toString());
-        //debug(background[1][0].getPosition().toString());
     }
 
 
     //getters
     public int getLevelId() {
-        return levelId;
+        return level.id;
 
     }
     public int getCoinsForWin() {
@@ -191,11 +178,12 @@ public class GameInstance extends Thread{
     }
 
     //setters
-    public void setLevelById(int levelId) {
-        if(levelId != LevelActivity.CUSTOM_LEVEL_ID){
-            this.levelId = levelId;
-            //TODO: read the level from file
-        }
+    public void setLevelById(int levelId, boolean isDefault) {
+        //debug("about to get the level "+ levelId);
+        this.level = LevelManager.getInstance().getLevel(levelId, isDefault);
+        //debug("about to apply following descr: "+level.descr);
+        applyLevelDecr(level.descr);
+        //debug("apply the descr");
 
     }
     public void collectCoin(){
@@ -291,7 +279,7 @@ public class GameInstance extends Thread{
 
                     Point3D posTmp = new Point3D(CELL_SIZE * (x + xStart), CELL_SIZE * (rowNum+yStart), obj.getPosition().z);
                     obj.setPosition(posTmp);
-                    debug("block pos:"+obj.getPosition().toString()+" |obj id:"+obj.id);
+                    //debug("block pos:"+obj.getPosition().toString()+" |obj id:"+obj.id);
 
                     //debug("      info blocco creato:"+obj.getTag() +"\t" + x +" " + rowNum+"\tpos z:"+obj.getPosition().z);
                 }
@@ -332,9 +320,11 @@ public class GameInstance extends Thread{
         }else {
             context.graphicUpdate();
         }
+
+        //debug("finish to apply level descr");
     }
     public void resetLevel(){
-        applyLevelDecr(levelDescr);
+        applyLevelDecr(level.descr);
 
 
     }
@@ -345,10 +335,10 @@ public class GameInstance extends Thread{
         GameObject objTmp;
         char valTmp = sBlock.charAt(0);//valTmp = block id
 
-        debug("block str:"+sBlock+" block id:"+valTmp);
+        //debug("block str:"+sBlock+" block id:"+valTmp);
 
         if(valTmp == ID_BLOCK_PLAYER){
-            debug("player");
+            //debug("player");
             if(player == null){
                 if(availableImgs.size() > 1){
                     player = new Player(new Point3D(), this, availableImgs.get(0), availableImgs.get(1));
@@ -361,14 +351,14 @@ public class GameInstance extends Thread{
             objTmp = player;
         }else{
             //create empty for objects that need it
-            debug("non player");
+            //debug("non player");
 
             if(isBackground(valTmp)){
-                debug("background");
+                //debug("background");
                 objTmp = createObjNotPlayer(valTmp, background[x+xStart][y+yStart].getImageView());
                 background[x+xStart][y+yStart] = objTmp;
             }else{
-                debug("non background");
+                //debug("non background");
                 if(availableImgs.size() > 0){
                     //debug("have resource");
                     objTmp = createObjNotPlayer(valTmp, availableImgs.get(0));
@@ -393,7 +383,7 @@ public class GameInstance extends Thread{
     }
     private GameObject createObjNotPlayer(char id, ImageView view){
         Point3D pos = new Point3D();
-        debug("create block with id:"+id);
+        //debug("create block with id:"+id);
 
         switch (id){
             case ID_BLOCK_EMPTY:

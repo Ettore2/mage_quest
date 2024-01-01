@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/levels_selection_activity_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_levels"
@@ -10,7 +11,7 @@
     tools:context=".LevelsSelectionActivity">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/img_background_levels_selection"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
@@ -20,37 +21,40 @@
         app:srcCompat="@drawable/background_levels" />
 
     <ImageButton
-        android:id="@+id/imageButton18"
+        android:id="@+id/img_btn_level_12"
         android:layout_width="@dimen/level_bts_size"
         android:layout_height="@dimen/level_bts_size"
         android:layout_marginStart="20dp"
         android:background="@drawable/level_blocked"
         android:foregroundTint="#000000"
+        android:onClick="levelsGreedBtn"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton15"
-        app:layout_constraintStart_toEndOf="@+id/imageButton17"
-        app:layout_constraintTop_toTopOf="@+id/imageButton15"
+        app:layout_constraintBottom_toBottomOf="@+id/img_btn_level_9"
+        app:layout_constraintStart_toEndOf="@+id/img_btn_level_11"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_level_9"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/imageButton13"
+        android:id="@+id/img_btn_level_8"
         android:layout_width="@dimen/level_bts_size"
         android:layout_height="@dimen/level_bts_size"
         android:layout_marginStart="20dp"
         android:background="@drawable/level_blocked"
+        android:onClick="levelsGreedBtn"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton6"
+        app:layout_constraintBottom_toBottomOf="@+id/img_btn_level_5"
         app:layout_constraintEnd_toStartOf="@+id/imageView2"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageButton12"
-        app:layout_constraintTop_toTopOf="@+id/imageButton6"
+        app:layout_constraintStart_toEndOf="@+id/img_btn_level_7"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_level_5"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/imageButton6"
+        android:id="@+id/img_btn_level_5"
         android:layout_width="@dimen/level_bts_size"
         android:layout_height="@dimen/level_bts_size"
         android:background="@drawable/level_blocked"
+        android:onClick="levelsGreedBtn"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,111 +63,120 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton15"
+        android:id="@+id/img_btn_level_9"
         android:layout_width="@dimen/level_bts_size"
         android:layout_height="@dimen/level_bts_size"
         android:layout_marginTop="20dp"
         android:background="@drawable/level_blocked"
+        android:onClick="levelsGreedBtn"
         android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton6"
-        app:layout_constraintStart_toStartOf="@+id/imageButton6"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton6" />
+        app:layout_constraintEnd_toEndOf="@+id/img_btn_level_5"
+        app:layout_constraintStart_toStartOf="@+id/img_btn_level_5"
+        app:layout_constraintTop_toBottomOf="@+id/img_btn_level_5" />
 
     <ImageButton
-        android:id="@+id/imageButton8"
+        android:id="@+id/img_btn_level_3"
         android:layout_width="@dimen/level_bts_size"
         android:layout_height="@dimen/level_bts_size"
         android:layout_marginStart="20dp"
         android:background="@drawable/level_blocked"
+        android:onClick="levelsGreedBtn"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton"
-        app:layout_constraintStart_toEndOf="@+id/imageButton7"
-        app:layout_constraintTop_toTopOf="@+id/imageButton"
+        app:layout_constraintBottom_toBottomOf="@+id/img_btn_level_1"
+        app:layout_constraintStart_toEndOf="@+id/img_btn_level_2"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_level_1"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/imageButton9"
+        android:id="@+id/img_btn_level_4"
         android:layout_width="@dimen/level_bts_size"
         android:layout_height="@dimen/level_bts_size"
         android:layout_marginStart="20dp"
         android:background="@drawable/level_blocked"
+        android:onClick="levelsGreedBtn"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton"
-        app:layout_constraintStart_toEndOf="@+id/imageButton8"
-        app:layout_constraintTop_toTopOf="@+id/imageButton"
+        app:layout_constraintBottom_toBottomOf="@+id/img_btn_level_1"
+        app:layout_constraintStart_toEndOf="@+id/img_btn_level_3"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_level_1"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/imageButton7"
+        android:id="@+id/img_btn_level_2"
         android:layout_width="@dimen/level_bts_size"
         android:layout_height="@dimen/level_bts_size"
         android:layout_marginStart="20dp"
         android:background="@drawable/level_blocked"
+        android:onClick="levelsGreedBtn"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
-        app:layout_constraintTop_toTopOf="@+id/imageButton"
+        app:layout_constraintBottom_toBottomOf="@+id/img_btn_level_1"
+        app:layout_constraintStart_toEndOf="@+id/img_btn_level_1"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_level_1"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/imageButton11"
+        android:id="@+id/img_btn_level_6"
         android:layout_width="@dimen/level_bts_size"
         android:layout_height="@dimen/level_bts_size"
         android:layout_marginStart="20dp"
         android:background="@drawable/level_blocked"
+        android:onClick="levelsGreedBtn"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton6"
-        app:layout_constraintStart_toEndOf="@+id/imageButton6"
-        app:layout_constraintTop_toTopOf="@+id/imageButton6"
+        app:layout_constraintBottom_toBottomOf="@+id/img_btn_level_5"
+        app:layout_constraintStart_toEndOf="@+id/img_btn_level_5"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_level_5"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/imageButton16"
+        android:id="@+id/img_btn_level_10"
         android:layout_width="@dimen/level_bts_size"
         android:layout_height="@dimen/level_bts_size"
         android:layout_marginStart="20dp"
         android:background="@drawable/level_blocked"
+        android:onClick="levelsGreedBtn"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton15"
-        app:layout_constraintStart_toEndOf="@+id/imageButton15"
-        app:layout_constraintTop_toTopOf="@+id/imageButton15"
+        app:layout_constraintBottom_toBottomOf="@+id/img_btn_level_9"
+        app:layout_constraintStart_toEndOf="@+id/img_btn_level_9"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_level_9"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/imageButton17"
+        android:id="@+id/img_btn_level_11"
         android:layout_width="@dimen/level_bts_size"
         android:layout_height="@dimen/level_bts_size"
         android:layout_marginStart="20dp"
         android:background="@drawable/level_blocked"
+        android:onClick="levelsGreedBtn"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton15"
-        app:layout_constraintStart_toEndOf="@+id/imageButton16"
-        app:layout_constraintTop_toTopOf="@+id/imageButton15"
+        app:layout_constraintBottom_toBottomOf="@+id/img_btn_level_9"
+        app:layout_constraintStart_toEndOf="@+id/img_btn_level_10"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_level_9"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/imageButton12"
+        android:id="@+id/img_btn_level_7"
         android:layout_width="@dimen/level_bts_size"
         android:layout_height="@dimen/level_bts_size"
         android:layout_marginStart="20dp"
         android:background="@drawable/level_blocked"
+        android:onClick="levelsGreedBtn"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton6"
-        app:layout_constraintStart_toEndOf="@+id/imageButton11"
-        app:layout_constraintTop_toTopOf="@+id/imageButton6"
+        app:layout_constraintBottom_toBottomOf="@+id/img_btn_level_5"
+        app:layout_constraintStart_toEndOf="@+id/img_btn_level_6"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_level_5"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/img_btn_level_1"
         android:layout_width="@dimen/level_bts_size"
         android:layout_height="@dimen/level_bts_size"
         android:layout_marginBottom="20dp"
         android:background="@drawable/level_blocked"
+        android:onClick="levelsGreedBtn"
         android:rotation="0"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton6"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton6"
-        app:layout_constraintStart_toStartOf="@+id/imageButton6" />
+        app:layout_constraintBottom_toTopOf="@+id/img_btn_level_5"
+        app:layout_constraintEnd_toEndOf="@+id/img_btn_level_5"
+        app:layout_constraintStart_toStartOf="@+id/img_btn_level_5" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -174,16 +187,18 @@
         android:scaleY="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.86"
+        app:layout_constraintHorizontal_bias="0.859"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.503"
         app:srcCompat="@drawable/level_info_box" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/img_btn_levels_right_arrow"
         android:layout_width="45dp"
         android:layout_height="115dp"
         android:background="#00FFFFFF"
+        android:onClick="levelsArrow"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -194,10 +209,11 @@
         tools:srcCompat="@drawable/levels_arrow" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/img_btn_levels_left_arrow"
         android:layout_width="45dp"
         android:layout_height="115dp"
         android:background="#00FFFFFF"
+        android:onClick="levelsArrow"
         android:rotationY="180"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -207,5 +223,165 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/levels_arrow"
         tools:srcCompat="@drawable/levels_arrow" />
+
+    <TextView
+        android:id="@+id/text_level_number_1"
+        android:layout_width="@dimen/level_number_size"
+        android:layout_height="@dimen/level_number_size"
+        android:text="@string/place_holder_levels_number"
+        android:textColor="#FFFFFF"
+        android:textSize="35sp"
+        app:layout_constraintStart_toStartOf="@+id/img_btn_level_1"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_level_1" />
+
+    <TextView
+        android:id="@+id/text_level_number_2"
+        android:layout_width="@dimen/level_number_size"
+        android:layout_height="@dimen/level_number_size"
+        android:text="@string/place_holder_levels_number"
+        android:textColor="#FFFFFF"
+        android:textSize="35sp"
+        app:layout_constraintStart_toStartOf="@+id/img_btn_level_2"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_level_2" />
+
+    <TextView
+        android:id="@+id/text_level_number_3"
+        android:layout_width="@dimen/level_number_size"
+        android:layout_height="@dimen/level_number_size"
+        android:text="@string/place_holder_levels_number"
+        android:textColor="#FFFFFF"
+        android:textSize="35sp"
+        app:layout_constraintStart_toStartOf="@+id/img_btn_level_3"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_level_3" />
+
+    <TextView
+        android:id="@+id/text_level_number_4"
+        android:layout_width="@dimen/level_number_size"
+        android:layout_height="@dimen/level_number_size"
+        android:text="@string/place_holder_levels_number"
+        android:textColor="#FFFFFF"
+        android:textSize="35sp"
+        app:layout_constraintStart_toStartOf="@+id/img_btn_level_4"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_level_4" />
+
+    <TextView
+        android:id="@+id/text_level_number_5"
+        android:layout_width="@dimen/level_number_size"
+        android:layout_height="@dimen/level_number_size"
+        android:text="@string/place_holder_levels_number"
+        android:textColor="#FFFFFF"
+        android:textSize="35sp"
+        app:layout_constraintStart_toStartOf="@+id/img_btn_level_5"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_level_5" />
+
+    <TextView
+        android:id="@+id/text_level_number_6"
+        android:layout_width="@dimen/level_number_size"
+        android:layout_height="@dimen/level_number_size"
+        android:text="@string/place_holder_levels_number"
+        android:textColor="#FFFFFF"
+        android:textSize="35sp"
+        app:layout_constraintStart_toStartOf="@+id/img_btn_level_6"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_level_6" />
+
+    <TextView
+        android:id="@+id/text_level_number_7"
+        android:layout_width="@dimen/level_number_size"
+        android:layout_height="@dimen/level_number_size"
+        android:text="@string/place_holder_levels_number"
+        android:textColor="#FFFFFF"
+        android:textSize="35sp"
+        app:layout_constraintStart_toStartOf="@+id/img_btn_level_7"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_level_7" />
+
+    <TextView
+        android:id="@+id/text_level_number_8"
+        android:layout_width="@dimen/level_number_size"
+        android:layout_height="@dimen/level_number_size"
+        android:text="@string/place_holder_levels_number"
+        android:textColor="#FFFFFF"
+        android:textSize="35sp"
+        app:layout_constraintStart_toStartOf="@+id/img_btn_level_8"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_level_8" />
+
+    <TextView
+        android:id="@+id/text_level_number_9"
+        android:layout_width="@dimen/level_number_size"
+        android:layout_height="@dimen/level_number_size"
+        android:text="@string/place_holder_levels_number"
+        android:textColor="#FFFFFF"
+        android:textSize="35sp"
+        app:layout_constraintStart_toStartOf="@+id/img_btn_level_9"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_level_9" />
+
+    <TextView
+        android:id="@+id/text_level_number_10"
+        android:layout_width="@dimen/level_number_size"
+        android:layout_height="@dimen/level_number_size"
+        android:text="@string/place_holder_levels_number"
+        android:textColor="#FFFFFF"
+        android:textSize="35sp"
+        app:layout_constraintStart_toStartOf="@+id/img_btn_level_10"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_level_10" />
+
+    <TextView
+        android:id="@+id/text_level_number_11"
+        android:layout_width="@dimen/level_number_size"
+        android:layout_height="@dimen/level_number_size"
+        android:text="@string/place_holder_levels_number"
+        android:textColor="#FFFFFF"
+        android:textSize="35sp"
+        app:layout_constraintStart_toStartOf="@+id/img_btn_level_11"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_level_11" />
+
+    <TextView
+        android:id="@+id/text_level_number_12"
+        android:layout_width="@dimen/level_number_size"
+        android:layout_height="@dimen/level_number_size"
+        android:text="@string/place_holder_levels_number"
+        android:textColor="#FFFFFF"
+        android:textSize="35sp"
+        app:layout_constraintStart_toStartOf="@+id/img_btn_level_12"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_level_12" />
+
+    <TextView
+        android:id="@+id/text_level_name"
+        android:layout_width="136dp"
+        android:layout_height="31dp"
+        android:text="@string/place_holder_level_name"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.541"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.036" />
+
+    <TextView
+        android:id="@+id/text_level_hint"
+        android:layout_width="135dp"
+        android:layout_height="83dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/place_holder_level_hint"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="@+id/text_level_name"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/text_level_name"
+        app:layout_constraintTop_toBottomOf="@+id/text_level_name" />
+
+    <ImageView
+        android:id="@+id/img_level_pointer"
+        android:layout_width="@dimen/level_bts_size"
+        android:layout_height="@dimen/level_bts_size"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/img_btn_level_1"
+        app:layout_constraintEnd_toEndOf="@+id/img_btn_level_1"
+        app:layout_constraintHorizontal_bias="0.139"
+        app:layout_constraintStart_toStartOf="@+id/img_btn_level_1"
+        app:layout_constraintTop_toTopOf="@+id/img_btn_level_1"
+        app:layout_constraintVertical_bias="0.199"
+        app:srcCompat="@drawable/level_selected_overlap" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

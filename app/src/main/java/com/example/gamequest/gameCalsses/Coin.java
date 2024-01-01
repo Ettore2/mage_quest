@@ -1,8 +1,10 @@
 package com.example.gamequest.gameCalsses;
 
 import static com.example.gamequest.gameCalsses.GameInstance.ID_BLOCK_COIN;
+import static com.example.gamequest.gameCalsses.GameInstance.TAG_BOX;
 import static com.example.gamequest.gameCalsses.GameInstance.TAG_COIN;
 import static com.example.gamequest.gameCalsses.GameInstance.TAG_PLAYER;
+import static com.example.gamequest.gameCalsses.GameInstance.TAG_SPIKE;
 import static com.example.gamequest.gameCalsses.GameInstance.debug;
 
 import android.widget.ImageView;
@@ -51,6 +53,8 @@ public class Coin extends Box{
     public BoxCollider getPickUpCollider(){
         if(colliders != null && colliders.size() >=2){
             return (BoxCollider) colliders.get(1);
+        }else{
+
         }
         return null;
 
@@ -61,13 +65,16 @@ public class Coin extends Box{
         super.collision(obj, deltaT);
         GameObject otherObj = (GameObject) obj;
 
-        if(otherObj.getTag().equals(TAG_PLAYER)  && getPickUpCollider().isColliding2D(otherObj.getFirstColl()) && otherObj.canCollectCoin){
+        if(otherObj.getTag().equals(TAG_PLAYER) && getPickUpCollider().isColliding2D(otherObj.getFirstColl()) && otherObj.canCollectCoin){
             collect();
+            //debug("collect by player");
         }
-        if(!otherObj.getTag().equals(TAG_PLAYER) && otherObj.isObstacle && sameCell(otherObj)){
+        if(!otherObj.getTag().equals(TAG_PLAYER) && !otherObj.destroyed && !otherObj.getTag().equals(TAG_SPIKE) && sameCell(otherObj)){
+            //debug("collision detected with:"+otherObj.getTag());
             if(otherObj.canCollectCoin){
                 collect();
             }else{
+                //debug("collision");
                 destroy();
             }
 
@@ -81,6 +88,7 @@ public class Coin extends Box{
             animIdle.update(deltaT);
             spriteView.setImageResource((Integer)(animIdle.getCurrFrame().info));
         }
+        //debug("coing"+getPosition().toString());
 
     }
     @Override

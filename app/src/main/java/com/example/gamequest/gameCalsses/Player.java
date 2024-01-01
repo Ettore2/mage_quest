@@ -184,6 +184,9 @@ public class Player extends GameObject{
 
     }
     protected void die(){
+        /*
+
+         */
         if(alive && game.currLevelState == LEVEL_PLAYING){
             //debug("player die");
             alive = false;
