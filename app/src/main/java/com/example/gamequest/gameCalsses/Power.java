@@ -129,12 +129,16 @@ public abstract class Power {
         public Grapple(int amount, GameInstance game){
             super(ID_POWER_GRAPPLE, amount, game, R.drawable.grapple);
             availableDirs.add(DIR_UP);
+            availableDirs.add(GameObject.DIR_DOWN);
             availableDirs.add(GameObject.DIR_LEFT);
             availableDirs.add(GameObject.DIR_RIGHT);
         }
         @Override
         protected void active(int dir) {
-
+            decreaseAmount();
+            PowerBullet bullet = new PowerBullet.BulletGrapple(game.player.getPosition(), game,null,dir);
+            game.player.bullet = bullet;
+            game.engineManager.addObject(bullet);
         }
     }
     public static class Phase extends Power{
@@ -233,9 +237,10 @@ public abstract class Power {
         game.context.handler.post(new Runnable() {
             @Override
             public void run() {
-                debug("power active start");
+                //debug("power active start");
                 active(dir);
-                debug("power active end");
+                //debug("power active end");
+                game.context.graphicUpdate();
             }
         });
 

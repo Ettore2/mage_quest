@@ -21,11 +21,13 @@ public class Player extends GameObject{
     public static final float NORMAL_PUSHING_SPEED = NORMAL_GROUND_SPEED*80/100f;// multiply with CELL_SIZE, scaled with frameRate
     public static final float NORMAL_JUMP_FORCE = 11.8f;// multiply with CELL_SIZE, scaled with frameRate
     public static final float NORMAL_JUMP_DECELERATION = GRAVITY_FORCE*60/100;// multiply with CELL_SIZE, scaled with frameRate
+    public static final float NORMAL_GRAPPLE_SPEED = 10f;
     public static final int FRAMES_FOR_PUSH_START = 8;
     protected Vector<Power> powers;
     protected ImageView spriteViewDown;
 
     public boolean alive;
+    public PowerBullet.BulletGrapple grappleBullet;
     protected int thisFrameMoveIntent;
     protected boolean inputMoveUp, inputMoveDown, inputMoveLeft, inputMoveRight;
     protected boolean inputJump;
@@ -50,6 +52,8 @@ public class Player extends GameObject{
         useGravity = true;
         canCollectCoin = true;
         pushEndPos = null;
+        grappleBullet = null;
+        bullet = null;
 
         spriteViewDown = view2;
         if(spriteViewDown == null){
@@ -159,7 +163,7 @@ public class Player extends GameObject{
 
     }
     public void inputJump(){
-        if(grounded && !isPushing()){
+        if(grounded && !isPushing() && bullet == null){
             inputJump = true;
         }
 
@@ -203,6 +207,8 @@ public class Player extends GameObject{
     @Override
     public void reset(){
         alive = true;
+        bullet = null;
+        grappleBullet = null;
         removePowers();
         setDefaultViewValues(spriteViewDown);
 
@@ -212,52 +218,56 @@ public class Player extends GameObject{
 
     @Override
     protected void horizontalMovement(float deltaT){
-        float movementAmount;
-        if(bullet == null){
-            if(grounded){
-                if(!isPushing()){
-                    movementAmount = NORMAL_GROUND_SPEED;
+        if(grappleBullet == null){
+            float movementAmount;
+            if(bullet == null){
+                if(grounded){
+                    if(!isPushing()){
+                        movementAmount = NORMAL_GROUND_SPEED;
+                    }else {
+                        movementAmount = NORMAL_PUSHING_SPEED;
+                    }
+
                 }else {
-                    movementAmount = NORMAL_PUSHING_SPEED;
+                    movementAmount = NORMAL_AIR_SPEED;
                 }
+                movementAmount = game.CELL_SIZE*movementAmount*deltaT/1000;
 
-            }else {
-                movementAmount = NORMAL_AIR_SPEED;
-            }
-            movementAmount = game.CELL_SIZE*movementAmount*deltaT/1000;
-
-            if(!isPushing()){
-                if(thisFMovementDir == DIR_RIGHT){
-                    translate(new Vector3D(movementAmount ,0,0));
-                }
-                if(thisFMovementDir == DIR_LEFT){
-                    translate(new Vector3D(-movementAmount ,0,0));
-                }
-            }else {
-                //debug("push dir:" +thisFramePushDir+"   "+(thisFBlockRight==null)+" "+(thisFBlockLeft==null));
-                if(thisFramePushDir == DIR_RIGHT){
-                    translate(new Vector3D(movementAmount ,0,0));
-                    thisFObstacleRight.push(this, movementAmount);
-                }
-                if(thisFramePushDir == DIR_LEFT){
-                    translate(new Vector3D(-movementAmount ,0,0));
-                    thisFObstacleLeft.push(this, -movementAmount);
+                if(!isPushing()){
+                    if(thisFMovementDir == DIR_RIGHT){
+                        translate(new Vector3D(movementAmount ,0,0));
+                    }
+                    if(thisFMovementDir == DIR_LEFT){
+                        translate(new Vector3D(-movementAmount ,0,0));
+                    }
+                }else {
+                    //debug("push dir:" +thisFramePushDir+"   "+(thisFBlockRight==null)+" "+(thisFBlockLeft==null));
+                    if(thisFramePushDir == DIR_RIGHT){
+                        translate(new Vector3D(movementAmount ,0,0));
+                        thisFObstacleRight.push(this, movementAmount);
+                    }
+                    if(thisFramePushDir == DIR_LEFT){
+                        translate(new Vector3D(-movementAmount ,0,0));
+                        thisFObstacleLeft.push(this, -movementAmount);
+                    }
                 }
             }
         }
-
 
     }
     @Override
     protected void verticalMovement(float deltaT){
-        //Y = 0 -> up (fall = augment the y)
-        //jump
-        if(grounded && inputJump && !isPushing()){
-            grounded = false;
-            currScaledYForce = -NORMAL_JUMP_FORCE*game.CELL_SIZE*deltaT/1000;
-        }
+        if(grappleBullet == null){
+            //Y = 0 -> up (fall = augment the y)
+            //jump
+            if(grounded && inputJump && !isPushing()){
+                grounded = false;
+                currScaledYForce = -NORMAL_JUMP_FORCE*game.CELL_SIZE*deltaT/1000;
+            }
 
-        super.verticalMovement(deltaT);
+            super.verticalMovement(deltaT);
+
+        }
 
     }
     @Override
@@ -299,6 +309,22 @@ public class Player extends GameObject{
     public void logicUpdate(float deltaT) {
         super.logicUpdate(deltaT);
 
+        //grapple movement
+        if(grappleBullet != null){
+            if(grappleBullet.dir == DIR_UP){
+                translate(new Vector3D(0,-game.CELL_SIZE*NORMAL_GRAPPLE_SPEED*deltaT/1000));
+            }
+            if(grappleBullet.dir == DIR_DOWN){
+                translate(new Vector3D(0,game.CELL_SIZE*NORMAL_GRAPPLE_SPEED*deltaT/1000));
+            }
+            if(grappleBullet.dir == DIR_LEFT){
+                translate(new Vector3D(-game.CELL_SIZE*NORMAL_GRAPPLE_SPEED*deltaT/1000,0));
+            }
+            if(grappleBullet.dir == DIR_RIGHT){
+                translate(new Vector3D(game.CELL_SIZE*NORMAL_GRAPPLE_SPEED*deltaT/1000,0));
+            }
+        }
+
         //reset status
         thisFrameMoveIntent = DIR_STOP;
         if(inputPower == null) {
@@ -329,6 +355,7 @@ public class Player extends GameObject{
             //TODO: use the power (check if the power allow that dir)
         }
 
+
         //powersActivation
     }
 
@@ -340,6 +367,12 @@ public class Player extends GameObject{
             die();
 
         }
+
+        if(obj.equals(grappleBullet)){
+            grappleBullet.destroy();
+            grappleBullet = null;
+            bullet = null;
+        }// destroy the grapple once you reach it
 
     }
 

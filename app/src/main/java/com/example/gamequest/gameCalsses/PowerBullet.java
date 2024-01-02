@@ -30,6 +30,76 @@ public class PowerBullet extends GameObject{
         }
     }
 
+    public static class BulletGrapple extends PowerBullet{
+        GameObject impactObj;
+        public BulletGrapple(Point3D pos, GameInstance game, ImageView view, int dir) {
+            super(pos, ID_BLOCK_POWER_BULLET, game, view, R.drawable.grapple,dir);
+            ((BoxCollider)(colliders.get(0))).size = new Vector3D(game.CELL_SIZE/2f, game.CELL_SIZE/2f,0);
+            impactObj = null;
+
+            if(dir == DIR_UP){
+                spriteView.setRotation(-90);
+            }
+            if(dir == DIR_DOWN){
+                spriteView.setRotation(90);
+            }
+            if(dir == DIR_LEFT){
+                spriteView.setRotation(180);
+            }
+        }
+
+        @Override
+        protected void impact(GameObject impactObj) {
+            //debug("execute impact with: "+impactObj.getTag()+" of pos: "+impactObj.getPosition().toString()+"player at pos: "+game.player.getPosition().toString());
+            this.impactObj = impactObj;
+
+            if(impactObj.canBeGrappled){
+                if(impactObj.movable){
+                    if(dir == DIR_UP){
+                        impactObj.translate(new Vector3D(0, game.CELL_SIZE,0));
+                        if(impactObj.getGreedY() == game.player.getGreedY()){
+                            game.player.setAdjacentTo(dir, impactObj);
+                        }
+                    }
+                    if(dir == DIR_DOWN){
+                        impactObj.translate(new Vector3D(0, -game.CELL_SIZE,0));
+                        if(impactObj.getGreedY() == game.player.getGreedY()){
+                            game.player.setAdjacentTo(dir, impactObj);
+                        }
+                    }
+                    if(dir == DIR_LEFT){
+                        impactObj.translate(new Vector3D(game.CELL_SIZE,0,0));
+                        if(impactObj.getGreedX() == game.player.getGreedX()){
+                            game.player.setAdjacentTo(dir, impactObj);
+                        }
+                    }
+                    if(dir == DIR_RIGHT){
+                        impactObj.translate(new Vector3D(-game.CELL_SIZE,0,0));
+                        if(impactObj.getGreedX() == game.player.getGreedX()){
+                            game.player.setAdjacentTo(dir, impactObj);
+                        }
+                    }
+
+                    destroy();
+                }else {
+                    game.player.grappleBullet = this;
+                }
+            }else {
+                destroy();
+            }
+
+
+        }
+
+        @Override
+        protected void movement(float deltaT) {
+            if (impactObj == null) {
+                super.movement(deltaT);
+            }
+
+        }
+    }
+
     public final int dir;
     public PowerBullet(Point3D pos, char id, GameInstance game, ImageView view, int imgRes, int dir) {
         super(pos, id, TAG_POWER_BULLET, game, view, imgRes, imgRes);
@@ -71,6 +141,9 @@ public class PowerBullet extends GameObject{
     public void logicUpdate(float deltaT) {
         super.logicUpdate(deltaT);
 
+        movement(deltaT);
+    }
+    protected void movement(float deltaT){
         if(dir == DIR_UP){
             translate(new Vector3D(0,-PROJECTILE_SPEED*game.CELL_SIZE/deltaT,0));
         }

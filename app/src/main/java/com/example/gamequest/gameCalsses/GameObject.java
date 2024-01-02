@@ -25,7 +25,7 @@ public abstract class GameObject extends EngineObjectModel {
     public GameInstance game;
     public Vector<Integer> lineConnections;
     public boolean grounded;
-    public boolean usePhysic, useGravity, movable, canCollectCoin, isObstacle, ignoreHorizontalClipping;
+    public boolean usePhysic, useGravity, movable, canCollectCoin, isObstacle, ignoreHorizontalClipping, canBeGrappled;
     protected GameObject pushedObj;
     protected int thisFMovementDir;
     protected GameObject thisFObstacleUp, thisFObstacleDown, thisFObstacleRight, thisFObstacleLeft;
@@ -47,6 +47,7 @@ public abstract class GameObject extends EngineObjectModel {
         isObstacle = false;
         canCollectCoin = false;
         movable = false;
+        canBeGrappled = true;
         ignoreHorizontalClipping = false;
         pushedObj = null;
         thisFNonObstacleColls = new Vector<>();

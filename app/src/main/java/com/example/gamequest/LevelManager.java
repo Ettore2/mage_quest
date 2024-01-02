@@ -188,7 +188,28 @@ public class LevelManager {
                     "X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,\n" +
                     "X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1_P1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1_U1,E1_U1,E1_U1,X1,E1,E1,E1_C1,\n" +
                     "X1,X1,X1,X1,E1_U1,E1_U1,E1_U1,E1_U1,X1,X1,X1,X1,X1,X1,E1,E1,X1,X1,X1,E1_U1_R1,E1_L1,X1,X1,X1,X1,X1,X1,\n" +
-                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1_C1,X1,X1,X1,X1,X1,X1"
+                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1_C1,X1,X1,X1,X1,X1,X1",
+            "level 17\n" +
+                    "power grapple: it allow you to grapple in any direction but not all walls cen be grappled\n" +
+                    "5 2\n" +
+                    "8 2 1\n" +
+                    "X1,X1,X1,X1,X1,X1,G1,G1,G1,G1,X1,X1,\n" +
+                    "E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,\n" +
+                    "X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,\n" +
+                    "X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,\n" +
+                    "X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1_C1,\n" +
+                    "X1,X1,X1,X1,E1,E1,E1,E1,E1_L1,X1,X1,X1,\n" +
+                    "X1,X1,X1,X1,E1,E1,E1,E1,E1_L1,X1,X1,X1,\n" +
+                    "X1,X1,X1,X1,E1,E1_P1,E1_M1,E1,E1_L1,X1,X1,X1",
+            "level 18\n" +
+                    "if you grapple a movable block you will pull it towards you\n" +
+                    "1 1 5 2\n" +
+                    "3 3 1\n" +
+                    "E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,E1_D1,E1_D1,E1_D1,E1_D1,E1_D1,E1_D1,X1,X1,X1,\n" +
+                    "X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1_P1,E1,E1,E1,E1,E1,E1,E1,E1,E1,G1,\n" +
+                    "X1,X1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,X1,X1,X1,E1_C1,X1,\n" +
+                    "X1,X1,X1,X1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,X1,E1,X1,X1,X1,X1,X1,\n" +
+                    "X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,X1"
     };
 
     public static class Level{
