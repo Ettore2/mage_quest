@@ -22,7 +22,7 @@ public abstract class Power {
 
         @Override
         protected void active(int dir) {
-
+            decreaseAmount();
         }
     }
     public static class YellowCube extends Power{
@@ -36,6 +36,7 @@ public abstract class Power {
         }
         @Override
         protected void active(int dir) {
+            decreaseAmount();
             if(instance != null){
                 game.destroyDynamicForegroundObj(instance);
                 instance = null;
@@ -75,6 +76,7 @@ public abstract class Power {
         }
         @Override
         protected void active(int dir) {
+            decreaseAmount();
             PowerBullet bullet = new PowerBullet.BulletBCube(game.player.getPosition(), game,null,dir);
             game.player.bullet = bullet;
             game.engineManager.addObject(bullet);
@@ -91,6 +93,7 @@ public abstract class Power {
         }
         @Override
         protected void active(int dir) {
+            decreaseAmount();
             int x = game.player.getGreedX(), y = game.player.getGreedY();
             boolean found = false;
             while (! found && x >= 0 && x < game.background.length && y >= 0 && y < game.background.length){
@@ -150,7 +153,7 @@ public abstract class Power {
         }
         @Override
         protected void active(int dir) {
-
+            decreaseAmount();
         }
     }
 
@@ -227,8 +230,6 @@ public abstract class Power {
     }
     public void use(int dir){
         //debug("power use start");
-
-        decreaseAmount();
         game.context.handler.post(new Runnable() {
             @Override
             public void run() {
