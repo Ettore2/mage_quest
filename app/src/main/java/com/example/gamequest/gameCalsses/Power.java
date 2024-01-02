@@ -36,7 +36,6 @@ public abstract class Power {
         }
         @Override
         protected void active(int dir) {
-            decreaseAmount();
             if(instance != null){
                 game.destroyDynamicForegroundObj(instance);
                 instance = null;
