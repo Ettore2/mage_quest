@@ -138,13 +138,14 @@ public class LevelManager {
             "level 12\n" +
                     "level 12\n" +
                     "1 2 2 2\n" +
-                    "10 4 5\n" +
-                    "X1,X1,E1,E1,E1_D1,E1_D1,E1_D1,E1_D1,E1_D1,E1_D1,E1_D1,E1,E1,\n" +
-                    "X1,X1,E1_C1,E1,E1,E1,E1,E1_P1,E1,E1,E1,E1,E1_C1,\n" +
-                    "X1,X1,X1,E1,E1,X1,X1,X1,X1,X1,X1,E1_L1_R1,X1,\n" +
-                    "E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1_D1_U1,E1,E1_C1_D1_U1,\n" +
-                    "E1_C1,E1,E1,E1,X1,X1,X1,X1,X1,X1,X1,E1_R1_L1,X1,\n" +
-                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1_C1,X1",
+                    "4 2 4\n" +
+                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,\n" +
+                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1_C1,\n" +
+                    "E1_C1,E1,X1,X1,X1,E1,E1,E1_D1,E1_D1,E1_D1,E1_D1,E1_D1,E1,E1,E1,X1,X1,\n" +
+                    "X1,E1,E1,X1,X1,E1_C1,E1,E1,E1,E1_P1,E1,E1,E1,E1,E1,X1,X1,\n" +
+                    "X1,E1,E1,E1,X1,X1,E1,E1,E1,X1,X1,X1,X1,E1_R1_L1,X1,X1,X1,\n" +
+                    "X1,E1,E1,E1,E1,X1,E1,E1,E1,E1,E1,E1,E1_D1_U1,E1,E1_D1_U1_C1,X1,X1,\n" +
+                    "X1,X1,X1,E1,E1,E1,E1,E1,X1,X1,X1,X1,X1,E1_R1_L1_C1,X1,X1,X1",
             "level 13\n" +
                     "power teleport: allow to teleport to the first empty cell in the choosen direction\n" +
                     "3 2\n" +
@@ -167,7 +168,7 @@ public class LevelManager {
                     "2 5 3 6\n" +
                     "2 4 6\n" +
                     "X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,\n" +
-                    "X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1_C1,X1,X1,\n" +
+                    "X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1_C1,X1,X1,\n" +
                     "X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,X1,\n" +
                     "X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,E1,E1_C1,X1,X1,\n" +
                     "X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1_P1,E1,E1,X1,X1,X1,X1,X1,X1,X1,\n" +
@@ -226,7 +227,21 @@ public class LevelManager {
                     "E1_C1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,\n" +
                     "X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,\n" +
                     "X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,\n" +
-                    "X1,X1,X1,E1_U1,E1_U1,E1_U1,E1_U1,E1_U1,E1_U1,E1_U1,E1_U1,E1_U1,X1,X1,X1,X1"
+                    "X1,X1,X1,E1_U1,E1_U1,E1_U1,E1_U1,E1_U1,E1_U1,E1_U1,E1_U1,E1_U1,X1,X1,X1,X1",
+            "level 20\n" +
+                    "level 20\n" +
+                    "1 1 2 1 3 1 5 1\n" +
+                    "9 3 3\n" +
+                    "E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
+                    "E1,E1,E1,E1,E1,E1_M1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1_C1,X1,\n" +
+                    "E1_C1,X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,\n" +
+                    "X1,E1,E1,E1,E1,E1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,\n" +
+                    "X1,E1,E1,E1,E1_C1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,X1,\n" +
+                    "X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,E1,E1,E1,\n" +
+                    "X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,E1_C1,E1,E1,\n" +
+                    "X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,E1,E1,X1,X1,E1,\n" +
+                    "X1,X1,X1,X1,E1,E1,E1_P1,E1,E1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,\n" +
+                    "X1,X1,X1,X1,E1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1"
     };
 
     public static class Level{

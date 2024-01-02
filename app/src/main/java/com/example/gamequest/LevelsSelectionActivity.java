@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -56,21 +58,32 @@ public class LevelsSelectionActivity extends AppCompatActivity {
         btnLeftArrow = findViewById(R.id.img_btn_levels_left_arrow);
         btnRightArrow = findViewById(R.id.img_btn_levels_right_arrow);
 
-        selectedLevel = levelsGreed[0][0];
-
-        levelPointer = findViewById(R.id.img_level_pointer);
-        levelPointer.setZ(selectedLevel.btn.getZ()+1);
 
         textLevelName = findViewById(R.id.text_level_name);
         textLevelHint = findViewById(R.id.text_level_hint);
         textPagesInfo = findViewById(R.id.text_pages_info);
 
-        currentPage = getIntent().getIntExtra(LevelActivity.INTENT_EXTRA_LEVEL_ID,0)/(levelsGreed.length*levelsGreed[0].length);
+        int idTmp = getIntent().getIntExtra(LevelActivity.INTENT_EXTRA_LEVEL_ID,1)-1;
+        currentPage = (idTmp)/(levelsGreed.length*levelsGreed[0].length);
         maxPages = levelManager.getLevelsAmount(true)/(levelsGreed.length*levelsGreed[0].length) + ((levelManager.getLevelsAmount(true)%(levelsGreed.length*levelsGreed[0].length)!=0) ? 1 : 0) - 1;
+        selectedLevel = levelsGreed[(idTmp%(levelsGreed.length*levelsGreed[0].length))%levelsGreed.length][(idTmp%(levelsGreed.length*levelsGreed[0].length))/levelsGreed.length];
 
+
+        levelPointer = findViewById(R.id.img_level_pointer);
+        levelPointer.setZ(selectedLevel.btn.getZ()+1);
 
         //debug("before graphic update");
         graphicUpdate();
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (selectedLevel.btn.getX() == 0){}
+                graphicUpdate();
+            }
+        }).start();
+        //ensure a graphicUpdate() after gaining the position of the things ot the screen
     }
 
 
@@ -119,6 +132,7 @@ public class LevelsSelectionActivity extends AppCompatActivity {
 
         levelPointer.setX(selectedLevel.btn.getX());
         levelPointer.setY(selectedLevel.btn.getY());
+        debug(selectedLevel.btn.getX()+"   "+selectedLevel.btn.getY());
 
         if(selectedLevel.level != null){
             textLevelName.setText(selectedLevel.level.name);
@@ -141,6 +155,7 @@ public class LevelsSelectionActivity extends AppCompatActivity {
 
         textPagesInfo.setText((currentPage+1)+"/"+(maxPages+1));
     }
+
 }
 
 

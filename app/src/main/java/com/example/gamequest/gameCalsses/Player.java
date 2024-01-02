@@ -431,12 +431,12 @@ public class Player extends GameObject{
                 float x = getPosition().x;
                 if((thisFramePushDir == DIR_RIGHT && (x >= pushEndPos.x || !thisFObstacleRight.canBePushed(this))) || (thisFramePushDir == DIR_LEFT && (x <= pushEndPos.x || !thisFObstacleLeft.canBePushed(this)))){//finish to push
                     if(thisFramePushDir == DIR_RIGHT){
-                        this.setAdjacentTo(DIR_RIGHT, thisFObstacleRight);
                         thisFObstacleRight.endPush(this);
+                        this.setAdjacentTo(DIR_RIGHT, thisFObstacleRight);
                     }
                     if(thisFramePushDir == DIR_LEFT){
-                        this.setAdjacentTo(DIR_LEFT, thisFObstacleLeft);
                         thisFObstacleLeft.endPush(this);
+                        this.setAdjacentTo(DIR_LEFT, thisFObstacleLeft);
                     }
                     thisFramePushDir = DIR_STOP;
                     pushingFrames = 0;
@@ -446,12 +446,12 @@ public class Player extends GameObject{
         }else {
             if(isPushing()){
                 if(thisFramePushDir == DIR_RIGHT){
-                    this.setAdjacentTo(DIR_RIGHT, thisFObstacleRight);
                     thisFObstacleRight.endPush(this);
+                    this.setAdjacentTo(DIR_RIGHT, thisFObstacleRight);
                 }
                 if(thisFramePushDir == DIR_LEFT){
-                    this.setAdjacentTo(DIR_LEFT, thisFObstacleLeft);
                     thisFObstacleLeft.endPush(this);
+                    this.setAdjacentTo(DIR_LEFT, thisFObstacleLeft);
                 }
             }
             thisFramePushDir = DIR_STOP;
@@ -459,6 +459,15 @@ public class Player extends GameObject{
         }
         //debug("end postCollisionUpdate player");
     }
+
+    @Override
+    protected void collisionResolve(float deltaT) {
+        if(thisFObstacleUp != null && thisFObstacleUp.useGravity){
+            die();
+        }
+        super.collisionResolve(deltaT);
+    }
+
     @Override
     public void graphicUpdate(float deltaT) {
         //debug("player g update");
