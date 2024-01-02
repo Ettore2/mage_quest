@@ -24,15 +24,14 @@ public class LevelManager {
      */
     public static final String[] levelsDescr = {
                 "level 1\n" +
-                        "level 1\n" +
+                        "grab the needed coins to complete the level\n" +
                         "0 0\n" +
-                        "5 7 3\n" +
+                        "10 3 3\n" +
                         "X1,X1,E1,E1,E1,E1,E1,E1,E1,X1,X1,\n" +
                         "E1,E1,E1,E1,E1,E1_C1,E1,E1,E1,E1,E1,\n" +
                         "E1_P1,E1,E1_C1,E1,X1,X1,X1,E1,E1_C1,E1,E1",
-
                 "level 2\n" +
-                        "level 2\n" +
+                        "not always all the coins in the level are required\n" +
                         "0 0\n" +
                         "5 5 2\n" +
                         "X1,X1,X1,X1,X1,X1,E1,E1_D1,E1_D1,E1_D1,E1_D1,E1,X1,X1,\n" +
@@ -42,7 +41,7 @@ public class LevelManager {
                         "X1,X1,X1,X1,E1,X1,X1,X1,E1_U1,E1_U1,X1,X1,X1,X1,\n" +
                         "X1,X1,X1,X1,E1_C1,X1,X1,X1,X1,X1,X1,X1,X1,X1",
             "level 3\n" +
-                    "level 3\n" +
+                    "you can bush boxes; coins that get smashed between normal boxes will be lost\n" +
                     "0 0\n" +
                     "3 3 3\n" +
                     "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,X1,X1,X1,\n" +
@@ -54,7 +53,7 @@ public class LevelManager {
                     "E1_R1,E1,E1_P1,E1,E1,E1_M1,E1,E1_C1,E1_C1,E1_C1,X1,E1,E1,E1,E1_L1,X1,X1,X1,\n" +
                     "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1_U1,E1_U1,E1_U1,E1_U1_L1,X1,X1,X1",
             "level 4\n" +
-                    "level 4\n" +
+                    "as soon as you grab the needed coin you will become invulnerable\n" +
                     "0 0\n" +
                     "1 5 2\n" +
                     "X1,X1,E1_C1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,\n" +
@@ -66,7 +65,7 @@ public class LevelManager {
                     "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,\n" +
                     "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1_U1",
             "level 5\n" +
-                    "level 5\n" +
+                    "power black cube: allow create a magic box adjacent to a wall (magic boxes smashing coins will collect them)\n" +
                     "2 1\n" +
                     "3 4 1\n" +
                     "E1_R1,E1,E1,E1,E1,E1,E1,E1,E1,E1_L1,\n" +
@@ -106,7 +105,7 @@ public class LevelManager {
                     "X1,X1,X1,E1,E1,E1,E1,E1,X1,E1,E1_C1,E1,E1,E1,X1,X1,\n" +
                     "X1,X1,E1,E1,E1,E1,X1,X1,X1,X1,X1,E1,E1,E1,E1_C1,X1",
             "level 9\n" +
-                    "level 9\n" +
+                    "power black cube: allow create a magic box without gravity on an adjacent cell (only 1 yellow cube can exist at the time) (magic boxes smashing coins will collect them)\n" +
                     "1 -1\n" +
                     "6 5 1\n" +
                     "X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,\n" +
@@ -145,7 +144,51 @@ public class LevelManager {
                     "X1,X1,X1,E1,E1,X1,X1,X1,X1,X1,X1,E1_L1_R1,X1,\n" +
                     "E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1_D1_U1,E1,E1_C1_D1_U1,\n" +
                     "E1_C1,E1,E1,E1,X1,X1,X1,X1,X1,X1,X1,E1_R1_L1,X1,\n" +
-                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1_C1,X1"
+                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1_C1,X1",
+            "level 13\n" +
+                    "power teleport: allow to teleport to the first empty cell in the choosen direction\n" +
+                    "3 2\n" +
+                    "11 5 1\n" +
+                    "E1,E1,E1,X1,E1,X1,E1,E1,E1,\n" +
+                    "E1,E1,E1,X1,E1,X1,E1,E1,E1,\n" +
+                    "E1_P1,E1,E1,X1,E1,X1,E1,E1,E1_C1",
+            "level 14\n" +
+                    "level 14\n" +
+                    "1 -1 2 3 3 1\n" +
+                    "9 5 1\n" +
+                    "E1,E1,E1,E1,E1,E1,E1,E1_D1_U1,E1,X1,X1,X1,X1,X1,X1,\n" +
+                    "E1,E1,E1,E1,E1,X1,X1,X1,E1,X1,X1,X1,X1,X1,X1,\n" +
+                    "E1,E1,E1_M1,E1,E1,X1,X1,X1,E1,X1,X1,X1,X1,X1,X1,\n" +
+                    "E1,E1,E1_M1,E1,E1,X1,X1,X1,E1,X1,X1,E1_D1,E1_D1,E1_D1,E1_D1_L1,\n" +
+                    "E1_P1,E1,E1_M1,E1,E1,X1,X1,X1,E1,X1,X1,E1,E1,E1,E1_C1_U1_L1,\n" +
+                    "X1,X1,X1,X1,E1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1",
+            "level 15\n" +
+                    "level 15\n" +
+                    "2 5 3 6\n" +
+                    "2 4 6\n" +
+                    "X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,\n" +
+                    "X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1_C1,X1,X1,\n" +
+                    "X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,X1,\n" +
+                    "X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,E1,E1_C1,X1,X1,\n" +
+                    "X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1_P1,E1,E1,X1,X1,X1,X1,X1,X1,X1,\n" +
+                    "E1,E1,E1,X1,X1,X1,X1,E1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1_C1,\n" +
+                    "X1,E1,E1,E1_C1,X1,X1,X1,E1_C1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1_C1,X1,X1",
+            "level 16\n" +
+                    "level 16\n" +
+                    "1 7 2 7 3 5\n" +
+                    "1 1 4\n" +
+                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1_C1,\n" +
+                    "X1,X1,E1,X1,X1,X1,E1,E1,E1,E1,X1,X1,X1,X1,E1,E1,E1,E1,X1,X1,X1,E1,E1,X1,X1,X1,X1,\n" +
+                    "E1,E1,E1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,\n" +
+                    "E1_C1,E1,E1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,X1,\n" +
+                    "X1,X1,E1,E1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,\n" +
+                    "E1,E1,E1,E1,E1,X1,E1,E1,E1,E1,E1,E1,E1,E1_M1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
+                    "E1,E1,E1,E1,E1,X1,E1,E1,E1,E1,E1,E1,X1,X1,E1,E1,E1,E1_M1,E1_M1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
+                    "X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,E1,E1,E1,E1,X1,X1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
+                    "X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,\n" +
+                    "X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1_P1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1_U1,E1_U1,E1_U1,X1,E1,E1,E1_C1,\n" +
+                    "X1,X1,X1,X1,E1_U1,E1_U1,E1_U1,E1_U1,X1,X1,X1,X1,X1,X1,E1,E1,X1,X1,X1,E1_U1_R1,E1_L1,X1,X1,X1,X1,X1,X1,\n" +
+                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1_C1,X1,X1,X1,X1,X1,X1"
     };
 
     public static class Level{

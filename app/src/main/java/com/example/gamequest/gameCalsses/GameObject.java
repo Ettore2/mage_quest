@@ -116,6 +116,14 @@ public abstract class GameObject extends EngineObjectModel {
         setPosition(new Point3D(getGreedX() * game.CELL_SIZE, getGreedY() * game.CELL_SIZE, getPosition().z));
 
     }
+    public void centerVertically(){
+        setPosition(new Point3D(this.getPosition().x, getGreedY() * game.CELL_SIZE, getPosition().z));
+
+    }
+    public void centerHorizontally(){
+        setPosition(new Point3D(getGreedX() * game.CELL_SIZE, this.getPosition().y, getPosition().z));
+
+    }
     public void setPositionCell(int x, int y){
         setPosition(new Point3D(x * game.CELL_SIZE, y * game.CELL_SIZE, getPosition().z));
 
@@ -357,23 +365,18 @@ public abstract class GameObject extends EngineObjectModel {
 
     }
     protected void collisionResolve(float deltaT){
-        if(thisFObstacleDown != null && thisFObstacleUp == null){
+        if(thisFObstacleDown != null){
             grounded = true;
             currScaledYForce = 0;
             setAdjacentTo(DIR_DOWN, thisFObstacleDown,game.CELL_SIZE* PUDDING);
-            //if(id == ID_BLOCK_BOX)debug("grounded");
-            if(getTag().equals(TAG_PLAYER)){
-                //debug("adjacent down");
-            }
+            //centerVertically();
         }
-        if(thisFObstacleUp != null && thisFObstacleDown == null){
+        if(thisFObstacleUp != null){
             if(currScaledYForce < 0){
                 currScaledYForce = 0;
+                setAdjacentTo(DIR_UP, thisFObstacleUp,-game.CELL_SIZE* PUDDING);
+                //centerVertically();
             }
-            if(getTag().equals(TAG_PLAYER)){
-                //debug("adjacent up");
-            }
-            setAdjacentTo(DIR_UP, thisFObstacleUp,-game.CELL_SIZE* PUDDING);
         }
         if(thisFObstacleRight != null && thisFMovementDir != DIR_LEFT && !ignoreHorizontalClipping){
             thisFMovementDir = DIR_STOP;

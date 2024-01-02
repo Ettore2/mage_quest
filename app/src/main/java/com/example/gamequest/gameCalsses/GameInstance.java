@@ -351,6 +351,21 @@ public class GameInstance extends Thread{
         return !background[x][y].isObstacle || background[x][y].phasing;
 
     }
+    public boolean isForegroundFree(int x, int y){
+        Vector<GameObject> v = getCellForeground(x, y);
+        for(int i = 0; i < v.size(); i++){
+            if(v.get(i).isObstacle && !v.get(i).phasing){
+                return false;
+            }
+        }
+
+        return true;
+
+    }
+    public boolean isCellFree(int x, int y){
+        return isBackgroundFree(x,y) && isForegroundFree(x, y);
+
+    }
 
 
     //function methods

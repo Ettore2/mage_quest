@@ -233,7 +233,9 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
             }
             runManager = false;
 
-            startActivity(new Intent(this, LevelsSelectionActivity.class));
+            Intent intent = new Intent(this, LevelsSelectionActivity.class);
+            intent.putExtra(INTENT_EXTRA_LEVEL_ID, game.level.id);
+            startActivity(intent);
             finish();
         }
         if(view.equals(btnMenuRedo) || view.equals(btnReset)){
@@ -249,8 +251,9 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
                 }
                 runManager = false;
 
-                startActivity(new Intent(this, LevelsSelectionActivity.class));
-                finish();
+                Intent intent = new Intent(this, LevelsSelectionActivity.class);
+                intent.putExtra(INTENT_EXTRA_LEVEL_ID, game.level.id);
+                startActivity(intent);
             }
 
         }
@@ -302,7 +305,7 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
                             graphicUpdate();
                         }
                     }
-                    if(btnMoveJump.isPressed()){
+                    if(btnMoveJump.isPressed() && selectedPower == null){
                         game.player.inputJump();
                     }
                 }//set inputs
@@ -327,7 +330,7 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
                             debug(""+count);
 
                              */
-                            //debug(game.availableImgs.size()+" | "+game.foreground.size());
+                            debug(game.availableImgs.size()+" | "+game.foreground.size());
                         }
                     });
                 }//execute a frame
@@ -338,3 +341,24 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

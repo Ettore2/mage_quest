@@ -2,9 +2,10 @@
     <string name="app_name">mage quest</string>
     <string name="coin_needed">999/999</string>
     <string name="power_number">XX</string>
-    <string name="level_results_placeholder">[level results]</string>
+    <string name="place_holder_level_results">[level results]</string>
     <string name="title_activity_levels_selection">LevelsSelectionActivity</string>
     <string name="place_holder_levels_number">1</string>
     <string name="place_holder_level_name">level name</string>
     <string name="place_holder_level_hint">level hint</string>
+    <string name="place_holder_pages_info">X/N</string>
 </resources>

@@ -42,25 +42,25 @@ public abstract class Power {
             }
 
             if(dir == DIR_UP){
-                if(game.isBackgroundFree(game.player.getGreedX(), game.player.getGreedY()-1)){
+                if(game.isCellFree(game.player.getGreedX(), game.player.getGreedY()-1)){
                     Point3D pos = game.player.getPosition().sum(new Point3D(0,-game.CELL_SIZE,0));
                     instance = game.instantiateDynamicForegroundObj(ID_BLOCK_Y_CUBE, pos);
                 }
             }
             if(dir == DIR_DOWN){
-                if(game.isBackgroundFree(game.player.getGreedX(), game.player.getGreedY()+1)){
+                if(game.isCellFree(game.player.getGreedX(), game.player.getGreedY()+1)){
                     Point3D pos = game.player.getPosition().sum(new Point3D(0,game.CELL_SIZE,0));
                     instance = game.instantiateDynamicForegroundObj(ID_BLOCK_Y_CUBE, pos);
                 }
             }
             if(dir == DIR_LEFT){
-                if(game.isBackgroundFree(game.player.getGreedX()-1, game.player.getGreedY())){
+                if(game.isCellFree(game.player.getGreedX()-1, game.player.getGreedY())){
                     Point3D pos = game.player.getPosition().sum(new Point3D(-game.CELL_SIZE,0,0));
                     instance = game.instantiateDynamicForegroundObj(ID_BLOCK_Y_CUBE, pos);
                 }
             }
             if(dir == DIR_RIGHT){
-                if(game.isBackgroundFree(game.player.getGreedX()+1, game.player.getGreedY())){
+                if(game.isCellFree(game.player.getGreedX()+1, game.player.getGreedY())){
                     Point3D pos = game.player.getPosition().sum(new Point3D(game.CELL_SIZE,0,0));
                     instance = game.instantiateDynamicForegroundObj(ID_BLOCK_Y_CUBE, pos);
                 }
@@ -91,6 +91,34 @@ public abstract class Power {
         }
         @Override
         protected void active(int dir) {
+            int x = game.player.getGreedX(), y = game.player.getGreedY();
+            boolean found = false;
+            while (! found && x >= 0 && x < game.background.length && y >= 0 && y < game.background.length){
+                if(dir == DIR_UP){
+                    y--;
+                }
+                if(dir == DIR_DOWN){
+                    y++;
+                }
+                if(dir == DIR_LEFT){
+                    x--;
+                }
+                if(dir == DIR_RIGHT){
+                    x++;
+                }
+
+                if(x >= 0 && x < game.background.length && y >= 0 && y < game.background[0].length && game.isCellFree(x,y)){
+                    found = true;
+                }
+            }
+
+            if(! found){
+                x = game.player.getGreedX();
+                y = game.player.getGreedY();
+            }
+
+            Point3D pos = game.player.getPosition().sum(new Point3D((x-game.player.getGreedX())*game.CELL_SIZE,(y-game.player.getGreedY())* game.CELL_SIZE,0));
+            game.player.setPosition(pos);
 
         }
     }

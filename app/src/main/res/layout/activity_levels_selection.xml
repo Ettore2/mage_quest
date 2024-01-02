@@ -200,6 +200,7 @@
         android:background="#00FFFFFF"
         android:onClick="levelsArrow"
         android:scaleType="fitCenter"
+        android:tintMode="src_over"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.98"
@@ -212,10 +213,11 @@
         android:id="@+id/img_btn_levels_left_arrow"
         android:layout_width="45dp"
         android:layout_height="115dp"
-        android:background="#00FFFFFF"
+        android:background="#005A1E1E"
         android:onClick="levelsArrow"
         android:rotationY="180"
         android:scaleType="fitCenter"
+        android:tintMode="src_over"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.02"
@@ -361,8 +363,8 @@
 
     <TextView
         android:id="@+id/text_level_hint"
-        android:layout_width="135dp"
-        android:layout_height="83dp"
+        android:layout_width="132dp"
+        android:layout_height="208dp"
         android:layout_marginTop="16dp"
         android:text="@string/place_holder_level_hint"
         android:textColor="#000000"
@@ -383,5 +385,20 @@
         app:layout_constraintTop_toTopOf="@+id/img_btn_level_1"
         app:layout_constraintVertical_bias="0.199"
         app:srcCompat="@drawable/level_selected_overlap" />
+
+    <TextView
+        android:id="@+id/text_pages_info"
+        android:layout_width="85dp"
+        android:layout_height="35dp"
+        android:text="@string/place_holder_pages_info"
+        android:textAlignment="textEnd"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.939"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.042" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,8 @@ import static com.example.gamequest.gameCalsses.GameInstance.debug;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +22,7 @@ public class LevelsSelectionActivity extends AppCompatActivity {
     public ImageView levelPointer;
     public int currentPage;
     public int maxPages;
-    public TextView textLevelName, textLevelHint;
+    public TextView textLevelName, textLevelHint, textPagesInfo;
 
 
 
@@ -32,6 +34,7 @@ public class LevelsSelectionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_levels_selection);
 
         levelManager = LevelManager.getInstance(this);
+
 
 
 
@@ -60,9 +63,11 @@ public class LevelsSelectionActivity extends AppCompatActivity {
 
         textLevelName = findViewById(R.id.text_level_name);
         textLevelHint = findViewById(R.id.text_level_hint);
+        textPagesInfo = findViewById(R.id.text_pages_info);
 
-        currentPage = 0;
-        maxPages = levelManager.getLevelsAmount(true)/(levelsGreed.length*levelsGreed[0].length) + ((levelManager.getLevelsAmount(true)%(levelsGreed.length*levelsGreed[0].length)!=0) ? 1 : 0);
+        currentPage = getIntent().getIntExtra(LevelActivity.INTENT_EXTRA_LEVEL_ID,0)/(levelsGreed.length*levelsGreed[0].length);
+        maxPages = levelManager.getLevelsAmount(true)/(levelsGreed.length*levelsGreed[0].length) + ((levelManager.getLevelsAmount(true)%(levelsGreed.length*levelsGreed[0].length)!=0) ? 1 : 0) - 1;
+
 
         //debug("before graphic update");
         graphicUpdate();
@@ -94,7 +99,7 @@ public class LevelsSelectionActivity extends AppCompatActivity {
         if(view == btnLeftArrow && currentPage > 0){
             currentPage --;
         }
-        if(view == btnRightArrow && currentPage < maxPages-1){
+        if(view == btnRightArrow && currentPage < maxPages){
             currentPage ++;
         }
         graphicUpdate();
@@ -123,6 +128,18 @@ public class LevelsSelectionActivity extends AppCompatActivity {
             textLevelHint.setText("");
         }
 
+        if(currentPage == 0){
+            btnLeftArrow.setColorFilter(getResources().getColor(R.color.deactivated_levels_arrow));
+        }else {
+            btnLeftArrow.setColorFilter(null);
+        }
+        if(currentPage == maxPages){
+            btnRightArrow.setColorFilter(getResources().getColor(R.color.deactivated_levels_arrow));
+        }else {
+            btnRightArrow.setColorFilter(null);
+        }
+
+        textPagesInfo.setText((currentPage+1)+"/"+(maxPages+1));
     }
 }
 
