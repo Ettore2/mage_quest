@@ -202,7 +202,7 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
 
     }
     public void powerBtn(View view){
-        if(game.currState == STATE_PLAYING && game.player.bullet == null){
+        if(game.currState == STATE_PLAYING && game.player.bullet == null && game.player.grounded){
             if(selectedPower == null){
                 for(int i = 0; i < btnPowers.length; i++){
                     if(btnPowers[i].button.equals(view) && btnPowers[i].power.isUsable()){
