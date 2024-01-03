@@ -183,7 +183,7 @@ public class LevelsManager {
                     "E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1_M1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
                     "E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,E1,E1,E1,E1_M1,E1_M1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
                     "X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
-                    "X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,\n" +
+                    "X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,\n" +
                     "X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1_P1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1_U1,E1_U1,E1_U1,X1,E1,E1,E1_C1,\n" +
                     "X1,X1,X1,X1,E1_U1,E1_U1,E1_U1,E1_U1,X1,X1,X1,X1,X1,E1,E1,X1,X1,X1,E1,E1_L1,X1,X1,X1,X1,X1,X1,\n" +
                     "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1_C1,X1,X1,X1,X1,X1,X1",
@@ -210,15 +210,15 @@ public class LevelsManager {
                     "X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,X1",
             "level 19\n" +
                     "level 19\n" +
-                    "1 2 2 3 3 1 5 3\n" +
+                    "1 2 2 3 3 1 5 1\n" +
                     "8 1 3\n" +
                     "X1,X1,X1,X1,X1,X1,E1,E1,E1,X1,X1,E1,X1,X1,X1,X1,\n" +
                     "X1,X1,X1,X1,X1,E1,E1,E1,E1,X1,E1,E1,G1,G1,G1,X1,\n" +
                     "X1,X1,E1,E1,E1,E1,E1,E1,E1_C1,X1,E1,G1,E1,E1,E1,E1,\n" +
                     "X1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,E1,E1,E1,E1,E1,\n" +
                     "X1,E1,E1,E1_P1,E1,E1,E1,E1,X1,X1,X1,E1,E1,E1,E1,E1,\n" +
-                    "X1,X1,X1,X1,X1,E1,E1,E1,X1,X1,G1,E1,E1,E1,E1,E1,\n" +
-                    "X1,X1,X1,X1,X1,X1,E1,E1,X1,X1,E1,E1,E1,E1,E1,E1_C1,\n" +
+                    "X1,X1,X1,X1,X1,E1,E1,E1,X1,X1,G1,E1,E1,E1,E1,E1_C1,\n" +
+                    "X1,X1,X1,X1,X1,X1,E1,E1,X1,X1,E1,E1,E1,E1,E1,X1,\n" +
                     "X1,X1,X1,X1,X1,X1,X1,E1,X1,X1,E1,E1,E1,E1,E1,X1,\n" +
                     "X1,X1,X1,E1,E1,E1,E1,E1,X1,G1,E1,E1,E1,X1,X1,X1,\n" +
                     "E1_C1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,\n" +
