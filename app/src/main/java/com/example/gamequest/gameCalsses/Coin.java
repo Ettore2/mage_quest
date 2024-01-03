@@ -47,7 +47,7 @@ public class Coin extends Box{
     //other methods
     public void collect(){
         if(!destroyed){
-            SoundManager.getInstance().playSound(R.raw.coin_collect);
+            //SoundManager.getInstance().playSound(R.raw.coin_collect);
             game.collectCoin();
             collected = true;
 
@@ -57,7 +57,7 @@ public class Coin extends Box{
     @Override
     public void destroy(){
         if(!destroyed && ! collected){
-            SoundManager.getInstance().playSound(R.raw.coin_destroy);
+            //SoundManager.getInstance().playSound(R.raw.coin_destroy);
         }
 
         super.destroy();

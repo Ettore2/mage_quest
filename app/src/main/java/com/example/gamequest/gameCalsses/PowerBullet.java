@@ -135,7 +135,7 @@ public class PowerBullet extends GameObject{
     public void collision(EngineObjectModel obj, float deltaT) {
         //debug("execute collision");
         GameObject gameObj = (GameObject) obj;
-        if(gameObj.isObstacle){
+        if(gameObj.isObstacle && !gameObj.phasing && !gameObj.getTag().equals(TAG_PLAYER)){
             impact(gameObj);
         }
     }

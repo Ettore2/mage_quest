@@ -204,7 +204,7 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
     public void powerBtn(View view){
         if(game.currState == STATE_PLAYING && game.player.bullet == null && game.player.grounded){
             if(selectedPower == null){
-                SoundManager.getInstance().playSound(R.raw.power_select);
+                //SoundManager.getInstance().playSound(R.raw.power_select);
                 for(int i = 0; i < btnPowers.length; i++){
                     if(btnPowers[i].button.equals(view) && btnPowers[i].power.isUsable()){
                         selectedPower = btnPowers[i];
@@ -212,10 +212,10 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
                 }
             }else{
                 if(selectedPower.button.equals(view)){
-                    SoundManager.getInstance().playSound(R.raw.power_deselect);
+                    //SoundManager.getInstance().playSound(R.raw.power_deselect);
                     selectedPower = null;
                 }else {
-                    SoundManager.getInstance().playSound(R.raw.power_select);
+                    //SoundManager.getInstance().playSound(R.raw.power_select);
                     for(int i = 0; i < btnPowers.length; i++){
                         if(btnPowers[i].button.equals(view) && btnPowers[i].power.isUsable()){
                             selectedPower = btnPowers[i];
