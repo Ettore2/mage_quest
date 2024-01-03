@@ -243,6 +243,7 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
             finish();
         }
         if(view.equals(btnMenuRedo) || view.equals(btnReset)){
+            debug("get the input of resetting the level");
             game.resetLevel();
         }
         if(view.equals(btnMenuNext)){

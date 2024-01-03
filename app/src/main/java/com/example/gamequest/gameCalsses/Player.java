@@ -186,7 +186,19 @@ public class Player extends GameObject{
          */
         if(alive && game.currState == STATE_PLAYING){
             SoundManager.getInstance().playSound(R.raw.player_death);
+
             //debug("player die");
+            thisFramePushDir = DIR_STOP;
+            thisFrameMoveIntent = DIR_STOP;
+            pushingFrames = 0;
+            inputJump = false;
+            inputMoveDown = false;
+            inputMoveLeft = false;
+            inputMoveRight = false;
+            inputMoveUp = false;
+            bullet = null;
+            grappleBullet = null;
+
             alive = false;
             game.currState = STATE_LOST;
             game.context.graphicUpdate();
@@ -209,6 +221,15 @@ public class Player extends GameObject{
     @Override
     public void reset(){
         alive = true;
+
+        thisFramePushDir = DIR_STOP;
+        thisFrameMoveIntent = DIR_STOP;
+        pushingFrames = 0;
+        inputJump = false;
+        inputMoveDown = false;
+        inputMoveLeft = false;
+        inputMoveRight = false;
+        inputMoveUp = false;
         bullet = null;
         grappleBullet = null;
         removePowers();

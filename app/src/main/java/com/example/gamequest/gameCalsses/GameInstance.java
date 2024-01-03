@@ -196,6 +196,7 @@ public class GameInstance extends Thread{
     }
     //other methods
     public void applyLevelDecr(String stateDescr){
+        debug("start applyLevelDecr");
         if(Power.YellowCube.instance != null){
             destroyDynamicForegroundObj(Power.YellowCube.instance);
             Power.YellowCube.instance = null;
@@ -247,7 +248,7 @@ public class GameInstance extends Thread{
 
         }
 
-        //debug(":|");
+        debug(":|");
         //elaborate the player powers
         strs = subCodes[0].split(" ");
         for(int i = 0; i < strs.length; i += 2){
@@ -258,14 +259,14 @@ public class GameInstance extends Thread{
             player.addPower(Power.getPower(powerId, powerAmount, this));
         }
 
-        //debug("ddd");
+        debug("ddd");
         //elaborate puzzle starting position and coinsForWin
         strs = subCodes[1].split(" ");
         int xStart = Integer.parseInt(strs[0]);
         int yStart = Integer.parseInt(strs[1]);
         coinsForWin = Integer.parseInt(strs[2]);
 
-        //debug("start to elaborate puzzle composition");
+        debug("start to elaborate puzzle composition");
 
         //elaborate puzzle composition
         int offset = 2;
@@ -323,10 +324,12 @@ public class GameInstance extends Thread{
             context.graphicUpdate();
         }
 
-        //debug("finish to apply level descr");
+        debug("finish to apply level descr");
     }
     public void resetLevel(){
+        debug("about to reset level");
         applyLevelDecr(level.descr);
+        debug("resetted level");
 
 
     }
