@@ -103,7 +103,8 @@
     <TextView
         android:id="@+id/text_coins"
         android:layout_width="148dp"
-        android:layout_height="48dp"
+        android:layout_height="@dimen/game_button_size"
+        android:gravity="center"
         android:text="@string/coin_needed"
         android:textAlignment="textEnd"
         android:textColor="#FFFFFF"
@@ -111,10 +112,11 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/img_btm_right"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.403"
+        app:layout_constraintHorizontal_bias="0.392"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/img_btm_right"
-        app:layout_constraintVertical_bias="0.666" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="RtlCompat" />
 
     <ImageView
         android:id="@+id/imageView"

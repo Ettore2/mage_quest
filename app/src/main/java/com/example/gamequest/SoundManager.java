@@ -1,7 +1,6 @@
 package com.example.gamequest;
 
 import android.media.MediaPlayer;
-import android.os.Build;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -54,6 +53,25 @@ public class SoundManager{
             mp.setVolume(effectsVol/100f, effectsVol/100f);
             mp.start();
         }
+
+    }
+    public void setMusicVol(int musicVol) {
+        this.musicVol = musicVol;
+
+        if(musicPlayer != null){
+            musicPlayer.setVolume(musicVol/100f, musicVol/100f);
+        }
+    }
+    public void setEffectsVol(int effectsVol) {
+        this.effectsVol = effectsVol;
+
+    }
+    public int getMusicVol(){
+        return musicVol;
+
+    }
+    public int getEffectsVol(){
+        return effectsVol;
 
     }
 

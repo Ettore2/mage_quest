@@ -10,4 +10,6 @@
     <string name="place_holder_pages_info">X/N</string>
     <string name="play_levels">play</string>
     <string name="options">options</string>
+    <string name="music_vol">music:</string>
+    <string name="effects_vol">effects:</string>
 </resources>

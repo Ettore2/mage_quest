@@ -15,4 +15,8 @@
     <dimen name="start_menu_btn_width">180dp</dimen>
     <dimen name="start_menu_btn_height">70dp</dimen>
     <dimen name="start_menu_btn_text_size">26sp</dimen>
+    <dimen name="volume_seekbar_width">260sp</dimen>
+    <dimen name="volume_seekbar_height">40sp</dimen>
+    <dimen name="volume_text_width">80sp</dimen>
+    <dimen name="volume_text_size">20sp</dimen>
 </resources>

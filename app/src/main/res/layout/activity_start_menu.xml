@@ -19,16 +19,28 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+    <ImageView
+        android:id="@+id/img_vol_options"
+        android:layout_width="408dp"
+        android:layout_height="259dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.912"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.761"
+        app:srcCompat="@drawable/volume_options_box" />
+
     <Button
         android:id="@+id/btn_play_levles"
         android:layout_width="@dimen/start_menu_btn_width"
         android:layout_height="@dimen/start_menu_btn_height"
         android:layout_marginTop="84dp"
         android:background="@drawable/start_menu_btn"
+        android:onClick="playLevelsBtn"
         android:text="@string/play_levels"
         android:textColor="#000000"
         android:textSize="@dimen/start_menu_btn_text_size"
-        android:onClick="playLevelsBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.116"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,14 +51,78 @@
         android:layout_width="@dimen/start_menu_btn_width"
         android:layout_height="@dimen/start_menu_btn_height"
         android:background="@drawable/start_menu_btn"
+        android:onClick="optionsBtn"
         android:text="@string/options"
         android:textColor="#000000"
         android:textSize="@dimen/start_menu_btn_text_size"
-        android:onClick="optionsBtn"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_play_levles"
         app:layout_constraintHorizontal_bias="0.116"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/btn_play_levles"
         app:layout_constraintTop_toBottomOf="@+id/btn_play_levles"
         app:layout_constraintVertical_bias="0.235" />
+
+    <SeekBar
+        android:id="@+id/seekBar_music_vol"
+        android:layout_width="@dimen/volume_seekbar_width"
+        android:layout_height="@dimen/volume_seekbar_height"
+        android:layout_marginStart="4dp"
+        android:max="100"
+        android:progress="50"
+        android:progressTint="#4B5EC8"
+        android:thumbTint="#001CB8"
+        app:layout_constraintBottom_toBottomOf="@+id/text_music_vol"
+        app:layout_constraintStart_toEndOf="@+id/text_music_vol"
+        app:layout_constraintTop_toTopOf="@+id/text_music_vol" />
+
+    <SeekBar
+        android:id="@+id/seekBar_effects_vol"
+        android:layout_width="@dimen/volume_seekbar_width"
+        android:layout_height="@dimen/volume_seekbar_height"
+        android:max="100"
+        android:progress="50"
+        android:progressTint="#C8362B"
+        android:scrollbarSize="4dp"
+        android:thumbTint="#780800"
+        app:layout_constraintBottom_toBottomOf="@+id/text_effects_vol"
+        app:layout_constraintEnd_toEndOf="@+id/seekBar_music_vol"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/seekBar_music_vol"
+        app:layout_constraintTop_toTopOf="@+id/text_effects_vol"
+        app:layout_constraintVertical_bias="0.194" />
+
+    <TextView
+        android:id="@+id/text_music_vol"
+        android:layout_width="@dimen/volume_text_width"
+        android:layout_height="@dimen/volume_seekbar_height"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="44dp"
+        android:gravity="center"
+        android:text="@string/music_vol"
+        android:textAlignment="textEnd"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="@dimen/volume_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/img_vol_options"
+        app:layout_constraintTop_toTopOf="@+id/img_vol_options"
+        tools:ignore="RtlCompat" />
+
+    <TextView
+        android:id="@+id/text_effects_vol"
+        android:layout_width="@dimen/volume_text_width"
+        android:layout_height="@dimen/volume_seekbar_height"
+        android:layout_marginStart="32dp"
+        android:text="@string/effects_vol"
+        android:textColor="#000000"
+        android:textSize="@dimen/volume_text_size"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toBottomOf="@+id/img_vol_options"
+        app:layout_constraintStart_toStartOf="@+id/img_vol_options"
+        app:layout_constraintTop_toBottomOf="@+id/text_music_vol"
+        app:layout_constraintVertical_bias="0.152"
+        tools:ignore="RtlCompat" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

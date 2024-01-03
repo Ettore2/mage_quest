@@ -2,17 +2,22 @@ package com.example.gamequest;
 
 import static com.example.gamequest.gameCalsses.GameInstance.debug;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.View;
+import android.widget.SeekBar;
 
-import com.example.gamequest.R;
+import java.util.Vector;
 
-public class StartMenuActivity extends AppCompatActivity {
+public class StartMenuActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener{
+
+    private Vector<View> musicOptionsViews;
+    private boolean optionsVisible;
+    private SeekBar musicBar, effectsBar;
+    private SoundManager soundManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,22 +25,47 @@ public class StartMenuActivity extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);//(hide softkey)
         setContentView(R.layout.activity_start_menu);
 
-        SoundManager.getInstance(this);
-        SoundManager.getInstance().startMusicPlayer();
+        soundManager = SoundManager.getInstance(this);
+        soundManager.startMusicPlayer();
 
+        musicBar = findViewById(R.id.seekBar_music_vol);
+        musicBar.setProgress(soundManager.getMusicVol());
+        musicBar.setOnSeekBarChangeListener(this);
+        effectsBar = findViewById(R.id.seekBar_effects_vol);
+        effectsBar.setProgress(soundManager.getEffectsVol());
+        effectsBar.setOnSeekBarChangeListener(this);
 
+        musicOptionsViews = new Vector<>();
+        musicOptionsViews.add(findViewById(R.id.img_vol_options));
+        musicOptionsViews.add(findViewById(R.id.text_music_vol));
+        musicOptionsViews.add(findViewById(R.id.text_effects_vol));
+        musicOptionsViews.add(musicBar);
+        musicOptionsViews.add(effectsBar);
+
+        optionsVisible = false;
+
+        graphicUpdate();
     }
 
 
     public void playLevelsBtn(View view){
-        SoundManager.getInstance().playSound(R.raw.button_click);
+        soundManager.playSound(R.raw.button_click);
         startActivity(new Intent(this, LevelsSelectionActivity.class));
         finish();
 
     }
     public void optionsBtn(View view){
-        SoundManager.getInstance().playSound(R.raw.button_click);
+        soundManager.playSound(R.raw.button_click);
 
+        optionsVisible = !optionsVisible;
+
+        graphicUpdate();
+    }
+
+    public void graphicUpdate(){
+        for(int i = 0; i < musicOptionsViews.size(); i++){
+            musicOptionsViews.get(i).setVisibility(optionsVisible ? View.VISIBLE : View.INVISIBLE);
+        }
     }
 
     @Override
@@ -43,7 +73,7 @@ public class StartMenuActivity extends AppCompatActivity {
         super.onRestart();
         //debug("hi");
 
-        SoundManager.getInstance().startMusicPlayer();
+        soundManager.startMusicPlayer();
 
     }
 
@@ -52,6 +82,25 @@ public class StartMenuActivity extends AppCompatActivity {
         super.onPause();
         //debug("goodbye");
 
-        SoundManager.getInstance().stopMusicPlayer();
+        soundManager.stopMusicPlayer();
+    }
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        if(seekBar == musicBar){
+            soundManager.setMusicVol(progress);
+        }else {
+            soundManager.setEffectsVol(progress);
+        }
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+
     }
 }
