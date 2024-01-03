@@ -8,4 +8,6 @@
     <string name="place_holder_level_name">level name</string>
     <string name="place_holder_level_hint">level hint</string>
     <string name="place_holder_pages_info">X/N</string>
+    <string name="play_levels">play</string>
+    <string name="options">options</string>
 </resources>

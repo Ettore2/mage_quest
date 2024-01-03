@@ -117,6 +117,11 @@ public class LevelsSelectionActivity extends AppCompatActivity {
         }
         graphicUpdate();
     }
+    public void backBtn(View view){
+        startActivity(new Intent(this, StartMenuActivity.class));
+        finish();
+
+    }
 
 
     //function-methods

@@ -254,6 +254,7 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
                 Intent intent = new Intent(this, LevelsSelectionActivity.class);
                 intent.putExtra(INTENT_EXTRA_LEVEL_ID, game.level.id);
                 startActivity(intent);
+                finish();
             }
 
         }
