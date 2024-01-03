@@ -295,7 +295,7 @@ public class LevelManager {
             //debug("the file does already exist");
         }
 
-        instance.getLastCompletedLevel(true);
+        //instance.getLastCompletedLevel(true);
 
 
         return instance;

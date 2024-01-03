@@ -1,10 +1,19 @@
 package com.example.gamequest;
 
+import static com.example.gamequest.gameCalsses.GameInstance.debug;
+
 import android.media.MediaPlayer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class SoundManager{
+    private static final String PLAYER_VOLUME_FILE_NAME = "volume.txt";
+    private static final int DEFAULT_VOLUME = 50;
     private static SoundManager instance;
 
     private MediaPlayer musicPlayer;
@@ -15,8 +24,12 @@ public class SoundManager{
     //get instance
     public static SoundManager getInstance(AppCompatActivity context){
         if(instance == null){
+            //debug("about to create soundManager");
             instance = new SoundManager(context);
-        }else if(context != null){
+            //debug("created soundManager");
+        }
+
+        if(context != null){
             instance.context = context;
             instance.startMusicPlayer();
 
@@ -36,13 +49,29 @@ public class SoundManager{
             this.context = context;
         }
 
+        File f = new File(context.getFilesDir()+"/"+PLAYER_VOLUME_FILE_NAME);
+        //debug("get file");
+        if (!f.exists()){
+            //debug("file do not exist");
+            try {
+                //debug("about to create file");
+                f.createNewFile();
+                //debug("file created");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            musicVol = DEFAULT_VOLUME;
+            effectsVol = DEFAULT_VOLUME;
 
-        //TODO: read volume from file
-        musicVol = 50;
-        effectsVol = 50;
+            saveValuesOnFile();
+        }
+        //debug("about to load values");
+        getValuesFromFile();
 
+        //debug("about to startMusicPlayer");
         startMusicPlayer();
 
+        //debug("constructor end");
     }
 
 
@@ -74,6 +103,26 @@ public class SoundManager{
         return effectsVol;
 
     }
+    synchronized public void saveValuesOnFile(){
+        //debug("about to save things on file");
+        //debug(context.getFilesDir()+"/"+PLAYER_VOLUME_FILE_NAME);
+        File f = new File(context.getFilesDir()+"/"+PLAYER_VOLUME_FILE_NAME);
+        //debug("got file");
+        //debug("the file does not exist");
+        try {
+            //debug("created stream");
+            FileOutputStream stream = new FileOutputStream(f);
+            //debug("create stream");
+            stream.write(new byte[]{(byte) musicVol, (byte) effectsVol});
+            //debug("write stream");
+            //debug("write  on volume files");
+            stream.close();
+            //debug("close stream");
+            //debug("file created");
+        } catch (IOException e) {
+            throw new RuntimeException();
+        }
+    }
 
     //function-methods
     public void startMusicPlayer(){
@@ -93,5 +142,25 @@ public class SoundManager{
             musicPlayer.pause();
         }
 
+    }
+    private void getValuesFromFile(){
+        File f = new File(context.getFilesDir()+"/"+PLAYER_VOLUME_FILE_NAME);
+        int length = (int) f.length();
+        byte[] bytes = new byte[length];
+        FileInputStream in = null;
+
+        //debug("about to get last completed level");
+        try {
+            in = new FileInputStream(f);
+            in.read(bytes);
+            in.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        //debug("last completed level: "+(int)new String(bytes).charAt(0));
+        String vals = new String(bytes);
+
+        musicVol = vals.charAt(0);
+        effectsVol = vals.charAt(1);
     }
 }

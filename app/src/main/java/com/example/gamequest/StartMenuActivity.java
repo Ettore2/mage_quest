@@ -1,7 +1,5 @@
 package com.example.gamequest;
 
-import static com.example.gamequest.gameCalsses.GameInstance.debug;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -101,6 +99,7 @@ public class StartMenuActivity extends AppCompatActivity implements SeekBar.OnSe
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
+        soundManager.saveValuesOnFile();
 
     }
 }
