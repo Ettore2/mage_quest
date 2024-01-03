@@ -2,6 +2,7 @@ package com.example.gamequest;
 
 import static com.example.gamequest.gameCalsses.GameInstance.debug;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.PersistableBundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -37,6 +39,7 @@ public class LevelsSelectionActivity extends AppCompatActivity {
 
         levelManager = LevelManager.getInstance(this);
         SoundManager.getInstance(this);
+        SoundManager.getInstance().startMusicPlayer();
 
 
 
@@ -163,6 +166,23 @@ public class LevelsSelectionActivity extends AppCompatActivity {
         }
 
         textPagesInfo.setText((currentPage+1)+"/"+(maxPages+1));
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        //debug("hi");
+
+        SoundManager.getInstance().startMusicPlayer();
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //debug("goodbye");
+
+        SoundManager.getInstance().stopMusicPlayer();
     }
 
 }

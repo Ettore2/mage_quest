@@ -50,6 +50,7 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
         //debug("about to get level manager");
         levelManager = LevelManager.getInstance(this);
         SoundManager.getInstance(this);
+        SoundManager.getInstance().startMusicPlayer();
         //debug("got level manager");
 
         COLOR_NORMAL = getResources().getColor(R.color.movement_buttons_background);
@@ -346,6 +347,23 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
             }
 
         }
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        //debug("hi");
+
+        SoundManager.getInstance().startMusicPlayer();
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //debug("goodbye");
+
+        SoundManager.getInstance().stopMusicPlayer();
     }
 }
 

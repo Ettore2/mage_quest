@@ -58,12 +58,22 @@ public class SoundManager{
     }
 
     //function-methods
-    private void startMusicPlayer(){
-        if(musicPlayer == null && context != null){
-            musicPlayer = MediaPlayer.create(context,R.raw.music);
-            musicPlayer.setVolume(musicVol/100f,musicVol/100f);
+    public void startMusicPlayer(){
+        if(musicPlayer == null){
+            if(context != null){
+                musicPlayer = MediaPlayer.create(context,R.raw.music);
+                musicPlayer.setVolume(musicVol/100f,musicVol/100f);
+                musicPlayer.start();
+                musicPlayer.setLooping(true);
+            }
+        }else {
             musicPlayer.start();
-            musicPlayer.setLooping(true);
         }
+    }
+    public void stopMusicPlayer(){
+        if(musicPlayer != null){
+            musicPlayer.pause();
+        }
+
     }
 }
