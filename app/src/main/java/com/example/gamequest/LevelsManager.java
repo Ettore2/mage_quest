@@ -136,7 +136,7 @@ public class LevelsManager {
                     "level 12\n" +
                     "1 2 2 2\n" +
                     "4 2 4\n" +
-                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,\n" +
+                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,\n" +
                     "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1_C1,\n" +
                     "E1_C1,E1,X1,X1,X1,E1,E1,E1_D1,E1_D1,E1_D1,E1_D1,E1_D1,E1,E1,E1,X1,X1,\n" +
                     "X1,E1,E1,X1,X1,E1_C1,E1,E1,E1,E1_P1,E1,E1,E1,E1,E1,X1,X1,\n" +
@@ -175,18 +175,18 @@ public class LevelsManager {
                     "level 16\n" +
                     "1 7 2 7 3 5\n" +
                     "1 1 4\n" +
-                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1_C1,\n" +
-                    "X1,X1,E1,X1,X1,X1,E1,E1,E1,E1,X1,X1,X1,X1,E1,E1,E1,E1,X1,X1,X1,E1,E1,X1,X1,X1,X1,\n" +
-                    "E1,E1,E1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,\n" +
-                    "E1_C1,E1,E1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,X1,\n" +
-                    "X1,X1,E1,E1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,\n" +
-                    "E1,E1,E1,E1,E1,X1,E1,E1,E1,E1,E1,E1,E1,E1_M1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
-                    "E1,E1,E1,E1,E1,X1,E1,E1,E1,E1,E1,E1,X1,X1,E1,E1,E1,E1_M1,E1_M1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
-                    "X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,E1,E1,E1,E1,X1,X1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
-                    "X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,\n" +
-                    "X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1_P1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1_U1,E1_U1,E1_U1,X1,E1,E1,E1_C1,\n" +
-                    "X1,X1,X1,X1,E1_U1,E1_U1,E1_U1,E1_U1,X1,X1,X1,X1,X1,X1,E1,E1,X1,X1,X1,E1_R1,E1_L1,X1,X1,X1,X1,X1,X1,\n" +
-                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1_C1,X1,X1,X1,X1,X1,X1",
+                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1_C1,\n" +
+                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,\n" +
+                    "E1,E1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,\n" +
+                    "E1_C1,E1,E1,E1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,E1,E1,E1,E1,E1,X1,\n" +
+                    "X1,X1,E1,E1,E1,E1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,E1,E1,E1,E1,X1,\n" +
+                    "E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1_M1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
+                    "E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,E1,E1,E1,E1_M1,E1_M1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
+                    "X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
+                    "X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,\n" +
+                    "X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1_P1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1_U1,E1_U1,E1_U1,X1,E1,E1,E1_C1,\n" +
+                    "X1,X1,X1,X1,E1_U1,E1_U1,E1_U1,E1_U1,X1,X1,X1,X1,X1,E1,E1,X1,X1,X1,E1,E1_L1,X1,X1,X1,X1,X1,X1,\n" +
+                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1_C1,X1,X1,X1,X1,X1,X1",
             "level 17\n" +
                     "power grapple: it allow you to grapple in any direction but not all walls can be grappled\n" +
                     "5 2\n" +
