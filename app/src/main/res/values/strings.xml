@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">mage quest</string>
+    <string name="app_name">mage quests</string>
     <string name="coin_needed">999/999</string>
     <string name="power_number">XX</string>
     <string name="place_holder_level_results">[level results]</string>
