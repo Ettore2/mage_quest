@@ -15,10 +15,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.gamequest.engine3D_V1.EngineManager;
-import com.example.gamequest.engine3D_V1.EngineObject;
-import com.example.gamequest.engine3D_V1.EngineObjectModel;
 import com.example.gamequest.gameCalsses.GameInstance;
-import com.example.gamequest.gameCalsses.GameObject;
 import com.example.gamequest.gameCalsses.Power;
 
 import java.util.Vector;
@@ -28,7 +25,7 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
     public static final String STR_WIN = "LEVEL COMPLETED", STR_LOST = "LEVEL FAILED";
     public int COLOR_NORMAL, COLOR_SPECIAL;
     public EngineManager engineManager;
-    public LevelManager levelManager;
+    public LevelsManager levelsManager;
     public Handler handler;
     GameInstance game;
     public TextView coinsView, menuResultsView;
@@ -48,7 +45,7 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
         setContentView(R.layout.activity_level);
         //debug("level activity");
         //debug("about to get level manager");
-        levelManager = LevelManager.getInstance(this);
+        levelsManager = LevelsManager.getInstance(this);
         SoundManager.getInstance(this);
         SoundManager.getInstance().startMusicPlayer();
         //debug("got level manager");
@@ -127,7 +124,7 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
         switch (levelState){
             case STATE_WON:
                 SoundManager.getInstance().playSound(R.raw.win);
-                LevelManager.getInstance().setLevelCompletion(game.getLevelId(),true,true);
+                LevelsManager.getInstance().setLevelCompletion(game.getLevelId(),true,true);
                 //debug(""+LevelManager.getInstance().getLastCompletedLevel(true));
 
                 menuResultsView.setText(STR_WIN);
@@ -139,7 +136,7 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
         //debug("g update LevelActivity5");
 
         //debug(String.valueOf(game.level == null));
-        btnMenuNext.setEnabled(LevelManager.getInstance().isCompleted(game.level.id,game.level.isDefault));
+        btnMenuNext.setEnabled(LevelsManager.getInstance().isCompleted(game.level.id,game.level.isDefault));
         //debug("g update LevelActivity6");
 
 
@@ -249,7 +246,7 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
             game.resetLevel();
         }
         if(view.equals(btnMenuNext)){
-            if(levelManager.isLevel(game.getLevelId()+1, true)){
+            if(levelsManager.isLevel(game.getLevelId()+1, true)){
                 game.setLevelById(game.getLevelId()+1, true);
                 game.resetLevel();
             }else {

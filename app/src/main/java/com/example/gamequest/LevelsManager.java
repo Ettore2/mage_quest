@@ -4,13 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Scanner;
 
-public class LevelManager {
+public class LevelsManager {
     public static final String PLAYER_SAVES_FILE_NAME = "saves.txt";
     /*
     level structure
@@ -261,14 +258,14 @@ public class LevelManager {
         }
 
     }
-    private static LevelManager instance;
+    private static LevelsManager instance;
     private AppCompatActivity context;
 
 
     //getInstance methods
-    public static LevelManager getInstance(AppCompatActivity context) {
+    public static LevelsManager getInstance(AppCompatActivity context) {
         if (instance == null) {
-            instance = new LevelManager();
+            instance = new LevelsManager();
         }
 
         if(context != null){
@@ -300,7 +297,7 @@ public class LevelManager {
 
         return instance;
     }
-    public static LevelManager getInstance() {
+    public static LevelsManager getInstance() {
 
         return getInstance(null);
     }
@@ -308,7 +305,7 @@ public class LevelManager {
 
 
     //constructors
-    private LevelManager(){}
+    private LevelsManager(){}
 
 
     //other methods

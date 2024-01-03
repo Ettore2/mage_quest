@@ -125,7 +125,7 @@ public class GameInstance extends Thread{
     public final int FIELD_WIDTH, FIELD_HEIGHT, CELL_SIZE;
     public int currState;
     public final EngineManager engineManager;
-    public LevelManager.Level level;
+    public LevelsManager.Level level;
     public LevelActivity context;
     public ViewGroup layout;
     private boolean haveInitializedThings;
@@ -181,7 +181,7 @@ public class GameInstance extends Thread{
     //setters
     public void setLevelById(int levelId, boolean isDefault) {
         //debug("about to get the level "+ levelId);
-        this.level = LevelManager.getInstance().getLevel(levelId, isDefault);
+        this.level = LevelsManager.getInstance().getLevel(levelId, isDefault);
         //debug("about to apply following descr: "+level.descr);
         applyLevelDecr(level.descr);
         //debug("apply the descr");

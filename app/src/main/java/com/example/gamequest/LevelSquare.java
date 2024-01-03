@@ -1,10 +1,7 @@
 package com.example.gamequest;
 
-import static com.example.gamequest.gameCalsses.GameInstance.debug;
-
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class LevelSquare {
@@ -13,10 +10,10 @@ public class LevelSquare {
             IMG_COMPLETED = R.drawable.level_completed;
     public ImageButton btn;
     public TextView text;
-    public LevelManager.Level level;
+    public LevelsManager.Level level;
     public LevelsSelectionActivity context;
 
-    public LevelSquare(ImageButton btn, TextView text, LevelManager.Level level, LevelsSelectionActivity context){
+    public LevelSquare(ImageButton btn, TextView text, LevelsManager.Level level, LevelsSelectionActivity context){
         this.btn = btn;
         this.text = text;
         this.level = level;
@@ -26,7 +23,7 @@ public class LevelSquare {
 
     public void graphicUpdate(boolean available){
         if(level != null && available){
-            if(LevelManager.getInstance().isCompleted(level)){
+            if(LevelsManager.getInstance().isCompleted(level)){
                 btn.setImageResource(IMG_COMPLETED);
             }else {
                 btn.setImageResource(IMG_UNLOCKED);
