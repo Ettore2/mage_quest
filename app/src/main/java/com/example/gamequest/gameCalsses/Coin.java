@@ -10,6 +10,7 @@ import static com.example.gamequest.gameCalsses.GameInstance.debug;
 import android.widget.ImageView;
 
 import com.example.gamequest.R;
+import com.example.gamequest.SoundManager;
 import com.example.gamequest.engine3D_V1.BaseAnimation;
 import com.example.gamequest.engine3D_V1.BoxCollider;
 import com.example.gamequest.engine3D_V1.EngineObjectModel;
@@ -21,7 +22,7 @@ import java.util.Vector;
 public class Coin extends Box{
     protected static final float ANIM_FRAME_DURATION = 200;
     protected BaseAnimation<Integer> animIdle;
-    protected boolean destroyed;
+    protected boolean collected;
 
     //the coin is pushed only because of the non clipping function, because it is not an obstacle it will not the put
     //in the thisFBlock* variables and will not thain the push functions
@@ -30,6 +31,7 @@ public class Coin extends Box{
         super(pos, ID_BLOCK_COIN, TAG_COIN, game, view, R.drawable.coin_0, R.drawable.coin_0);
         colliders.add(new BoxCollider(this, new Point3D(0,0,0),new Vector3D(game.CELL_SIZE/2f, game.CELL_SIZE*5/8f,0)));
         isObstacle = false;
+        collected = false;
         ignoreHorizontalClipping = true;
 
         Vector<Integer> imgsRes = new Vector<>();
@@ -45,10 +47,20 @@ public class Coin extends Box{
     //other methods
     public void collect(){
         if(!destroyed){
+            SoundManager.getInstance().playSound(R.raw.coin_collect);
             game.collectCoin();
+            collected = true;
 
             destroy();
         }
+    }
+    @Override
+    public void destroy(){
+        if(!destroyed && ! collected){
+            SoundManager.getInstance().playSound(R.raw.coin_destroy);
+        }
+
+        super.destroy();
     }
     public BoxCollider getPickUpCollider(){
         if(colliders != null && colliders.size() >=2){

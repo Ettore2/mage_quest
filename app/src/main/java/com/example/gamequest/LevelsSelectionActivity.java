@@ -36,6 +36,7 @@ public class LevelsSelectionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_levels_selection);
 
         levelManager = LevelManager.getInstance(this);
+        SoundManager.getInstance(this);
 
 
 
@@ -89,6 +90,7 @@ public class LevelsSelectionActivity extends AppCompatActivity {
 
 
     public void levelsGreedBtn(View view){
+        SoundManager.getInstance().playSound(R.raw.button_click);
         //start the level
         if(selectedLevel.level != null && selectedLevel.btn.equals(view) && levelManager.isAvailable(selectedLevel.level.id, selectedLevel.level.isDefault)){
             Intent intent = new Intent(this, LevelActivity.class);
@@ -109,6 +111,7 @@ public class LevelsSelectionActivity extends AppCompatActivity {
         graphicUpdate();
     }
     public void levelsArrow(View view){
+        SoundManager.getInstance().playSound(R.raw.button_click);
         if(view == btnLeftArrow && currentPage > 0){
             currentPage --;
         }
@@ -118,6 +121,7 @@ public class LevelsSelectionActivity extends AppCompatActivity {
         graphicUpdate();
     }
     public void backBtn(View view){
+        SoundManager.getInstance().playSound(R.raw.button_click);
         startActivity(new Intent(this, StartMenuActivity.class));
         finish();
 
@@ -137,7 +141,7 @@ public class LevelsSelectionActivity extends AppCompatActivity {
 
         levelPointer.setX(selectedLevel.btn.getX());
         levelPointer.setY(selectedLevel.btn.getY());
-        debug(selectedLevel.btn.getX()+"   "+selectedLevel.btn.getY());
+        //debug(selectedLevel.btn.getX()+"   "+selectedLevel.btn.getY());
 
         if(selectedLevel.level != null){
             textLevelName.setText(selectedLevel.level.name);

@@ -5,6 +5,7 @@ import static com.example.gamequest.gameCalsses.GameInstance.*;
 import android.widget.ImageView;
 
 import com.example.gamequest.R;
+import com.example.gamequest.SoundManager;
 import com.example.gamequest.engine3D_V1.BoxCollider;
 import com.example.gamequest.engine3D_V1.EngineObjectModel;
 import com.example.gamequest.engine3D_V1.Point3D;
@@ -22,6 +23,7 @@ public class PowerBullet extends GameObject{
 
         @Override
         protected void impact(GameObject impactObj) {
+            //SoundManager.getInstance().playSound(R.raw.black_cube);
             //debug("execute impact with: "+impactObj.getTag()+" of pos: "+impactObj.getPosition().toString()+"player at pos: "+game.player.getPosition().toString());
             destroy();
 

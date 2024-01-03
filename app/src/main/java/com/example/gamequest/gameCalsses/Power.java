@@ -4,6 +4,7 @@ import static com.example.gamequest.engine3D_V1.EngineObjectModel.*;
 import static com.example.gamequest.gameCalsses.GameInstance.*;
 
 import com.example.gamequest.R;
+import com.example.gamequest.SoundManager;
 import com.example.gamequest.engine3D_V1.Point3D;
 import com.example.gamequest.engine3D_V1.Vector3D;
 
@@ -36,6 +37,7 @@ public abstract class Power {
         }
         @Override
         protected void active(int dir) {
+            //SoundManager.getInstance().playSound(R.raw.yellow_cube);
             decreaseAmount();
             if(instance != null){
                 game.destroyDynamicForegroundObj(instance);
@@ -76,6 +78,7 @@ public abstract class Power {
         }
         @Override
         protected void active(int dir) {
+            //SoundManager.getInstance().playSound(R.raw.black_bullet);
             decreaseAmount();
             PowerBullet bullet = new PowerBullet.BulletBCube(game.player.getPosition(), game,null,dir);
             game.player.bullet = bullet;
@@ -93,6 +96,7 @@ public abstract class Power {
         }
         @Override
         protected void active(int dir) {
+            //SoundManager.getInstance().playSound(R.raw.teleport);
             decreaseAmount();
             int x = game.player.getGreedX(), y = game.player.getGreedY();
             boolean found = false;
@@ -135,6 +139,7 @@ public abstract class Power {
         }
         @Override
         protected void active(int dir) {
+            //SoundManager.getInstance().playSound(R.raw.grapple_bullet);
             decreaseAmount();
             PowerBullet bullet = new PowerBullet.BulletGrapple(game.player.getPosition(), game,null,dir);
             game.player.bullet = bullet;

@@ -16,18 +16,20 @@ public class StartMenuActivity extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);//(hide softkey)
         setContentView(R.layout.activity_start_menu);
 
+        SoundManager.getInstance(this);
+
 
     }
 
 
     public void playLevelsBtn(View view){
+        SoundManager.getInstance().playSound(R.raw.button_click);
         startActivity(new Intent(this, LevelsSelectionActivity.class));
         finish();
 
-
     }
     public void optionsBtn(View view){
-
+        SoundManager.getInstance().playSound(R.raw.button_click);
 
     }
 }

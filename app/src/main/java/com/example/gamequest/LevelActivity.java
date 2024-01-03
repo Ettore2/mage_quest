@@ -49,6 +49,7 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
         //debug("level activity");
         //debug("about to get level manager");
         levelManager = LevelManager.getInstance(this);
+        SoundManager.getInstance(this);
         //debug("got level manager");
 
         COLOR_NORMAL = getResources().getColor(R.color.movement_buttons_background);
@@ -124,6 +125,7 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
 
         switch (levelState){
             case STATE_WON:
+                SoundManager.getInstance().playSound(R.raw.win);
                 LevelManager.getInstance().setLevelCompletion(game.getLevelId(),true,true);
                 //debug(""+LevelManager.getInstance().getLastCompletedLevel(true));
 
@@ -204,6 +206,7 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
     public void powerBtn(View view){
         if(game.currState == STATE_PLAYING && game.player.bullet == null && game.player.grounded){
             if(selectedPower == null){
+                SoundManager.getInstance().playSound(R.raw.power_select);
                 for(int i = 0; i < btnPowers.length; i++){
                     if(btnPowers[i].button.equals(view) && btnPowers[i].power.isUsable()){
                         selectedPower = btnPowers[i];
@@ -211,8 +214,10 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
                 }
             }else{
                 if(selectedPower.button.equals(view)){
+                    SoundManager.getInstance().playSound(R.raw.power_deselect);
                     selectedPower = null;
                 }else {
+                    SoundManager.getInstance().playSound(R.raw.power_select);
                     for(int i = 0; i < btnPowers.length; i++){
                         if(btnPowers[i].button.equals(view) && btnPowers[i].power.isUsable()){
                             selectedPower = btnPowers[i];
@@ -227,6 +232,7 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
         }
     }
     public void optionsBtn(View view){
+        SoundManager.getInstance().playSound(R.raw.button_click);
         if(view.equals(btnMenuQuit) || view.equals(btnQuit)){
             if(managerT != null){
                 managerT.interrupt();

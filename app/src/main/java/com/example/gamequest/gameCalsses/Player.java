@@ -5,6 +5,7 @@ import static com.example.gamequest.gameCalsses.GameInstance.*;
 import android.widget.ImageView;
 
 import com.example.gamequest.R;
+import com.example.gamequest.SoundManager;
 import com.example.gamequest.engine3D_V1.AnimationFrame;
 import com.example.gamequest.engine3D_V1.BaseAnimation;
 import com.example.gamequest.engine3D_V1.BoxCollider;
@@ -184,6 +185,7 @@ public class Player extends GameObject{
 
          */
         if(alive && game.currState == STATE_PLAYING){
+            SoundManager.getInstance().playSound(R.raw.player_death);
             //debug("player die");
             alive = false;
             game.currState = STATE_LOST;
@@ -261,6 +263,7 @@ public class Player extends GameObject{
             //Y = 0 -> up (fall = augment the y)
             //jump
             if(grounded && inputJump && !isPushing()){
+                SoundManager.getInstance().playSound(R.raw.jump);
                 grounded = false;
                 currScaledYForce = -NORMAL_JUMP_FORCE*game.CELL_SIZE*deltaT/1000;
             }

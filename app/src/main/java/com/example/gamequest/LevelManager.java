@@ -126,7 +126,7 @@ public class LevelManager {
                     "X1,X1,X1,X1,E1_U1,E1_U1,E1_U1,E1_U1,X1,X1,X1,X1",
             "level 11\n" +
                     "level 11\n" +
-                    "1 4 2 3\n" +
+                    "1 3 2 3\n" +
                     "4 3 3\n" +
                     "X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1_C1,\n" +
                     "X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,\n" +
