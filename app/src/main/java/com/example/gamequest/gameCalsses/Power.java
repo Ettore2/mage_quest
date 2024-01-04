@@ -259,6 +259,7 @@ public abstract class Power {
     }
     public void use(int dir){
         //debug("power use start");
+        game.player.setFAcingDir(dir);
         game.context.handler.post(new Runnable() {
             @Override
             public void run() {

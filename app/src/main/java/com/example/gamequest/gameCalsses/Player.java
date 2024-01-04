@@ -354,7 +354,7 @@ public class Player extends GameObject{
 
         //reset status
         thisFrameMoveIntent = DIR_STOP;
-        if(inputPower == null) {
+        if(inputPower == null && bullet == null) {
             if (inputMoveRight && !inputMoveLeft) {
                 thisFrameMoveIntent = DIR_RIGHT;
             }
@@ -364,26 +364,9 @@ public class Player extends GameObject{
             }
             thisFMovementDir = thisFrameMoveIntent;
 
-        }else{
-            int chosenDir = DIR_STOP;
-            if(inputMoveLeft){
-                chosenDir = DIR_LEFT;
-            }
-            if(inputMoveRight){
-                chosenDir = DIR_RIGHT;
-            }
-            if(inputMoveDown){
-                chosenDir = DIR_DOWN;
-            }
-            if(inputMoveUp){
-                chosenDir = DIR_UP;
-            }
-
-            //TODO: use the power (check if the power allow that dir)
         }
 
-
-        //powersActivation
+        //powersActivation not done there
     }
 
     @Override
@@ -517,13 +500,7 @@ public class Player extends GameObject{
                     spriteViewDown.setImageResource((Integer)(animAirIdleDown.getCurrFrame().info));
                 }
             }else {
-                if(thisFMovementDir == DIR_RIGHT){
-                    spriteView.setRotationY(0);
-                    spriteViewDown.setRotationY(0);
-                }else {
-                    spriteView.setRotationY(180);
-                    spriteViewDown.setRotationY(180);
-                }
+                setFAcingDir(thisFMovementDir);
 
                 if(grounded){
                     animMove.update(deltaT);
@@ -535,6 +512,16 @@ public class Player extends GameObject{
                     spriteViewDown.setImageResource((Integer)(animAirMoveDown.getCurrFrame().info));
                 }
             }
+        }
+    }
+    public void setFAcingDir(int rid){
+        if(rid == DIR_RIGHT){
+            spriteView.setRotationY(0);
+            spriteViewDown.setRotationY(0);
+        }
+        if(rid == DIR_LEFT){
+            spriteView.setRotationY(180);
+            spriteViewDown.setRotationY(180);
         }
     }
     @Override
