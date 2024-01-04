@@ -77,19 +77,21 @@ public class Coin extends Box{
         super.collision(obj, deltaT);
         GameObject otherObj = (GameObject) obj;
 
-        if(otherObj.getTag().equals(TAG_PLAYER) && getPickUpCollider().isColliding2D(otherObj.getFirstColl()) && otherObj.canCollectCoin){
-            collect();
-            //debug("collect by player");
-        }
-        if(!otherObj.getTag().equals(TAG_PLAYER) && !otherObj.destroyed && !otherObj.getTag().equals(TAG_SPIKE) && sameCell(otherObj)){
-            //debug("collision detected with:"+otherObj.getTag());
-            if(otherObj.canCollectCoin){
+        if(!otherObj.phasing){
+            if(otherObj.getTag().equals(TAG_PLAYER) && getPickUpCollider().isColliding2D(otherObj.getFirstColl()) && otherObj.canCollectCoin){
                 collect();
-            }else{
-                //debug("collision");
-                destroy();
+                //debug("collect by player");
             }
+            if(!otherObj.getTag().equals(TAG_PLAYER) && !otherObj.destroyed && !otherObj.getTag().equals(TAG_SPIKE) && sameCell(otherObj)){
+                //debug("collision detected with:"+otherObj.getTag());
+                if(otherObj.canCollectCoin){
+                    collect();
+                }else{
+                    //debug("collision");
+                    destroy();
+                }
 
+            }
         }
     }
     @Override

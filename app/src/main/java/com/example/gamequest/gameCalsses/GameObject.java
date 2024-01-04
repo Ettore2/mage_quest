@@ -104,10 +104,18 @@ public abstract class GameObject extends EngineObjectModel {
 
     }
     public void setPhasing(boolean ph){
-        this.phasing = ph;
-        for(Collider3D col : colliders){
-            col.isActive = !ph;
+
+        if(phasing && !ph){// if i stop to be phasing
+            Vector<GameObject> objs = game.getCellForeground(this.getGreedX(), this.getGreedY());
+            for(int i = 0; i < objs.size(); i++){
+                if(!objs.get(i).phasing){
+                    objs.get(i).destroy();
+                }
+            }
         }
+
+        this.phasing = ph;
+        setPosition(this.getPosition());//update the phasing of the things
     }
     public boolean getPhasing(){
         return phasing;
@@ -213,7 +221,7 @@ public abstract class GameObject extends EngineObjectModel {
     public void push(GameObject pushingObj, float amount){
         if(amount != 0){
             int dir = amount > 0 ? DIR_RIGHT : DIR_LEFT;
-            if(canBePushed(pushingObj)){
+            if(canBePushed(pushingObj) && !this.phasing){
                 if(isObstacle){
                     if(dir == DIR_RIGHT){
                         translate(new Vector3D(amount,0,0));
@@ -279,7 +287,7 @@ public abstract class GameObject extends EngineObjectModel {
     public void endPush(GameObject pushingObj){
         int dir = pushingObj.getPosition().x < this.getPosition().x ? DIR_RIGHT : DIR_LEFT;
         //debug("end push");
-        if(movable){
+        if(movable && !this.phasing){
             snapToGreed();
             if(this.isObstacle){
                 if(dir == DIR_RIGHT && thisFObstacleRight != null){
@@ -318,6 +326,7 @@ public abstract class GameObject extends EngineObjectModel {
     public void reset(){
         destroyed = false;
         grounded = false;
+        phasing = false;
         currScaledYForce = 0;
         setDefaultViewValues(spriteView);
 
@@ -369,7 +378,11 @@ public abstract class GameObject extends EngineObjectModel {
         if(thisFObstacleDown != null){
             grounded = true;
             currScaledYForce = 0;
-            setAdjacentTo(DIR_DOWN, thisFObstacleDown,game.CELL_SIZE* PUDDING);
+            //preventing phasing objects from teleporting up on a falling object
+            if(!phasing || this.getPosition().y + game.CELL_SIZE-PUDDING < thisFObstacleDown.getPosition().y){
+                setAdjacentTo(DIR_DOWN, thisFObstacleDown,game.CELL_SIZE* PUDDING);
+            }
+
             //centerVertically();
         }
         if(thisFObstacleUp != null){
@@ -379,14 +392,14 @@ public abstract class GameObject extends EngineObjectModel {
                 //centerVertically();
             }
         }
-        if(thisFObstacleRight != null && thisFMovementDir != DIR_LEFT && !ignoreHorizontalClipping){
+        if(thisFObstacleRight != null && thisFMovementDir != DIR_LEFT && !ignoreHorizontalClipping && !this.phasing){
             thisFMovementDir = DIR_STOP;
             setAdjacentTo(DIR_RIGHT, thisFObstacleRight,game.CELL_SIZE* PUDDING);
             if(getTag().equals(TAG_PLAYER)){
                 //debug("adjacent right");
             }
         }
-        if(thisFObstacleLeft != null && thisFMovementDir != DIR_RIGHT && !ignoreHorizontalClipping){
+        if(thisFObstacleLeft != null && thisFMovementDir != DIR_RIGHT && !ignoreHorizontalClipping && !this.phasing){
             thisFMovementDir = DIR_STOP;
             setAdjacentTo(DIR_LEFT, thisFObstacleLeft,-game.CELL_SIZE* PUDDING);
             if(getTag().equals(TAG_PLAYER)){
@@ -420,8 +433,8 @@ public abstract class GameObject extends EngineObjectModel {
     public void setPosition(Point3D p) {
         spriteView.setX(p.x);
         spriteView.setY(p.y);
-        if(phasing){
-            spriteView.setZ(priorityLevel*LEVEL_JUMP + PHASING_JUMP);
+        if(!phasing){
+            spriteView.setZ(priorityLevel*LEVEL_JUMP);
         }else {
             spriteView.setZ(priorityLevel*LEVEL_JUMP);
         }
@@ -436,7 +449,6 @@ public abstract class GameObject extends EngineObjectModel {
     @Override
     public void translate(float x, float y, float z) {
         translate(new Vector3D(x, y, z));
-
     }
     @Override
     public Point3D getPosition() {
@@ -484,14 +496,11 @@ public abstract class GameObject extends EngineObjectModel {
         GameObject otherObj = (GameObject) obj;
 
         if(this.usePhysic){
-            if(otherObj.isObstacle){
-                BoxCollider otherColl = otherObj.getFirstColl();
+            if(otherObj.isObstacle && !otherObj.phasing){
                 BoxCollider myCol = getFirstColl();
 
                 boolean objectRight = this.getPosition().x < otherObj.getPosition().x;
                 boolean objectUp = this.getPosition().y > otherObj.getPosition().y;
-                float rightVal = otherObj.getPosition().x - this.getPosition().x;
-                float upVal = otherObj.getPosition().y - this.getPosition().y;
                 if(sameCell(otherObj)){//same cell
                     Vector3D distances = getPosition().aziDistances(otherObj.getPosition());
                     //debug(game.CELL_SIZE +"| "+distances.x +"   "+ distances.y +"   "+OVERLAPPING_DISTANCE*game.CELL_SIZE);
@@ -509,26 +518,14 @@ public abstract class GameObject extends EngineObjectModel {
                                 thisFObstacleLeft = otherObj;
                             }
                         }
-                        //if(getTag().equals(TAG_PLAYER)){
-                            //debug("clipping from the angle!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! with tag:"+otherObj.getTag());
-                            //debug(getPosition().toString()+"   "+otherObj.getPosition().toString());
-                            //debug(getGreedX()+"   "+getGreedY()+"   "+otherObj.getGreedX()+"   "+ otherObj.getGreedY());
-                        //}
                     }else{//actually overlapped
-                        //if(getTag().equals(TAG_PLAYER)){
-                            //debug("overlapping!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! with tag:"+otherObj.getTag());
-                            //debug(getPosition().toString()+"   "+otherObj.getPosition().toString());
-                            //debug(getGreedX()+"   "+getGreedY()+"   "+otherObj.getGreedX()+"   "+ otherObj.getGreedY());
-                        //}
-                        resolveOverlapped(otherObj);
+                        if(!phasing){
+                            resolveOverlapped(otherObj);
+                        }
+
                     }
                 }else{//normal collision
                     if(Math.abs(this.getPosition().x - otherObj.getPosition().x)+(myCol.size.x-game.CELL_SIZE)/2 < Math.abs(this.getPosition().y - otherObj.getPosition().y)){
-                        //if(getTag().equals(TAG_PLAYER)){
-                            //debug("collide vertically!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! with tag:"+otherObj.getTag());
-                            //debug(getPosition().toString()+"   "+otherObj.getPosition().toString());
-                            //debug(getGreedX()+"   "+getGreedY()+"   "+otherObj.getGreedX()+"   "+ otherObj.getGreedY());
-                        //}
                         //collide vertically
                         if(sameColum(otherObj)){
                             if(!objectUp){//may above the block (grounded)

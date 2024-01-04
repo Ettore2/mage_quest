@@ -238,7 +238,80 @@ public class LevelsManager {
                     "X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,E1_C1,E1,E1,\n" +
                     "X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,E1,E1,X1,X1,E1,\n" +
                     "X1,X1,X1,X1,E1,E1,E1_P1,E1,E1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,\n" +
-                    "X1,X1,X1,X1,E1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1"
+                    "X1,X1,X1,X1,E1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1",
+            "level 21\n" +
+                    "power phasing: shoot a bullet that usa a power charge to make things phasing and regain a charge by making them non phasing (can be used iven on 0 charges to de.phase things)\n" +
+                    "4 1\n" +
+                    "9 5 1\n" +
+                    "X1,X1,X1,E1,E1,E1,E1,E1,E1,X1,E1,E1,E1,\n" +
+                    "E1,E1,E1,E1,E1,E1,X1,E1,E1,X1,X1,E1,E1_C1,\n" +
+                    "X1,X1,E1,E1_P1,E1,E1,X1,X1,X1,X1,X1,X1,X1",
+            "level 22\n" +
+                    "if you de-phasing object has his space occupied he will destroy the other object\n" +
+                    "4 1\n" +
+                    "8 6 2\n" +
+                    "X1,E1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
+                    "E1,E1,E1,E1,E1,E1,E1,E1,E1_C1,X1,\n" +
+                    "E1,E1,E1,E1,E1_M1,E1_M1,X1,X1,X1,X1,\n" +
+                    "E1,E1,E1,E1,E1_M1,E1_M1,X1,X1,E1,E1,\n" +
+                    "E1,E1_P1,E1,E1,E1_M1,E1_M1,X1,X1,E1,E1_C1",
+            "level 23\n" +
+                    "level 23\n" +
+                    "1 2 4 1 5 2\n" +
+                    "6 2 4\n" +
+                    "X1,X1,X1,X1,E1,E1,X1,X1,X1,X1,X1,X1,X1,X1,X1,\n" +
+                    "X1,X1,X1,X1,E1,E1,X1,X1,X1,X1,X1,X1,X1,X1,X1,\n" +
+                    "X1,X1,X1,X1,E1_C1,E1,X1,X1,X1,X1,X1,X1,X1,X1,X1,\n" +
+                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,\n" +
+                    "X1,X1,X1,E1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,X1,\n" +
+                    "E1,E1_C1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,G1,\n" +
+                    "E1,X1,E1,E1,E1,E1,E1_C1,E1,E1,E1,E1,E1,E1,E1,G1,\n" +
+                    "E1,E1_P1,E1,E1,E1,E1,X1,E1,E1,E1,E1,E1,E1,E1_C1,X1,\n" +
+                    "X1,X1,X1,E1,E1_U1,E1_U1,E1_U1,E1_U1,E1_U1,E1_U1,E1_U1,E1_U1,X1,X1,X1",
+            "level 24\n" +
+                    "level 24\n" +
+                    "1 -1 2 5 4 1\n" +
+                    "6 2 2\n" +
+                    "X1,X1,X1,X1,X1,X1,E1,X1,E1,E1,E1,E1,E1,X1,X1,\n" +
+                    "X1,X1,X1,X1,E1,E1,E1,X1,X1,X1,E1,E1,E1,X1,X1,\n" +
+                    "X1,X1,X1,E1,E1,X1,E1,X1,X1,X1,E1,E1,E1,X1,X1,\n" +
+                    "X1,X1,X1,E1,E1_C1,X1,E1,X1,X1,E1,E1,E1,E1,X1,X1,\n" +
+                    "X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1_L1,\n" +
+                    "X1,E1,E1,E1,E1,E1,E1,X1,E1,E1,E1,E1,E1,E1_C1,E1_L1,\n" +
+                    "E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,\n" +
+                    "E1_P1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,\n" +
+                    "X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,\n" +
+                    "X1,X1,E1,E1,E1,X1,X1,X1,E1,E1,E1,X1,X1,X1,X1",
+            "level 25\n" +
+                    "level 25\n" +
+                    "1 3 2 2 3 3 5 3\n" +
+                    "6 1 1\n" +
+                    "X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,X1,X1,X1,\n" +
+                    "X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,\n" +
+                    "X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1_C1,\n" +
+                    "X1,X1,X1,X1,E1,E1,E1,E1,E1,X1,X1,X1,X1,\n" +
+                    "E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,E1_D1,E1_D1,X1,\n" +
+                    "E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,\n" +
+                    "X1,E1,E1_P1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
+                    "X1,X1,X1,X1,X1,E1_U1,E1_U1,E1_U1,E1_U1,E1,X1,X1,X1,\n" +
+                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,X1,X1,X1,\n" +
+                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,X1,X1,X1,\n" +
+                    "X1,X1,E1,E1,E1,X1,X1,X1,X1,X1,X1,X1,X1,\n" +
+                    "X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,X1",
+            "level 26\n" +
+                    "level 26\n" +
+                    "1 -1 3 -1 4 2\n" +
+                    "6 2 1\n" +
+                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,X1,X1,X1,\n" +
+                    "X1,X1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1_C1,E1,X1,X1,X1,\n" +
+                    "X1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,X1,X1,X1,\n" +
+                    "X1,E1,E1,E1_M1,E1_M1,E1_M1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,\n" +
+                    "X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,X1,X1,X1,E1,E1,E1,E1,E1,X1,E1_D1,E1,E1,E1,E1,\n" +
+                    "X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,X1,X1,E1,E1,E1,E1,E1,X1,E1,X1,X1,E1,E1,\n" +
+                    "E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,E1,E1,E1,E1,E1,X1,E1,E1,E1,E1,E1,\n" +
+                    "E1,E1_P1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,E1,E1,E1,E1,E1,E1,X1,E1,E1,E1,E1,\n" +
+                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,\n" +
+                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1"
     };
 
     public static class Level{

@@ -5,18 +5,19 @@ import static com.example.gamequest.gameCalsses.GameInstance.*;
 import android.widget.ImageView;
 
 import com.example.gamequest.R;
-import com.example.gamequest.SoundManager;
 import com.example.gamequest.engine3D_V1.BoxCollider;
 import com.example.gamequest.engine3D_V1.EngineObjectModel;
 import com.example.gamequest.engine3D_V1.Point3D;
 import com.example.gamequest.engine3D_V1.Vector3D;
+
+import java.util.Vector;
 
 public class PowerBullet extends GameObject{
     public static final float PROJECTILE_SPEED = 14f;
 
     public static class BulletBCube extends PowerBullet{
         public BulletBCube(Point3D pos, GameInstance game, ImageView view, int dir) {
-            super(pos, ID_BLOCK_POWER_BULLET, game, view, R.drawable.black_cube_projectile,dir);
+            super(pos, ID_BLOCK_POWER_BULLET, game, view, R.drawable.black_cube_bullet,dir);
 
             //debug("BulletBCube constructor end at pos: "+pos.toString());
         }
@@ -31,7 +32,6 @@ public class PowerBullet extends GameObject{
             game.instantiateDynamicForegroundObj(ID_BLOCK_B_CUBE, pos);
         }
     }
-
     public static class BulletGrapple extends PowerBullet{
         GameObject impactObj;
         public BulletGrapple(Point3D pos, GameInstance game, ImageView view, int dir) {
@@ -101,14 +101,58 @@ public class PowerBullet extends GameObject{
 
         }
     }
+    public static class BulletPhasing extends PowerBullet{
+        public BulletPhasing(Point3D pos, GameInstance game, ImageView view, int dir) {
+            super(pos, ID_BLOCK_POWER_BULLET, game, view, R.drawable.phase_bullet,dir);
+            ((BoxCollider)(colliders.get(0))).size = new Vector3D(game.CELL_SIZE/2f, game.CELL_SIZE/2f,0);
+            canHitPhasingObjects = true;
+
+            if(dir == DIR_UP){
+                spriteView.setRotation(-90);
+            }
+            if(dir == DIR_DOWN){
+                spriteView.setRotation(90);
+            }
+            if(dir == DIR_LEFT){
+                spriteView.setRotation(180);
+            }
+        }
+
+        @Override
+        protected void impact(GameObject impactObj) {
+            //prioritize the phasing objects
+            Vector <GameObject> objs = game.getCellForeground(impactObj.getGreedX(), impactObj.getGreedY());
+            objs.remove(impactObj);
+            boolean found = false;
+            for(int i = 0; i < objs.size() && !found; i++){
+                if(objs.get(i).phasing){
+                    found = true;
+                    impactObj = objs.get(i);
+                }
+            }//prioritize the phasing objects
+
+
+            if(!impactObj.phasing && (game.player.getPower(ID_POWER_PHASE).isInfinite() || game.player.getPower(ID_POWER_PHASE).amount > 0)){
+                game.player.getPower(ID_POWER_PHASE).decreaseAmount();
+                impactObj.setPhasing(!impactObj.phasing);
+            }else if(impactObj.phasing) {
+                game.player.getPower(ID_POWER_PHASE).addAmount(1);
+                impactObj.setPhasing(!impactObj.phasing);
+            }
+
+            destroy();
+        }
+    }
 
     public final int dir;
+    public boolean canHitPhasingObjects;
     public PowerBullet(Point3D pos, char id, GameInstance game, ImageView view, int imgRes, int dir) {
         super(pos, id, TAG_POWER_BULLET, game, view, imgRes, imgRes);
         colliders.add(new BoxCollider(this, new Point3D(0,0,0),new Vector3D(game.CELL_SIZE/10f,game.CELL_SIZE/10f,0)));
         useGravity = false;
         isObstacle = false;
         canCollectCoin = true;
+        canHitPhasingObjects = false;
         this.dir = dir;
         game.foreground.add(this);
 
@@ -135,8 +179,10 @@ public class PowerBullet extends GameObject{
     public void collision(EngineObjectModel obj, float deltaT) {
         //debug("execute collision");
         GameObject gameObj = (GameObject) obj;
-        if(gameObj.isObstacle && !gameObj.phasing && !gameObj.getTag().equals(TAG_PLAYER)){
-            impact(gameObj);
+        if(gameObj.isObstacle && !gameObj.getTag().equals(TAG_PLAYER) && !gameObj.getTag().equals(TAG_POWER_BULLET)){
+            if(!gameObj.phasing || canHitPhasingObjects){
+                impact(gameObj);
+            }
         }
     }
     @Override

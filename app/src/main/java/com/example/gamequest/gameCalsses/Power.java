@@ -148,7 +148,7 @@ public abstract class Power {
     }
     public static class Phase extends Power{
         public Phase(int amount, GameInstance game){
-            super(ID_POWER_PHASE, amount, game, R.drawable.phase);
+            super(ID_POWER_PHASE, amount, game, R.drawable.phase_bullet);
             availableDirs.add(DIR_UP);
             availableDirs.add(GameObject.DIR_DOWN);
             availableDirs.add(GameObject.DIR_LEFT);
@@ -162,7 +162,27 @@ public abstract class Power {
         }
         @Override
         protected void active(int dir) {
-            decreaseAmount();
+            boolean found = false;
+            GameObject obj = game.getCellBackground(game.player.getGreedX(), game.player.getGreedY());
+            if(obj.isObstacle){
+                found = true;
+                obj.setPhasing(!obj.phasing);
+            }
+
+            Vector <GameObject> objs = game.getCellForeground(game.player.getGreedX(), game.player.getGreedY());
+            for(int i = 0 ; i < objs.size() && !found; i++){// check for overlapped objs
+                if(objs.get(i).phasing){
+                    found = true;
+                    objs.get(i).setPhasing(!objs.get(i).phasing);
+                    debug("found");
+                }
+            }
+
+            if(!found){
+                PowerBullet bullet = new PowerBullet.BulletPhasing(game.player.getPosition(), game,null,dir);
+                game.player.bullet = bullet;
+                game.engineManager.addObject(bullet);
+            }
         }
     }
 

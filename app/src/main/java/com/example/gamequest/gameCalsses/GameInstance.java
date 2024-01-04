@@ -26,7 +26,7 @@ public class GameInstance extends Thread{
         #[indefinite amount of powers]
         power_id power amount power_id power_amount [ect]
 
-        #power_amount = 0 -> infinite uses
+        #power_amount = -1 -> infinite uses
 
         #[number] [number] [number]
         level_start_x_coordinate level_start_y_coordinate coins_for_win
@@ -43,9 +43,9 @@ public class GameInstance extends Thread{
         #[activation_lines_list] (can be empty)
         1 4 6 n
 
-        es: 0 1 -> empty block with no lines
-        es: 0 1 4 6_3 1 -> empty block that contain a coin and transmit the liens 4 and 6
-        es: 1 0 4 6_4 1 -> wall block intangible that transmit the liens 4 and 6 and contains a box that is tangible
+        es: 01 -> empty block with no lines
+        es: 0146_31 -> empty block that contain a coin and transmit the liens 4 and 6
+        es: 1046_41 -> wall block intangible that transmit the liens 4 and 6 and contains a box that is tangible
 
         #the last block need to end with '.'
         #the last block of the line do not have ','
@@ -117,7 +117,7 @@ public class GameInstance extends Thread{
             {ID_BLOCK_WALL,ID_BLOCK_NON_GRABBABLE_WALL,ID_BLOCK_ACTIVATION_WALL},
             {ID_BLOCK_COIN,ID_BLOCK_POWER_BULLET}
     };
-    public static final float LEVEL_JUMP = 1, PHASING_JUMP = 0.5f;
+    public static final float LEVEL_JUMP = 1;
     public static final char PHASING_CODE = '0';
 
 
@@ -196,7 +196,7 @@ public class GameInstance extends Thread{
     }
     //other methods
     public void applyLevelDecr(String stateDescr){
-        debug("start applyLevelDecr");
+        //debug("start applyLevelDecr");
         if(Power.YellowCube.instance != null){
             destroyDynamicForegroundObj(Power.YellowCube.instance);
             Power.YellowCube.instance = null;
@@ -221,6 +221,7 @@ public class GameInstance extends Thread{
                 //debug(CELL_SIZE * x+" "+ CELL_SIZE * y+" "+  background[x][y].getPosition().z);
                 Point3D posTmp = new Point3D(CELL_SIZE * x, CELL_SIZE * y, background[x][y].getPosition().z);
                 background[x][y].setPosition(posTmp);
+                background[x][y].setPhasing(false);
             }
         }
 
@@ -248,7 +249,7 @@ public class GameInstance extends Thread{
 
         }
 
-        debug(":|");
+        //debug(":|");
         //elaborate the player powers
         strs = subCodes[0].split(" ");
         for(int i = 0; i < strs.length; i += 2){
@@ -259,14 +260,14 @@ public class GameInstance extends Thread{
             player.addPower(Power.getPower(powerId, powerAmount, this));
         }
 
-        debug("ddd");
+        //debug("ddd");
         //elaborate puzzle starting position and coinsForWin
         strs = subCodes[1].split(" ");
         int xStart = Integer.parseInt(strs[0]);
         int yStart = Integer.parseInt(strs[1]);
         coinsForWin = Integer.parseInt(strs[2]);
 
-        debug("start to elaborate puzzle composition");
+        //debug("start to elaborate puzzle composition");
 
         //elaborate puzzle composition
         int offset = 2;
@@ -324,12 +325,12 @@ public class GameInstance extends Thread{
             context.graphicUpdate();
         }
 
-        debug("finish to apply level descr");
+        //debug("finish to apply level descr");
     }
     public void resetLevel(){
-        debug("about to reset level");
+        //debug("about to reset level");
         applyLevelDecr(level.descr);
-        debug("resetted level");
+        //debug("resetted level");
 
 
     }
@@ -339,13 +340,23 @@ public class GameInstance extends Thread{
     public Vector<GameObject> getCellForeground(int x, int y){
         Vector<GameObject> result = new Vector<>();
 
-        for(int i = 0; i < foreground.size(); i++){
-            if(foreground.get(i).getGreedX() == x && foreground.get(i).getGreedY() == y){
-                result.add(foreground.get(i));
+        if(x >= 0 && x <= background.length && y >= 0 && y < background[0].length){
+            for(int i = 0; i < foreground.size(); i++){
+                if(foreground.get(i).getGreedX() == x && foreground.get(i).getGreedY() == y){
+                    result.add(foreground.get(i));
+                }
             }
         }
 
         return result;
+    }
+    public GameObject getCellBackground(int x, int y){
+        if(x >= 0 && x <= background.length && y >= 0 && y < background[0].length){
+            return background[x][y];
+        }
+
+        return null;
+
     }
     public boolean isBackgroundFree(int x, int y){
         if(x < 0 || x >= background.length || y < 0 || y >= background.length){
@@ -456,7 +467,7 @@ public class GameInstance extends Thread{
         }
         return null;
     }
-    private boolean isBackground(char blockId){
+    public boolean isBackground(char blockId){
         for(int i = 0; i < BACKGROUND_BLOCKS.length; i++){
             if(blockId == BACKGROUND_BLOCKS[i]){
                 return true;

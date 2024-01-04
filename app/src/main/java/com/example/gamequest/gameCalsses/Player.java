@@ -212,7 +212,10 @@ public class Player extends GameObject{
     //GameObject overrides
 
     @Override
-    public void destroy() {
+    public void destroy(){
+        if(alive){
+            die();
+        }
         if(!destroyed){
             spriteViewDown.setVisibility(ImageView.INVISIBLE);
         }
