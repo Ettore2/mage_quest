@@ -233,15 +233,15 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
             }
 
             if(selectedPower == null){
-                //SoundManager.getInstance().playSound(R.raw.power_select);
+                SoundManager.getInstance().playSound(R.raw.power_select);
                 game.player.setSelectedPower(newSelectedPower);
 
             }else{
                 if(selectedPower == newSelectedPower){
-                    //SoundManager.getInstance().playSound(R.raw.power_deselect);
+                    SoundManager.getInstance().playSound(R.raw.power_deselect);
                     game.player.setSelectedPower(null);
                 }else {
-                    //SoundManager.getInstance().playSound(R.raw.power_select);
+                    SoundManager.getInstance().playSound(R.raw.power_select);
                     game.player.setSelectedPower(newSelectedPower);
 
                 }

@@ -298,7 +298,7 @@ public class Player extends GameObject{
             //Y = 0 -> up (fall = augment the y)
             //jump
             if(grounded && inputJump && !isPushing()){
-                //SoundManager.getInstance().playSound(R.raw.jump);
+                SoundManager.getInstance().playSound(R.raw.jump);
                 grounded = false;
                 currScaledYForce = -NORMAL_JUMP_FORCE*game.CELL_SIZE*deltaT/1000;
             }

@@ -10,6 +10,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Hashtable;
+import java.util.function.BiConsumer;
 
 public class SoundManager{
     private static final String PLAYER_VOLUME_FILE_NAME = "volume.txt";
@@ -19,6 +21,7 @@ public class SoundManager{
     private MediaPlayer musicPlayer;
     private AppCompatActivity context;
     private int musicVol, effectsVol;
+    private Hashtable<Integer, MediaPlayer> sounds;
 
 
     //get instance
@@ -30,7 +33,10 @@ public class SoundManager{
         }
 
         if(context != null){
-            instance.context = context;
+            if(instance.context != context){
+                instance.context = context;
+                instance.initializeSounds();
+            }
             instance.startMusicPlayer();
 
         }
@@ -47,7 +53,10 @@ public class SoundManager{
     private SoundManager(AppCompatActivity context){
         if(context != null){
             this.context = context;
+
         }
+        sounds = new Hashtable<>();
+
 
         File f = new File(context.getFilesDir()+"/"+PLAYER_VOLUME_FILE_NAME);
         //debug("get file");
@@ -78,9 +87,19 @@ public class SoundManager{
     //other methods
     public void playSound(int soundRes){
         if(context != null && effectsVol != 0){
-            MediaPlayer mp = MediaPlayer.create(context, soundRes);
-            mp.setVolume(effectsVol/100f, effectsVol/100f);
-            mp.start();
+            if(!sounds.containsKey(soundRes)){
+                sounds.put(soundRes, MediaPlayer.create(context, soundRes));
+                sounds.get(soundRes).setVolume(effectsVol, effectsVol);
+            }
+
+            debug(soundRes+"");
+            if(sounds.get(soundRes).isPlaying()){
+                sounds.get(soundRes).seekTo(0);
+            }else {
+                sounds.get(soundRes).start();
+            }
+
+
         }
 
     }
@@ -103,6 +122,12 @@ public class SoundManager{
     }
     public void setEffectsVol(int effectsVol) {
         this.effectsVol = effectsVol;
+        sounds.forEach(new BiConsumer<Integer, MediaPlayer>() {
+            @Override
+            public void accept(Integer integer, MediaPlayer mediaPlayer) {
+                mediaPlayer.setVolume(effectsVol, effectsVol);
+            }
+        });
 
     }
     public int getMusicVol(){
@@ -177,5 +202,29 @@ public class SoundManager{
 
         musicVol = vals.charAt(0);
         effectsVol = vals.charAt(1);
+    }
+    private void initializeSounds(){
+        if(context != null){
+            //debug("initialize sounds");
+            sounds.clear();
+
+            sounds.put(R.raw.black_cube, MediaPlayer.create(context, R.raw.black_cube));
+            sounds.put(R.raw.black_bullet, MediaPlayer.create(context, R.raw.black_bullet));
+            sounds.put(R.raw.jump, MediaPlayer.create(context, R.raw.jump));
+            sounds.put(R.raw.win, MediaPlayer.create(context, R.raw.win));
+            sounds.put(R.raw.player_death, MediaPlayer.create(context, R.raw.player_death));
+            sounds.put(R.raw.coin_collect, MediaPlayer.create(context, R.raw.coin_collect));
+            sounds.put(R.raw.coin_destroy, MediaPlayer.create(context, R.raw.coin_destroy));
+            sounds.put(R.raw.yellow_cube, MediaPlayer.create(context, R.raw.yellow_cube));
+            sounds.put(R.raw.phasing_bullet, MediaPlayer.create(context, R.raw.phasing_bullet));
+            sounds.put(R.raw.phasing, MediaPlayer.create(context, R.raw.phasing));
+            sounds.put(R.raw.grapple_bullet, MediaPlayer.create(context, R.raw.grapple_bullet));
+            sounds.put(R.raw.button_click, MediaPlayer.create(context, R.raw.button_click));
+            sounds.put(R.raw.teleport, MediaPlayer.create(context, R.raw.teleport));
+            sounds.put(R.raw.power_select, MediaPlayer.create(context, R.raw.power_select));
+            sounds.put(R.raw.power_deselect, MediaPlayer.create(context, R.raw.power_deselect));
+
+        }
+
     }
 }

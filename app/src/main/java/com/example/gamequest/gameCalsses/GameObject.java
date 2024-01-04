@@ -5,6 +5,7 @@ import static com.example.gamequest.gameCalsses.GameInstance.*;
 import android.widget.ImageView;
 
 import com.example.gamequest.R;
+import com.example.gamequest.SoundManager;
 import com.example.gamequest.engine3D_V1.BoxCollider;
 import com.example.gamequest.engine3D_V1.Collider3D;
 import com.example.gamequest.engine3D_V1.EngineObjectModel;

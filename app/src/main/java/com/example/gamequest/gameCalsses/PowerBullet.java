@@ -5,6 +5,7 @@ import static com.example.gamequest.gameCalsses.GameInstance.*;
 import android.widget.ImageView;
 
 import com.example.gamequest.R;
+import com.example.gamequest.SoundManager;
 import com.example.gamequest.engine3D_V1.BoxCollider;
 import com.example.gamequest.engine3D_V1.EngineObjectModel;
 import com.example.gamequest.engine3D_V1.Point3D;
@@ -24,7 +25,7 @@ public class PowerBullet extends GameObject{
 
         @Override
         protected void impact(GameObject impactObj) {
-            //SoundManager.getInstance().playSound(R.raw.black_cube);
+            SoundManager.getInstance().playSound(R.raw.black_cube);
             //debug("execute impact with: "+impactObj.getTag()+" of pos: "+impactObj.getPosition().toString()+"player at pos: "+game.player.getPosition().toString());
             destroy();
 
@@ -134,9 +135,11 @@ public class PowerBullet extends GameObject{
 
             if(!impactObj.phasing && (game.player.getPower(ID_POWER_PHASE).isInfinite() || game.player.getPower(ID_POWER_PHASE).amount > 0)){
                 game.player.getPower(ID_POWER_PHASE).decreaseAmount();
+                SoundManager.getInstance().playSound(R.raw.phasing);
                 impactObj.setPhasing(!impactObj.phasing);
             }else if(impactObj.phasing) {
                 game.player.getPower(ID_POWER_PHASE).addAmount(1);
+                SoundManager.getInstance().playSound(R.raw.phasing);
                 impactObj.setPhasing(!impactObj.phasing);
             }
 
