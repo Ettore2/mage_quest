@@ -302,16 +302,16 @@ public class LevelsManager {
                     "level 26\n" +
                     "1 -1 3 -1 4 2\n" +
                     "6 2 1\n" +
-                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,X1,X1,X1,\n" +
-                    "X1,X1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1_C1,E1,X1,X1,X1,\n" +
-                    "X1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,X1,X1,X1,\n" +
-                    "X1,E1,E1,E1_M1,E1_M1,E1_M1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,\n" +
-                    "X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,X1,X1,X1,E1,E1,E1,E1,E1,X1,E1_D1,E1,E1,E1,E1,\n" +
-                    "X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,X1,X1,E1,E1,E1,E1,E1,X1,E1,X1,X1,E1,E1,\n" +
-                    "E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,E1,E1,E1,E1,E1,X1,E1,E1,E1,E1,E1,\n" +
-                    "E1,E1_P1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,E1,E1,E1,E1,E1,E1,X1,E1,E1,E1,E1,\n" +
-                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,\n" +
-                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1",
+                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,X1,X1,X1,\n" +
+                    "X1,X1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1_C1,E1,X1,X1,X1,\n" +
+                    "X1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,\n" +
+                    "X1,E1,E1,E1_M1,E1_M1,E1_M1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,\n" +
+                    "X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,X1,X1,X1,E1,E1,E1,E1,E1,X1,E1_D1,E1,E1,E1,E1,E1,\n" +
+                    "X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,X1,X1,E1,E1,E1,E1,E1,X1,E1,E1,E1,X1,E1,E1,\n" +
+                    "E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,E1,E1,E1,E1,E1,X1,E1,E1,E1,E1,E1,E1,\n" +
+                    "E1,E1_P1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,E1,E1,E1,E1,E1,E1,X1,E1,E1,E1,E1,E1,\n" +
+                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,\n" +
+                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1",
             "level 27\n" +
                     "level 27\n" +
                     "2 -1 4 2\n" +
