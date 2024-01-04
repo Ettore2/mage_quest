@@ -93,7 +93,7 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
     //other methods
     public void graphicUpdate(){
         //coins text
-        //debug("g update LevelActivity1");
+        debug("g update LevelActivity1???????????????????????????????????????????");
         coinsView.setText(game.getCoinCollected() +"/"+game.getCoinsForWin());
         //debug("g update LevelActivity2");
 
@@ -170,7 +170,7 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
             btnMoveRight.setBackgroundColor(COLOR_NORMAL);
 
         }
-        //debug("g update LevelActivity7");
+        debug("g update LevelActivity7!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
     }
 
@@ -270,7 +270,6 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
     @Override
     public void run() {
         while (runManager && ! Thread.interrupted()){
-            //debug("thread start");
             if(game != null && engineManager != null && game.player != null){
 
                 if(game.currState == STATE_PLAYING){
@@ -343,8 +342,10 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
                 //debug("thread end");
 
             }
+            debug("thread run");
 
         }
+        debug("thread stop");
     }
 
     @Override

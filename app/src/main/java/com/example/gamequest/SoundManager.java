@@ -77,7 +77,7 @@ public class SoundManager{
 
     //other methods
     public void playSound(int soundRes){
-        if(context != null){
+        if(context != null && effectsVol != 0){
             MediaPlayer mp = MediaPlayer.create(context, soundRes);
             mp.setVolume(effectsVol/100f, effectsVol/100f);
             mp.start();
@@ -89,6 +89,16 @@ public class SoundManager{
 
         if(musicPlayer != null){
             musicPlayer.setVolume(musicVol/100f, musicVol/100f);
+        }
+
+        if(musicVol == 0){
+            if(musicPlayer.isPlaying()){
+                stopMusicPlayer();
+            }
+        }else {
+            if(!musicPlayer.isPlaying()){
+                startMusicPlayer();
+            }
         }
     }
     public void setEffectsVol(int effectsVol) {
@@ -130,12 +140,15 @@ public class SoundManager{
             if(context != null){
                 musicPlayer = MediaPlayer.create(context,R.raw.music);
                 musicPlayer.setVolume(musicVol/100f,musicVol/100f);
-                musicPlayer.start();
                 musicPlayer.setLooping(true);
             }
-        }else {
-            musicPlayer.start();
         }
+
+        if(musicVol != 0){
+            musicPlayer.start();
+
+        }
+
     }
     public void stopMusicPlayer(){
         if(musicPlayer != null){
