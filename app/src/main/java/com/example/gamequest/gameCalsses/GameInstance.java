@@ -107,7 +107,7 @@ public class GameInstance extends Thread{
     public static final String TAG_ACTIVATION_WALL = "act_wall";
     public static final String TAG_COIN = "coin";
     public static final String TAG_NON_GRABBABLE_WALL = "n_g_wall";
-    public static final String TAG_POWER_BULLET = "n_g_wall";
+    public static final String TAG_POWER_BULLET = "power_bullet";
     public static final int[][] OBJECTS_PRIORITY_LEVELS = {
             {ID_BLOCK_EMPTY},
             {ID_BLOCK_SPIKE_DOWN,ID_BLOCK_SPIKE_UP,ID_BLOCK_SPIKE_LEFT,ID_BLOCK_SPIKE_RIGHT},
