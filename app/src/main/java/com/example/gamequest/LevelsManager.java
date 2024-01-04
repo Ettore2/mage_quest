@@ -240,14 +240,14 @@ public class LevelsManager {
                     "X1,X1,X1,X1,E1,E1,E1_P1,E1,E1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,\n" +
                     "X1,X1,X1,X1,E1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1",
             "level 21\n" +
-                    "power phasing: shoot a bullet that usa a power charge to make things phasing and regain a charge by making them non phasing (can be used iven on 0 charges to de.phase things)\n" +
+                    "power phasing: shoot a bullet that use a power charge to make things phasing and regain a charge by making them non phasing (can be used iven on 0 charges to de-phase things)\n" +
                     "4 1\n" +
                     "9 5 1\n" +
                     "X1,X1,X1,E1,E1,E1,E1,E1,E1,X1,E1,E1,E1,\n" +
                     "E1,E1,E1,E1,E1,E1,X1,E1,E1,X1,X1,E1,E1_C1,\n" +
                     "X1,X1,E1,E1_P1,E1,E1,X1,X1,X1,X1,X1,X1,X1",
             "level 22\n" +
-                    "if you de-phasing object has his space occupied he will destroy the other object\n" +
+                    "if a de-phasing object has his space occupied it will destroy the other object\n" +
                     "4 1\n" +
                     "8 6 2\n" +
                     "X1,E1,E1,E1,E1,E1,E1,E1,E1,X1,\n" +
