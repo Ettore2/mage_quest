@@ -306,9 +306,9 @@ public class LevelsManager {
                     "X1,X1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1_C1,E1,X1,X1,X1,\n" +
                     "X1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,\n" +
                     "X1,E1,E1,E1_M1,E1_M1,E1_M1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,\n" +
-                    "X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,X1,X1,X1,E1,E1,E1,E1,E1,X1,E1_D1,E1,E1,E1,E1,E1,\n" +
-                    "X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,X1,X1,E1,E1,E1,E1,E1,X1,E1,E1,E1,X1,E1,E1,\n" +
-                    "E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,E1,E1,E1,E1,E1,X1,E1,E1,E1,E1,E1,E1,\n" +
+                    "X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,X1,X1,X1,E1,E1,E1,E1,E1,X1,X1,E1,E1,E1,E1,E1,\n" +
+                    "X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,X1,X1,E1,E1,E1,E1,E1,X1,X1,E1,E1,X1,E1,E1,\n" +
+                    "E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,E1,E1,E1,E1,E1,X1,X1,E1,E1,E1,E1,E1,\n" +
                     "E1,E1_P1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,E1,E1,E1,E1,E1,E1,X1,E1,E1,E1,E1,E1,\n" +
                     "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,\n" +
                     "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1",
