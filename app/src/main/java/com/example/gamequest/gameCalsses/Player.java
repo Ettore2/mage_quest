@@ -18,10 +18,10 @@ import java.util.Vector;
 public class Player extends GameObject{
 
     public static final float ANIM_FRAME_DURATION = 350f;
-    public static final float NORMAL_GROUND_SPEED = 5.2f, NORMAL_AIR_SPEED = 5.2f;// multiply with CELL_SIZE, scaled with frameRate
+    public static final float NORMAL_GROUND_SPEED = 5.5f, NORMAL_AIR_SPEED = 5.2f;// multiply with CELL_SIZE, scaled with frameRate
     public static final float NORMAL_PUSHING_SPEED = NORMAL_GROUND_SPEED*80/100f;// multiply with CELL_SIZE, scaled with frameRate
-    public static final float NORMAL_JUMP_FORCE = 11.8f;// multiply with CELL_SIZE, scaled with frameRate
-    public static final float NORMAL_JUMP_DECELERATION = GRAVITY_FORCE*60/100;// multiply with CELL_SIZE, scaled with frameRate
+    public static final float NORMAL_JUMP_FORCE = 10f;// multiply with CELL_SIZE, scaled with frameRate
+    public static final float NORMAL_JUMP_DECELERATION = GRAVITY_FORCE*50/100;// multiply with CELL_SIZE, scaled with frameRate
     public static final float NORMAL_GRAPPLE_SPEED = 10f;
     public static final int FRAMES_FOR_PUSH_START = 8;
     protected Vector<Power> powers;

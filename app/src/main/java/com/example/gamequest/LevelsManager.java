@@ -205,8 +205,8 @@ public class LevelsManager {
                     "3 3 1\n" +
                     "E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,E1_D1,E1_D1,E1_D1,E1_D1,E1_D1,E1_D1,X1,X1,X1,\n" +
                     "X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1_P1,E1,E1,E1,E1,E1,E1,E1,E1,E1,G1,\n" +
-                    "X1,X1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,X1,X1,X1,E1_C1,X1,\n" +
-                    "X1,X1,X1,X1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,X1,E1,X1,X1,X1,X1,X1,\n" +
+                    "X1,X1,E1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,X1,X1,E1,X1,X1,X1,E1_C1,X1,\n" +
+                    "X1,X1,X1,X1,E1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,E1,X1,X1,X1,X1,X1,\n" +
                     "X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,X1",
             "level 19\n" +
                     "level 19\n" +
