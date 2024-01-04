@@ -153,13 +153,13 @@ public class LevelsManager {
             "level 14\n" +
                     "level 14\n" +
                     "1 -1 2 1 3 1\n" +
-                    "9 5 1\n" +
-                    "E1,E1,E1,E1,E1,E1,E1,E1_D1_U1,E1,X1,X1,X1,X1,X1,X1,\n" +
-                    "E1,E1,E1,E1,E1,X1,X1,X1,E1,X1,X1,X1,X1,X1,X1,\n" +
-                    "E1,E1,E1_M1,E1,E1,X1,X1,X1,E1,X1,X1,X1,X1,X1,X1,\n" +
-                    "E1,E1,E1_M1,E1,E1,X1,X1,X1,E1,X1,X1,E1_D1,E1_D1,E1_D1,E1_D1_L1,\n" +
-                    "E1_P1,E1,E1_M1,E1,E1,X1,X1,X1,E1,X1,X1,E1,E1,E1,E1_C1_U1_L1,\n" +
-                    "X1,X1,X1,X1,E1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1",
+                    "9 2 1\n" +
+                    "E1,E1,E1,E1,E1,E1,E1,E1_D1_U1,E1,X1,X1,X1,X1,X1,X1,X1,\n" +
+                    "E1,E1,E1,E1,E1,X1,X1,X1,E1,X1,X1,X1,X1,X1,X1,X1,\n" +
+                    "E1,E1,E1_M1,E1,E1,X1,X1,X1,E1,X1,X1,X1,X1,X1,X1,X1,\n" +
+                    "E1,E1,E1_M1,E1,E1,X1,X1,X1,E1,X1,E1,E1,E1,E1,E1_D1,X1,\n" +
+                    "E1_P1,E1,E1_M1,E1,E1,X1,X1,X1,E1,X1,E1,E1_M1,E1,E1,E1_U1,E1_C1,\n" +
+                    "X1,X1,X1,X1,E1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1",
             "level 15\n" +
                     "level 15\n" +
                     "2 5 3 6\n" +
