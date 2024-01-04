@@ -146,6 +146,7 @@ public class SoundManager{
 
         if(musicVol != 0){
             musicPlayer.start();
+            //debug("start music");
 
         }
 
@@ -153,6 +154,7 @@ public class SoundManager{
     public void stopMusicPlayer(){
         if(musicPlayer != null){
             musicPlayer.pause();
+            //debug("stop music");
         }
 
     }

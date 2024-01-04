@@ -83,17 +83,17 @@ public class EngineManager {
         //debug("hi");
         if(frameTimer >= framesDelay){
             if((timerToll < 0 || frameTimer <= framesDelay*timerToll/100)){
-                debug("do updates");
+                //debug("do updates");
                 doLogicUpdates(framesDelay);
-                debug("doLogicUpdates");
+                //debug("doLogicUpdates");
                 doCollisions(framesDelay);
-                debug("doCollisions");
+                //debug("doCollisions");
                 doPostCollisionUpdates(framesDelay);
-                debug("doPostCollisionUpdates");
+                //debug("doPostCollisionUpdates");
                 doGraphicUpdates(framesDelay);
-                debug("doGraphicUpdates");
+                //debug("doGraphicUpdates");
                 doPostGraphicUpdates(framesDelay);
-                debug("doPostGraphicUpdates");
+                //debug("doPostGraphicUpdates");
 
             }
 
