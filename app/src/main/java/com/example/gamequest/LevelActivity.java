@@ -35,7 +35,6 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
     public PowerImgButton[] btnPowers;
     public PowerImgButton selectedPower;
     public Thread managerT;
-    public boolean runManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,9 +83,7 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
         graphicUpdate();
 
         //start the game manager
-        runManager = true;
-        managerT = new Thread(this);
-        managerT.start();
+        startManagerThread();
     }
 
 
@@ -175,6 +172,21 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
     }
 
 
+    //function-methods
+    private void startManagerThread(){
+        if(managerT == null){
+            managerT = new Thread(this);
+            managerT.start();
+        }
+    }
+    private void stopManagerThread(){
+        if(managerT != null){
+            managerT.interrupt();
+            managerT = null;
+        }
+    }
+
+
     //interface inputs methods
     public void movementBtn(View view){
         /*done in run
@@ -232,10 +244,7 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
     public void optionsBtn(View view){
         SoundManager.getInstance().playSound(R.raw.button_click);
         if(view.equals(btnMenuQuit) || view.equals(btnQuit)){
-            if(managerT != null){
-                managerT.interrupt();
-            }
-            runManager = false;
+            stopManagerThread();
 
             Intent intent = new Intent(this, LevelsSelectionActivity.class);
             intent.putExtra(INTENT_EXTRA_LEVEL_ID, game.level.id);
@@ -251,10 +260,7 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
                 game.setLevelById(game.getLevelId()+1, true);
                 game.resetLevel();
             }else {
-                if(managerT != null){
-                    managerT.interrupt();
-                }
-                runManager = false;
+                stopManagerThread();
 
                 Intent intent = new Intent(this, LevelsSelectionActivity.class);
                 intent.putExtra(INTENT_EXTRA_LEVEL_ID, game.level.id);
@@ -269,7 +275,8 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
     //run
     @Override
     public void run() {
-        while (runManager && ! Thread.interrupted()){
+        debug("manager thread start");
+        while (!Thread.interrupted()){
             if(game != null && engineManager != null && game.player != null){
 
                 if(game.currState == STATE_PLAYING){
@@ -339,13 +346,13 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
                         }
                     });
                 }//execute a frame
-                //debug("thread end");
 
+                //debug("mT do work");
             }
-            debug("thread run");
+            //debug("manage thread run");
 
         }
-        debug("thread stop");
+        debug("manager thread stop");
     }
 
     @Override
@@ -354,6 +361,7 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
         //debug("hi");
 
         SoundManager.getInstance().startMusicPlayer();
+        startManagerThread();
 
     }
 
@@ -363,6 +371,8 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
         //debug("goodbye");
 
         SoundManager.getInstance().stopMusicPlayer();
+        stopManagerThread();
+
     }
 }
 
