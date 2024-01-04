@@ -125,7 +125,7 @@ public class SoundManager{
         sounds.forEach(new BiConsumer<Integer, MediaPlayer>() {
             @Override
             public void accept(Integer integer, MediaPlayer mediaPlayer) {
-                mediaPlayer.setVolume(effectsVol, effectsVol);
+                mediaPlayer.setVolume(effectsVol/100f, effectsVol/100f);
             }
         });
 
@@ -224,6 +224,12 @@ public class SoundManager{
             sounds.put(R.raw.power_select, MediaPlayer.create(context, R.raw.power_select));
             sounds.put(R.raw.power_deselect, MediaPlayer.create(context, R.raw.power_deselect));
 
+            sounds.forEach(new BiConsumer<Integer, MediaPlayer>() {
+                @Override
+                public void accept(Integer integer, MediaPlayer mediaPlayer) {
+                    mediaPlayer.setVolume(effectsVol/100f, effectsVol/100f);
+                }
+            });
         }
 
     }
