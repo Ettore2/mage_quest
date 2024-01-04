@@ -321,7 +321,6 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
                         public void run() {
                             //debug("about to engineManager.doCycle()");
                             engineManager.doCycle();
-                            //graphicUpdate();
                             //debug("done engineManager.doCycle()");
 
                             /*

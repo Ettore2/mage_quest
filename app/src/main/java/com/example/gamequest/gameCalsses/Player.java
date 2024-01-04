@@ -177,6 +177,7 @@ public class Player extends GameObject{
 
             if(selectedPower != null){
                 selectedPower = null;
+                game.context.graphicUpdate();
             }
         }
 
@@ -381,17 +382,21 @@ public class Player extends GameObject{
                 if(inputMoveUp && selectedPower.isAcceptableDir(DIR_UP)){
                     selectedPower.use(DIR_UP);
                     selectedPower = null;
+                    game.context.graphicUpdate();
                 }else if(inputMoveDown && selectedPower.isAcceptableDir(DIR_DOWN)){
                     selectedPower.use(DIR_DOWN);
                     selectedPower = null;
+                    game.context.graphicUpdate();
                 }else if(inputMoveLeft && selectedPower.isAcceptableDir(DIR_LEFT)){
                     setFacingDir(DIR_LEFT);
                     selectedPower.use(DIR_LEFT);
                     selectedPower = null;
+                    game.context.graphicUpdate();
                 }else if(inputMoveRight && selectedPower.isAcceptableDir(DIR_RIGHT)){
                     setFacingDir(DIR_RIGHT);
                     selectedPower.use(DIR_RIGHT);
                     selectedPower = null;
+                    game.context.graphicUpdate();
                 }
 
             }

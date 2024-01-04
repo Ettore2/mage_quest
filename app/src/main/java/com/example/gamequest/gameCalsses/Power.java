@@ -256,9 +256,9 @@ public abstract class Power {
         }
     }
     public void use(int dir){
-        debug("power use start");
+        //debug("power use start");
         active(dir);
-        debug("power use end");
+        //debug("power use end");
     }
     public String toString(){
         return "power id: " + id + "\t amount: " + amount;
