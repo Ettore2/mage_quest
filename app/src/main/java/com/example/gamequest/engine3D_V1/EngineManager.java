@@ -83,17 +83,17 @@ public class EngineManager {
         //debug("hi");
         if(frameTimer >= framesDelay){
             if((timerToll < 0 || frameTimer <= framesDelay*timerToll/100)){
-                //debug("do updates");
+                debug("do updates");
                 doLogicUpdates(framesDelay);
-                //debug("doLogicUpdates");
+                debug("doLogicUpdates");
                 doCollisions(framesDelay);
-                //debug("doCollisions");
+                debug("doCollisions");
                 doPostCollisionUpdates(framesDelay);
-                //debug("doPostCollisionUpdates");
+                debug("doPostCollisionUpdates");
                 doGraphicUpdates(framesDelay);
-                //debug("doGraphicUpdates");
+                debug("doGraphicUpdates");
                 doPostGraphicUpdates(framesDelay);
-                //debug("doPostGraphicUpdates");
+                debug("doPostGraphicUpdates");
 
             }
 
@@ -136,6 +136,7 @@ public class EngineManager {
     }
     synchronized public Vector<EngineObjectModel> getManagedObjects(){
         return  managedObjects;
+
     }
     /**
      * returns true if the object is managed by this manager
@@ -155,8 +156,8 @@ public class EngineManager {
         lastExecution = currDate;
     }
     protected void doLogicUpdates(float deltaT){
-        for (EngineObjectModel object : managedObjects){
-            object.logicUpdate(deltaT);
+        for (int i = 0; i < managedObjects.size(); i++){
+            managedObjects.get(i).logicUpdate(deltaT);
         }
     }
 
@@ -181,21 +182,21 @@ public class EngineManager {
         }
     }
     protected void doPostCollisionUpdates(float deltaT){
-        for (EngineObjectModel object : managedObjects){
-            object.postCollisionUpdate(deltaT);
+        for (int i = 0; i < managedObjects.size(); i++){
+            managedObjects.get(i).postCollisionUpdate(deltaT);
         }
     }
     protected void doGraphicUpdates(float deltaT){
-        for (EngineObjectModel object : managedObjects){
-            if(object.needGraphicUpdate){
-                object.graphicUpdate(deltaT);
+        for (int i = 0; i < managedObjects.size(); i++){
+            if(managedObjects.get(i).needGraphicUpdate){
+                managedObjects.get(i).graphicUpdate(deltaT);
             }
 
         }
     }
     protected void doPostGraphicUpdates(float deltaT){
-        for (EngineObjectModel object : managedObjects){
-            object.postGraphicUpdate(deltaT);
+        for (int i = 0; i < managedObjects.size(); i++){
+            managedObjects.get(i).postGraphicUpdate(deltaT);
         }
     }
 

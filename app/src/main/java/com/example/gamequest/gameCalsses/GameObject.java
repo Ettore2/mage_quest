@@ -317,6 +317,7 @@ public abstract class GameObject extends EngineObjectModel {
         if(!destroyed){
             game.engineManager.removeObject(this);
 
+
             spriteView.setVisibility(ImageView.INVISIBLE);
 
             destroyed = true;

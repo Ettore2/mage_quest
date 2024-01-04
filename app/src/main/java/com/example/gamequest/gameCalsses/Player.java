@@ -32,7 +32,7 @@ public class Player extends GameObject{
     protected int thisFrameMoveIntent;
     protected boolean inputMoveUp, inputMoveDown, inputMoveLeft, inputMoveRight;
     protected boolean inputJump;
-    protected Power inputPower;
+    protected Power selectedPower;
     protected BaseAnimation animMove, animIdle, animAirIdle, animAirIdleDown, animAirMove, animAirMoveDown;
     protected int thisFramePushDir, pushingFrames;
     protected Point3D pushEndPos;
@@ -98,6 +98,14 @@ public class Player extends GameObject{
 
 
     //other methods
+    public void setSelectedPower(Power selectedPower) {
+        this.selectedPower = selectedPower;
+
+    }
+    public Power getSelectedPower() {
+        return selectedPower;
+
+    }
     public boolean havePower(int powerId){
         for(int i = 0; i < powers.size(); i++){
             if(powers.get(i).getId() == powerId){
@@ -166,11 +174,11 @@ public class Player extends GameObject{
     public void inputJump(){
         if(grounded && !isPushing() && bullet == null){
             inputJump = true;
-        }
 
-    }
-    public void inputPower(Power p){
-        this.inputPower = p;
+            if(selectedPower != null){
+                selectedPower = null;
+            }
+        }
 
     }
 
@@ -191,6 +199,7 @@ public class Player extends GameObject{
             thisFramePushDir = DIR_STOP;
             thisFrameMoveIntent = DIR_STOP;
             pushingFrames = 0;
+            selectedPower = null;
             inputJump = false;
             inputMoveDown = false;
             inputMoveLeft = false;
@@ -228,6 +237,7 @@ public class Player extends GameObject{
         thisFramePushDir = DIR_STOP;
         thisFrameMoveIntent = DIR_STOP;
         pushingFrames = 0;
+        selectedPower = null;
         inputJump = false;
         inputMoveDown = false;
         inputMoveLeft = false;
@@ -352,9 +362,9 @@ public class Player extends GameObject{
             }
         }
 
-        //reset status
-        thisFrameMoveIntent = DIR_STOP;
-        if(inputPower == null && bullet == null) {
+        thisFrameMoveIntent = DIR_STOP;//reset status
+
+        if(selectedPower == null && bullet == null) {
             if (inputMoveRight && !inputMoveLeft) {
                 thisFrameMoveIntent = DIR_RIGHT;
             }
@@ -364,9 +374,28 @@ public class Player extends GameObject{
             }
             thisFMovementDir = thisFrameMoveIntent;
 
-        }
+        }//normal movement
 
-        //powersActivation not done there
+        if(selectedPower != null && bullet == null){
+            if(selectedPower.isUsable()){
+                if(inputMoveUp && selectedPower.isAcceptableDir(DIR_UP)){
+                    selectedPower.use(DIR_UP);
+                    selectedPower = null;
+                }else if(inputMoveDown && selectedPower.isAcceptableDir(DIR_DOWN)){
+                    selectedPower.use(DIR_DOWN);
+                    selectedPower = null;
+                }else if(inputMoveLeft && selectedPower.isAcceptableDir(DIR_LEFT)){
+                    setFacingDir(DIR_LEFT);
+                    selectedPower.use(DIR_LEFT);
+                    selectedPower = null;
+                }else if(inputMoveRight && selectedPower.isAcceptableDir(DIR_RIGHT)){
+                    setFacingDir(DIR_RIGHT);
+                    selectedPower.use(DIR_RIGHT);
+                    selectedPower = null;
+                }
+
+            }
+        }//powersActivation
     }
 
     @Override
@@ -500,7 +529,7 @@ public class Player extends GameObject{
                     spriteViewDown.setImageResource((Integer)(animAirIdleDown.getCurrFrame().info));
                 }
             }else {
-                setFAcingDir(thisFMovementDir);
+                setFacingDir(thisFMovementDir);
 
                 if(grounded){
                     animMove.update(deltaT);
@@ -514,7 +543,7 @@ public class Player extends GameObject{
             }
         }
     }
-    public void setFAcingDir(int rid){
+    public void setFacingDir(int rid){
         if(rid == DIR_RIGHT){
             spriteView.setRotationY(0);
             spriteViewDown.setRotationY(0);

@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.gamequest.engine3D_V1.EngineManager;
 import com.example.gamequest.gameCalsses.GameInstance;
+import com.example.gamequest.gameCalsses.Player;
 import com.example.gamequest.gameCalsses.Power;
 
 import java.util.Vector;
@@ -33,7 +34,6 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
     public ImageButton btnMoveRight, btnMoveLeft, btnMoveUp, btnMoveDown, btnMoveJump;
     public ImageButton btnReset, btnQuit;
     public PowerImgButton[] btnPowers;
-    public PowerImgButton selectedPower;
     public Thread managerT;
 
     @Override
@@ -77,7 +77,6 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
         handler = new Handler(Looper.getMainLooper());
         engineManager = new EngineManager(180, false);
         game = new GameInstance(this,(ViewGroup) findViewById(R.id.layout_game), engineManager,levelId);
-        selectedPower = null;
         //debug("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
 
         graphicUpdate();
@@ -90,11 +89,11 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
     //other methods
     public void graphicUpdate(){
         //coins text
-        debug("g update LevelActivity1???????????????????????????????????????????");
+        //debug("g update LevelActivity1???????????????????????????????????????????");
         coinsView.setText(game.getCoinCollected() +"/"+game.getCoinsForWin());
         //debug("g update LevelActivity2");
 
-        //power buttons
+                //power buttons
         Vector<Power> playerPowers = game.player.getPowers();
         for(int i = 0; i < btnPowers.length; i++){
             if(playerPowers.size() > i){
@@ -139,12 +138,21 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
 
         for(int i = 0; i < btnPowers.length; i++){
             btnPowers[i].button.setBackgroundColor(COLOR_NORMAL);
+
         }
 
-        if(selectedPower != null){
-            selectedPower.button.setBackgroundColor(COLOR_SPECIAL);
 
-            Vector<Integer> availableDirs = selectedPower.power.getAvailableDirs();
+        Power selectedPower = game.player.getSelectedPower();
+        for(int i = 0; i < btnPowers.length; i++){
+            if(btnPowers[i].power != null && btnPowers[i].power == selectedPower){
+                btnPowers[i].button.setBackgroundColor(COLOR_SPECIAL);
+            }else {
+                btnPowers[i].button.setBackgroundColor(COLOR_NORMAL);
+            }
+        }
+        if(selectedPower != null){
+
+            Vector<Integer> availableDirs = selectedPower.getAvailableDirs();
             for(int i = 0; i < availableDirs.size(); i++){
                 if(availableDirs.get(i) == DIR_UP){
                     btnMoveUp.setBackgroundColor(COLOR_SPECIAL);
@@ -215,24 +223,27 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
     }
     public void powerBtn(View view){
         if(game.currState == STATE_PLAYING && game.player.bullet == null && game.player.grounded){
+
+            Power selectedPower = game.player.getSelectedPower();
+            Power newSelectedPower = null;
+            for(int i = 0; i < btnPowers.length; i++){
+                if(btnPowers[i].button.equals(view) && btnPowers[i].power.isUsable()){
+                    newSelectedPower = btnPowers[i].power;
+                }
+            }
+
             if(selectedPower == null){
                 //SoundManager.getInstance().playSound(R.raw.power_select);
-                for(int i = 0; i < btnPowers.length; i++){
-                    if(btnPowers[i].button.equals(view) && btnPowers[i].power.isUsable()){
-                        selectedPower = btnPowers[i];
-                    }
-                }
+                game.player.setSelectedPower(newSelectedPower);
+
             }else{
-                if(selectedPower.button.equals(view)){
+                if(selectedPower == newSelectedPower){
                     //SoundManager.getInstance().playSound(R.raw.power_deselect);
-                    selectedPower = null;
+                    game.player.setSelectedPower(null);
                 }else {
                     //SoundManager.getInstance().playSound(R.raw.power_select);
-                    for(int i = 0; i < btnPowers.length; i++){
-                        if(btnPowers[i].button.equals(view) && btnPowers[i].power.isUsable()){
-                            selectedPower = btnPowers[i];
-                        }
-                    }
+                    game.player.setSelectedPower(newSelectedPower);
+
                 }
             }
 
@@ -275,61 +286,44 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
     //run
     @Override
     public void run() {
-        debug("manager thread start");
+        //debug("manager thread start");
         while (!Thread.interrupted()){
             if(game != null && engineManager != null && game.player != null){
+                Player player = game.player;
+                Power selectedPower = player.getSelectedPower();
 
                 if(game.currState == STATE_PLAYING){
                     if(btnMoveRight.isPressed()){
-                        if(selectedPower == null){
-                            game.player.inputMovement(DIR_RIGHT);
-                        }else if(selectedPower.power.isAcceptableDir(DIR_RIGHT)){
-                            selectedPower.power.use(DIR_RIGHT);
-                            selectedPower = null;
-                            graphicUpdate();
-                        }
+                        game.player.inputMovement(DIR_RIGHT);
 
                     }
                     if(btnMoveLeft.isPressed()){
-                        if(selectedPower == null) {
-                            game.player.inputMovement(DIR_LEFT);
-                        }else if(selectedPower.power.isAcceptableDir(DIR_LEFT)){
-                            selectedPower.power.use(DIR_LEFT);
-                            selectedPower = null;
-                            graphicUpdate();
-                        }
+                        game.player.inputMovement(DIR_LEFT);
+
                     }
                     if(btnMoveUp.isPressed()){
-                        if(selectedPower == null) {
-                            game.player.inputMovement(DIR_UP);
-                        }else if(selectedPower.power.isAcceptableDir(DIR_UP)){
-                            selectedPower.power.use(DIR_UP);
-                            selectedPower = null;
-                            graphicUpdate();
-                        }
+                        game.player.inputMovement(DIR_UP);
+
                     }
                     if(btnMoveDown.isPressed()){
-                        if(selectedPower == null) {
-                            game.player.inputMovement(DIR_DOWN);
-                        }else if(selectedPower.power.isAcceptableDir(DIR_DOWN)){
-                            selectedPower.power.use(DIR_DOWN);
-                            selectedPower = null;
-                            graphicUpdate();
-                        }
+                        game.player.inputMovement(DIR_DOWN);
+
                     }
-                    if(btnMoveJump.isPressed() && selectedPower == null){
+                    if(btnMoveJump.isPressed()){
                         game.player.inputJump();
+
                     }
                 }//set inputs
 
                 if(engineManager.shouldCycle()){
-                    //debug("  post");
+                    //debug("do a post ");
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
-                            //debug("player start pos: "+game.player.getPosition().toString());
+                            //debug("about to engineManager.doCycle()");
                             engineManager.doCycle();
-                            //debug("player end pos: "+game.player.getPosition().toString()+"grounded:"+game.player.grounded);
+                            //graphicUpdate();
+                            //debug("done engineManager.doCycle()");
 
                             /*
                             int count = 0;
@@ -344,7 +338,7 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
                              */
                             //debug(game.availableImgs.size()+" | "+game.foreground.size());
                         }
-                    });
+                    });//need to be done by the "primary" thread
                 }//execute a frame
 
                 //debug("mT do work");
@@ -352,7 +346,7 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
             //debug("manage thread run");
 
         }
-        debug("manager thread stop");
+        //debug("manager thread stop");
     }
 
     @Override

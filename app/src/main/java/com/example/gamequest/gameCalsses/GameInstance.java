@@ -487,6 +487,7 @@ public class GameInstance extends Thread{
             objTmp.snapToGreed();
             engineManager.addObject(objTmp);
 
+
             return objTmp;
         }
         return null;

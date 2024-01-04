@@ -4,9 +4,7 @@ import static com.example.gamequest.engine3D_V1.EngineObjectModel.*;
 import static com.example.gamequest.gameCalsses.GameInstance.*;
 
 import com.example.gamequest.R;
-import com.example.gamequest.SoundManager;
 import com.example.gamequest.engine3D_V1.Point3D;
-import com.example.gamequest.engine3D_V1.Vector3D;
 
 import java.util.Vector;
 
@@ -258,19 +256,9 @@ public abstract class Power {
         }
     }
     public void use(int dir){
-        //debug("power use start");
-        game.player.setFAcingDir(dir);
-        game.context.handler.post(new Runnable() {
-            @Override
-            public void run() {
-                //debug("power active start");
-                active(dir);
-                //debug("power active end");
-                game.context.graphicUpdate();
-            }
-        });
-
-        //debug("power use end");
+        debug("power use start");
+        active(dir);
+        debug("power use end");
     }
     public String toString(){
         return "power id: " + id + "\t amount: " + amount;
