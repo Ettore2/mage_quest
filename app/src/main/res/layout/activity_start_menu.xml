@@ -21,108 +21,172 @@
 
     <ImageView
         android:id="@+id/img_vol_options"
-        android:layout_width="408dp"
-        android:layout_height="259dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.912"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintDimensionRatio="408:259"
+        app:layout_constraintEnd_toStartOf="@id/guideline_4"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@id/guideline_3"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.761"
+        app:layout_constraintVertical_bias="0.8"
         app:srcCompat="@drawable/volume_options_box" />
 
     <Button
         android:id="@+id/btn_play_levles"
-        android:layout_width="@dimen/start_menu_btn_width"
-        android:layout_height="@dimen/start_menu_btn_height"
-        android:layout_marginTop="84dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/start_menu_btn"
         android:onClick="playLevelsBtn"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="20dp"
         android:text="@string/play_levels"
         android:textColor="#000000"
-        android:textSize="@dimen/start_menu_btn_text_size"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.116"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="180:70"
+        app:layout_constraintEnd_toStartOf="@id/guideline_2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/guideline_1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.339" />
 
     <Button
         android:id="@+id/btn_options"
-        android:layout_width="@dimen/start_menu_btn_width"
-        android:layout_height="@dimen/start_menu_btn_height"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/start_menu_btn"
         android:onClick="optionsBtn"
         android:text="@string/options"
         android:textColor="#000000"
-        android:textSize="@dimen/start_menu_btn_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/btn_play_levles"
-        app:layout_constraintHorizontal_bias="0.116"
-        app:layout_constraintStart_toStartOf="@+id/btn_play_levles"
-        app:layout_constraintTop_toBottomOf="@+id/btn_play_levles"
-        app:layout_constraintVertical_bias="0.235" />
+        app:layout_constraintDimensionRatio="180:70"
+        app:layout_constraintEnd_toEndOf="@+id/guideline_2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/guideline_1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.76"
+        app:autoSizeTextType="uniform"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="20dp" />
 
     <SeekBar
         android:id="@+id/seekBar_music_vol"
-        android:layout_width="@dimen/volume_seekbar_width"
-        android:layout_height="@dimen/volume_seekbar_height"
-        android:layout_marginStart="4dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:max="100"
         android:progress="50"
         android:progressTint="#4B5EC8"
         android:thumbTint="#001CB8"
         app:layout_constraintBottom_toBottomOf="@+id/text_music_vol"
-        app:layout_constraintStart_toEndOf="@+id/text_music_vol"
+        app:layout_constraintDimensionRatio="6:1"
+        app:layout_constraintEnd_toStartOf="@id/guideline_7"
+        app:layout_constraintHorizontal_bias="0.385"
+        app:layout_constraintStart_toEndOf="@id/guideline_6"
         app:layout_constraintTop_toTopOf="@+id/text_music_vol" />
 
     <SeekBar
         android:id="@+id/seekBar_effects_vol"
-        android:layout_width="@dimen/volume_seekbar_width"
-        android:layout_height="@dimen/volume_seekbar_height"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:max="100"
         android:progress="50"
         android:progressTint="#C8362B"
-        android:scrollbarSize="4dp"
         android:thumbTint="#780800"
         app:layout_constraintBottom_toBottomOf="@+id/text_effects_vol"
-        app:layout_constraintEnd_toEndOf="@+id/seekBar_music_vol"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/seekBar_music_vol"
-        app:layout_constraintTop_toTopOf="@+id/text_effects_vol"
-        app:layout_constraintVertical_bias="0.194" />
+        app:layout_constraintDimensionRatio="6:1"
+        app:layout_constraintEnd_toStartOf="@id/guideline_7"
+        app:layout_constraintHorizontal_bias="0.385"
+        app:layout_constraintStart_toEndOf="@id/guideline_6"
+        app:layout_constraintTop_toTopOf="@+id/text_effects_vol"/>
 
     <TextView
         android:id="@+id/text_music_vol"
-        android:layout_width="@dimen/volume_text_width"
-        android:layout_height="@dimen/volume_seekbar_height"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:gravity="center"
         android:text="@string/music_vol"
         android:textAlignment="textEnd"
         android:textAllCaps="false"
         android:textColor="#000000"
-        android:textSize="@dimen/volume_text_size"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/img_vol_options"
+        app:layout_constraintBottom_toBottomOf="@+id/img_vol_options"
+        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintEnd_toStartOf="@id/guideline_6"
+        app:layout_constraintStart_toEndOf="@id/guideline_5"
         app:layout_constraintTop_toTopOf="@+id/img_vol_options"
+        app:layout_constraintVertical_bias="0.339"
+        app:autoSizeTextType="uniform"
+        android:padding="8dp"
         tools:ignore="RtlCompat" />
 
     <TextView
         android:id="@+id/text_effects_vol"
-        android:layout_width="@dimen/volume_text_width"
-        android:layout_height="@dimen/volume_seekbar_height"
-        android:layout_marginStart="32dp"
-        android:text="@string/effects_vol"
-        android:textColor="#000000"
-        android:textSize="@dimen/volume_text_size"
-        android:textStyle="bold"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:gravity="center"
+        android:text="@string/effects_vol"
         android:textAlignment="textEnd"
+        android:textColor="#000000"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/img_vol_options"
-        app:layout_constraintStart_toStartOf="@+id/img_vol_options"
-        app:layout_constraintTop_toBottomOf="@+id/text_music_vol"
-        app:layout_constraintVertical_bias="0.152"
+        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintEnd_toStartOf="@id/guideline_6"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@id/guideline_5"
+        app:layout_constraintTop_toTopOf="@+id/img_vol_options"
+        app:layout_constraintVertical_bias="0.558"
+        app:autoSizeTextType="uniform"
+        android:padding="8dp"
         tools:ignore="RtlCompat" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.08" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.32" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.40" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.45" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.56" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
