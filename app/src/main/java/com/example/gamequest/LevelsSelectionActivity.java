@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 public class LevelsSelectionActivity extends AppCompatActivity {
     public static final String YET_TO_UNLOCK_LEVEL_HINT = "yet to unlock";
+    public static final float LEVEL_HINT_PERCENTAGE_SIZE = 1.3f/100f;
 
     public LevelsManager levelsManager;
     public LevelSquare[][] levelsGreed;
@@ -58,6 +60,9 @@ public class LevelsSelectionActivity extends AppCompatActivity {
 
         textLevelName = findViewById(R.id.text_level_name);
         textLevelHint = findViewById(R.id.text_level_hint);
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
+        textLevelHint.setTextSize(metrics.heightPixels*LEVEL_HINT_PERCENTAGE_SIZE);
         textPagesInfo = findViewById(R.id.text_pages_info);
 
         int idTmp = getIntent().getIntExtra(LevelActivity.INTENT_EXTRA_LEVEL_ID,1)-1;

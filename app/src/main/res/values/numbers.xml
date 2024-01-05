@@ -19,4 +19,8 @@
     <dimen name="volume_seekbar_height">40sp</dimen>
     <dimen name="volume_text_width">80sp</dimen>
     <dimen name="volume_text_size">20sp</dimen>
+    <fraction name="levels_h_bias_colum_1">0.146</fraction>
+    <fraction name="levels_h_bias_colum_2">0.287</fraction>
+    <fraction name="levels_h_bias_colum_3">0.428</fraction>
+    <fraction name="levels_h_bias_colum_4">0.569</fraction>
 </resources>

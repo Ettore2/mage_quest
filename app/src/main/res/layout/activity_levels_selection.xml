@@ -22,398 +22,602 @@
 
     <ImageButton
         android:id="@+id/img_btn_level_12"
-        android:layout_width="@dimen/level_bts_size"
-        android:layout_height="@dimen/level_bts_size"
-        android:layout_marginStart="20dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/level_blocked"
         android:foregroundTint="#000000"
         android:onClick="levelsGreedBtn"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/img_btn_level_9"
-        app:layout_constraintStart_toEndOf="@+id/img_btn_level_11"
-        app:layout_constraintTop_toTopOf="@+id/img_btn_level_9"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_6"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline_levels_5"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
         android:id="@+id/img_btn_level_8"
-        android:layout_width="@dimen/level_bts_size"
-        android:layout_height="@dimen/level_bts_size"
-        android:layout_marginStart="20dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/level_blocked"
+        android:foregroundTint="#000000"
         android:onClick="levelsGreedBtn"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/img_btn_level_5"
-        app:layout_constraintEnd_toStartOf="@+id/imageView2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/img_btn_level_7"
-        app:layout_constraintTop_toTopOf="@+id/img_btn_level_5"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_4"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline_levels_3"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
         android:id="@+id/img_btn_level_5"
-        android:layout_width="@dimen/level_bts_size"
-        android:layout_height="@dimen/level_bts_size"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/level_blocked"
+        android:foregroundTint="#000000"
         android:onClick="levelsGreedBtn"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_4"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/img_btn_level_9"
-        android:layout_width="@dimen/level_bts_size"
-        android:layout_height="@dimen/level_bts_size"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/level_blocked"
-        android:onClick="levelsGreedBtn"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="@+id/img_btn_level_5"
-        app:layout_constraintStart_toStartOf="@+id/img_btn_level_5"
-        app:layout_constraintTop_toBottomOf="@+id/img_btn_level_5" />
-
-    <ImageButton
-        android:id="@+id/img_btn_level_3"
-        android:layout_width="@dimen/level_bts_size"
-        android:layout_height="@dimen/level_bts_size"
-        android:layout_marginStart="20dp"
-        android:background="@drawable/level_blocked"
-        android:onClick="levelsGreedBtn"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/img_btn_level_1"
-        app:layout_constraintStart_toEndOf="@+id/img_btn_level_2"
-        app:layout_constraintTop_toTopOf="@+id/img_btn_level_1"
+        app:layout_constraintTop_toTopOf="@id/guideline_levels_3"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/img_btn_level_4"
-        android:layout_width="@dimen/level_bts_size"
-        android:layout_height="@dimen/level_bts_size"
-        android:layout_marginStart="20dp"
+        android:id="@+id/img_btn_level_9"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/level_blocked"
+        android:foregroundTint="#000000"
         android:onClick="levelsGreedBtn"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/img_btn_level_1"
-        app:layout_constraintStart_toEndOf="@+id/img_btn_level_3"
-        app:layout_constraintTop_toTopOf="@+id/img_btn_level_1"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_6"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline_levels_5"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/img_btn_level_3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/level_blocked"
+        android:foregroundTint="#000000"
+        android:onClick="levelsGreedBtn"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_2"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline_levels_1"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageButton
+        android:id="@+id/img_btn_level_4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/level_blocked"
+        android:foregroundTint="#000000"
+        android:onClick="levelsGreedBtn"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_2"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline_levels_1"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
         android:id="@+id/img_btn_level_2"
-        android:layout_width="@dimen/level_bts_size"
-        android:layout_height="@dimen/level_bts_size"
-        android:layout_marginStart="20dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/level_blocked"
+        android:foregroundTint="#000000"
         android:onClick="levelsGreedBtn"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/img_btn_level_1"
-        app:layout_constraintStart_toEndOf="@+id/img_btn_level_1"
-        app:layout_constraintTop_toTopOf="@+id/img_btn_level_1"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_2"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline_levels_1"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageButton
         android:id="@+id/img_btn_level_6"
-        android:layout_width="@dimen/level_bts_size"
-        android:layout_height="@dimen/level_bts_size"
-        android:layout_marginStart="20dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/level_blocked"
+        android:foregroundTint="#000000"
         android:onClick="levelsGreedBtn"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/img_btn_level_5"
-        app:layout_constraintStart_toEndOf="@+id/img_btn_level_5"
-        app:layout_constraintTop_toTopOf="@+id/img_btn_level_5"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_4"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline_levels_3"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageButton
         android:id="@+id/img_btn_level_10"
-        android:layout_width="@dimen/level_bts_size"
-        android:layout_height="@dimen/level_bts_size"
-        android:layout_marginStart="20dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/level_blocked"
+        android:foregroundTint="#000000"
         android:onClick="levelsGreedBtn"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/img_btn_level_9"
-        app:layout_constraintStart_toEndOf="@+id/img_btn_level_9"
-        app:layout_constraintTop_toTopOf="@+id/img_btn_level_9"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_6"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline_levels_5"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageButton
         android:id="@+id/img_btn_level_11"
-        android:layout_width="@dimen/level_bts_size"
-        android:layout_height="@dimen/level_bts_size"
-        android:layout_marginStart="20dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/level_blocked"
+        android:foregroundTint="#000000"
         android:onClick="levelsGreedBtn"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/img_btn_level_9"
-        app:layout_constraintStart_toEndOf="@+id/img_btn_level_10"
-        app:layout_constraintTop_toTopOf="@+id/img_btn_level_9"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_6"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline_levels_5"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageButton
         android:id="@+id/img_btn_level_7"
-        android:layout_width="@dimen/level_bts_size"
-        android:layout_height="@dimen/level_bts_size"
-        android:layout_marginStart="20dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/level_blocked"
+        android:foregroundTint="#000000"
         android:onClick="levelsGreedBtn"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/img_btn_level_5"
-        app:layout_constraintStart_toEndOf="@+id/img_btn_level_6"
-        app:layout_constraintTop_toTopOf="@+id/img_btn_level_5"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_4"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline_levels_3"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageButton
         android:id="@+id/img_btn_level_1"
-        android:layout_width="@dimen/level_bts_size"
-        android:layout_height="@dimen/level_bts_size"
-        android:layout_marginBottom="20dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/level_blocked"
+        android:foregroundTint="#000000"
         android:onClick="levelsGreedBtn"
-        android:rotation="0"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/img_btn_level_5"
-        app:layout_constraintEnd_toEndOf="@+id/img_btn_level_5"
-        app:layout_constraintStart_toStartOf="@+id/img_btn_level_5" />
+        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_2"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline_levels_1"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="160dp"
-        android:layout_height="280dp"
+        android:layout_width="00dp"
+        android:layout_height="00dp"
         android:scaleType="centerCrop"
-        android:scaleX="1"
-        android:scaleY="1"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="16:28"
+        app:layout_constraintTop_toTopOf="@id/guideline_levels_1"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.859"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.503"
         app:srcCompat="@drawable/level_info_box" />
 
     <ImageButton
         android:id="@+id/img_btn_levels_right_arrow"
-        android:layout_width="45dp"
-        android:layout_height="115dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="#00FFFFFF"
         android:onClick="levelsArrow"
         android:scaleType="fitCenter"
         android:tintMode="src_over"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="45:115"
+        app:layout_constraintTop_toTopOf="@id/guideline_generic_4"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_generic_5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.98"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/levels_arrow"
         tools:srcCompat="@drawable/levels_arrow" />
 
     <ImageButton
         android:id="@+id/img_btn_levels_left_arrow"
-        android:layout_width="45dp"
-        android:layout_height="115dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="#005A1E1E"
         android:onClick="levelsArrow"
         android:rotationY="180"
         android:scaleType="fitCenter"
         android:tintMode="src_over"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="45:115"
+        app:layout_constraintTop_toTopOf="@id/guideline_generic_4"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_generic_5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/levels_arrow"
         tools:srcCompat="@drawable/levels_arrow" />
 
     <TextView
         android:id="@+id/text_level_number_1"
-        android:layout_width="@dimen/level_number_size"
-        android:layout_height="@dimen/level_number_size"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="@string/place_holder_levels_number"
         android:textColor="#FFFFFF"
-        android:textSize="35sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_text_1"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_1"
         app:layout_constraintStart_toStartOf="@+id/img_btn_level_1"
-        app:layout_constraintTop_toTopOf="@+id/img_btn_level_1" />
+        app:layout_constraintTop_toTopOf="@id/guideline_levels_1"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/text_level_number_2"
-        android:layout_width="@dimen/level_number_size"
-        android:layout_height="@dimen/level_number_size"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="@string/place_holder_levels_number"
         android:textColor="#FFFFFF"
-        android:textSize="35sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_text_1"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_2"
         app:layout_constraintStart_toStartOf="@+id/img_btn_level_2"
-        app:layout_constraintTop_toTopOf="@+id/img_btn_level_2" />
+        app:layout_constraintTop_toTopOf="@id/guideline_levels_1"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/text_level_number_3"
-        android:layout_width="@dimen/level_number_size"
-        android:layout_height="@dimen/level_number_size"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="@string/place_holder_levels_number"
         android:textColor="#FFFFFF"
-        android:textSize="35sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_text_1"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_3"
         app:layout_constraintStart_toStartOf="@+id/img_btn_level_3"
-        app:layout_constraintTop_toTopOf="@+id/img_btn_level_3" />
+        app:layout_constraintTop_toTopOf="@id/guideline_levels_1"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/text_level_number_4"
-        android:layout_width="@dimen/level_number_size"
-        android:layout_height="@dimen/level_number_size"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="@string/place_holder_levels_number"
         android:textColor="#FFFFFF"
-        android:textSize="35sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_text_1"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_4"
         app:layout_constraintStart_toStartOf="@+id/img_btn_level_4"
-        app:layout_constraintTop_toTopOf="@+id/img_btn_level_4" />
+        app:layout_constraintTop_toTopOf="@id/guideline_levels_1"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/text_level_number_5"
-        android:layout_width="@dimen/level_number_size"
-        android:layout_height="@dimen/level_number_size"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="@string/place_holder_levels_number"
         android:textColor="#FFFFFF"
-        android:textSize="35sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_text_2"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_1"
         app:layout_constraintStart_toStartOf="@+id/img_btn_level_5"
-        app:layout_constraintTop_toTopOf="@+id/img_btn_level_5" />
+        app:layout_constraintTop_toTopOf="@id/guideline_levels_3"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/text_level_number_6"
-        android:layout_width="@dimen/level_number_size"
-        android:layout_height="@dimen/level_number_size"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="@string/place_holder_levels_number"
         android:textColor="#FFFFFF"
-        android:textSize="35sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_text_2"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_2"
         app:layout_constraintStart_toStartOf="@+id/img_btn_level_6"
-        app:layout_constraintTop_toTopOf="@+id/img_btn_level_6" />
+        app:layout_constraintTop_toTopOf="@id/guideline_levels_3"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/text_level_number_7"
-        android:layout_width="@dimen/level_number_size"
-        android:layout_height="@dimen/level_number_size"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="@string/place_holder_levels_number"
         android:textColor="#FFFFFF"
-        android:textSize="35sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_text_2"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_3"
         app:layout_constraintStart_toStartOf="@+id/img_btn_level_7"
-        app:layout_constraintTop_toTopOf="@+id/img_btn_level_7" />
+        app:layout_constraintTop_toTopOf="@id/guideline_levels_3"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/text_level_number_8"
-        android:layout_width="@dimen/level_number_size"
-        android:layout_height="@dimen/level_number_size"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="@string/place_holder_levels_number"
         android:textColor="#FFFFFF"
-        android:textSize="35sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_text_2"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_4"
         app:layout_constraintStart_toStartOf="@+id/img_btn_level_8"
-        app:layout_constraintTop_toTopOf="@+id/img_btn_level_8" />
+        app:layout_constraintTop_toTopOf="@id/guideline_levels_3"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/text_level_number_9"
-        android:layout_width="@dimen/level_number_size"
-        android:layout_height="@dimen/level_number_size"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="@string/place_holder_levels_number"
         android:textColor="#FFFFFF"
-        android:textSize="35sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_text_3"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_1"
         app:layout_constraintStart_toStartOf="@+id/img_btn_level_9"
-        app:layout_constraintTop_toTopOf="@+id/img_btn_level_9" />
+        app:layout_constraintTop_toTopOf="@id/guideline_levels_5"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/text_level_number_10"
-        android:layout_width="@dimen/level_number_size"
-        android:layout_height="@dimen/level_number_size"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="@string/place_holder_levels_number"
         android:textColor="#FFFFFF"
-        android:textSize="35sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_text_3"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_2"
         app:layout_constraintStart_toStartOf="@+id/img_btn_level_10"
-        app:layout_constraintTop_toTopOf="@+id/img_btn_level_10" />
+        app:layout_constraintTop_toTopOf="@id/guideline_levels_5"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/text_level_number_11"
-        android:layout_width="@dimen/level_number_size"
-        android:layout_height="@dimen/level_number_size"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="@string/place_holder_levels_number"
         android:textColor="#FFFFFF"
-        android:textSize="35sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_text_3"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_3"
         app:layout_constraintStart_toStartOf="@+id/img_btn_level_11"
-        app:layout_constraintTop_toTopOf="@+id/img_btn_level_11" />
+        app:layout_constraintTop_toTopOf="@id/guideline_levels_5"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/text_level_number_12"
-        android:layout_width="@dimen/level_number_size"
-        android:layout_height="@dimen/level_number_size"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="@string/place_holder_levels_number"
         android:textColor="#FFFFFF"
-        android:textSize="35sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_text_3"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_4"
         app:layout_constraintStart_toStartOf="@+id/img_btn_level_12"
-        app:layout_constraintTop_toTopOf="@+id/img_btn_level_12" />
+        app:layout_constraintTop_toTopOf="@id/guideline_levels_5"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/text_level_name"
-        android:layout_width="136dp"
-        android:layout_height="31dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="@string/place_holder_level_name"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintDimensionRatio="136:31"
+        app:layout_constraintTop_toTopOf="@id/guideline_text_1"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_text_2"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintHorizontal_bias="0.541"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.036" />
+        app:layout_constraintVertical_bias="0.036"
+        app:autoSizeTextType="uniform"
+        android:maxLines="1"
+        />
 
     <TextView
         android:id="@+id/text_level_hint"
-        android:layout_width="132dp"
-        android:layout_height="208dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="@string/place_holder_level_hint"
         android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="@+id/text_level_name"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/text_level_name"
-        app:layout_constraintTop_toBottomOf="@+id/text_level_name" />
+        app:layout_constraintBottom_toBottomOf="@id/guideline_text_4"
+        app:layout_constraintDimensionRatio="132:208"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@id/guideline_text_3" />
 
     <ImageView
         android:id="@+id/img_level_pointer"
-        android:layout_width="@dimen/level_bts_size"
-        android:layout_height="@dimen/level_bts_size"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/level_selected_overlap"
+        android:foregroundTint="#000000"
+        android:onClick="levelsGreedBtn"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/img_btn_level_1"
-        app:layout_constraintEnd_toEndOf="@+id/img_btn_level_1"
-        app:layout_constraintHorizontal_bias="0.139"
-        app:layout_constraintStart_toStartOf="@+id/img_btn_level_1"
-        app:layout_constraintTop_toTopOf="@+id/img_btn_level_1"
-        app:layout_constraintVertical_bias="0.199"
-        app:srcCompat="@drawable/level_selected_overlap" />
+        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_2"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline_levels_1"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/text_pages_info"
-        android:layout_width="85dp"
-        android:layout_height="35dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="@string/place_holder_pages_info"
         android:textAlignment="textEnd"
         android:textColor="#000000"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="85:35"
+        app:layout_constraintTop_toTopOf="@id/guideline_generic_1"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_generic_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.939"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.042" />
+        app:layout_constraintVertical_bias="0.042"
+        app:autoSizeTextType="uniform"
+        android:maxLines="1"/>
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="91dp"
-        android:layout_height="45dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="#00FFFFFF"
         android:onClick="backBtn"
         android:scaleType="fitCenter"
         android:src="@drawable/back_arrow"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="91:45"
+        app:layout_constraintTop_toTopOf="@id/guideline_generic_1"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_generic_3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.021"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.043" />
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_generic_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.03" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_generic_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.12" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_generic_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.14" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_generic_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.34" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_generic_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.64" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_levels_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.16" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_levels_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_levels_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.40" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_levels_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.59" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_levels_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.64" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_levels_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.83" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_text_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.18" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_text_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_text_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.27" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_text_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_levels_text_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.27" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_levels_text_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.51" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_levels_text_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

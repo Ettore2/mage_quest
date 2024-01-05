@@ -33,7 +33,7 @@
         app:srcCompat="@drawable/volume_options_box" />
 
     <Button
-        android:id="@+id/btn_play_levles"
+        android:id="@+id/btn_play_levels"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/start_menu_btn"
@@ -49,7 +49,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/guideline_1"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.339" />
+        app:layout_constraintVertical_bias="0.339"
+        android:maxLines="1" />
 
     <Button
         android:id="@+id/btn_options"
@@ -68,7 +69,8 @@
         app:layout_constraintVertical_bias="0.76"
         app:autoSizeTextType="uniform"
         android:paddingHorizontal="10dp"
-        android:paddingVertical="20dp" />
+        android:paddingVertical="20dp"
+        android:maxLines="1" />
 
     <SeekBar
         android:id="@+id/seekBar_music_vol"
@@ -118,7 +120,8 @@
         app:layout_constraintVertical_bias="0.339"
         app:autoSizeTextType="uniform"
         android:padding="8dp"
-        tools:ignore="RtlCompat" />
+        tools:ignore="RtlCompat"
+        android:maxLines="1" />
 
     <TextView
         android:id="@+id/text_effects_vol"
@@ -138,7 +141,8 @@
         app:layout_constraintVertical_bias="0.558"
         app:autoSizeTextType="uniform"
         android:padding="8dp"
-        tools:ignore="RtlCompat" />
+        tools:ignore="RtlCompat"
+        android:maxLines="1" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_1"
