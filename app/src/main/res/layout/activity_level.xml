@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#404040"
+    android:background="@color/activity_level_bg"
     android:rotationY="0"
     tools:context=".LevelActivity">
 
@@ -14,11 +14,11 @@
         android:layout_height="0dp"
         android:background="#454545"
         app:layout_constraintDimensionRatio="640:300"
-        app:layout_constraintBottom_toBottomOf="@id/guideline_game_field_2"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_game_field_h_2"
+        app:layout_constraintEnd_toEndOf="@id/guideline_game_field_v_2"
         app:layout_constraintHorizontal_bias="0.065"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline_game_field_1">
+        app:layout_constraintStart_toStartOf="@id/guideline_game_field_v_1"
+        app:layout_constraintTop_toTopOf="@id/guideline_game_field_h_1">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -151,7 +151,7 @@
         android:scaleType="fitCenter"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintBottom_toBottomOf="@id/guideline_btns_h_3"
-        app:layout_constraintStart_toStartOf="@id/guideline_btns_v_3"
+        app:layout_constraintEnd_toStartOf="@id/guideline_btns_v_4"
         app:layout_constraintTop_toTopOf="@id/guideline_btns_h_1"
         app:srcCompat="@drawable/movement_circle" />
 
@@ -183,25 +183,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="60:45"
         app:layout_constraintEnd_toEndOf="@id/guideline_btns_v_4"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/guideline_btns_v_3"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6"
-        app:srcCompat="@drawable/yellow_cube" />
-
-    <ImageButton
-        android:id="@+id/img_btn_power_2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:alpha="@dimen/movement_button_visibility"
-        android:background="@color/movement_buttons_background"
-        android:onClick="powerBtn"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="60:45"
-        app:layout_constraintEnd_toEndOf="@id/guideline_btns_v_4"
-        app:layout_constraintStart_toStartOf="@id/guideline_btns_v_3"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.46"
+        app:layout_constraintVertical_bias="0.57"
         app:srcCompat="@drawable/yellow_cube" />
 
     <ImageButton
@@ -218,7 +203,24 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/guideline_btns_v_3"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.32"
+        app:layout_constraintVertical_bias="0.23"
+        app:srcCompat="@drawable/yellow_cube" />
+
+    <ImageButton
+        android:id="@+id/img_btn_power_2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="@dimen/movement_button_visibility"
+        android:background="@color/movement_buttons_background"
+        android:onClick="powerBtn"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="60:45"
+        app:layout_constraintEnd_toEndOf="@id/guideline_btns_v_4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/guideline_btns_v_3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4"
         app:srcCompat="@drawable/yellow_cube" />
 
     <ImageButton
@@ -232,10 +234,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="60:45"
         app:layout_constraintEnd_toEndOf="@id/guideline_btns_v_4"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/guideline_btns_v_3"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.18"
+        app:layout_constraintVertical_bias="0.06"
         app:srcCompat="@drawable/yellow_cube" />
 
     <ImageButton
@@ -249,7 +251,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/img_btm_left"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.704"
+        app:layout_constraintHorizontal_bias="0.697"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/guideline_btns_h_1"
         app:layout_constraintVertical_bias="0.0"
@@ -450,16 +452,28 @@
         app:layout_constraintGuide_percent="0.61" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_game_field_1"
+        android:id="@+id/guideline_game_field_h_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="@fraction/guideline_game_field_1" />
+        app:layout_constraintGuide_percent="@fraction/guideline_game_field_h_1" />
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_game_field_2"
+        android:id="@+id/guideline_game_field_h_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="@fraction/guideline_game_field_2" />
+        app:layout_constraintGuide_percent="@fraction/guideline_game_field_h_2" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_game_field_v_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@fraction/guideline_game_field_v_1" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_game_field_v_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@fraction/guideline_game_field_v_2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,8 +25,12 @@
     <fraction name="levels_h_bias_colum_2">0.287</fraction>
     <fraction name="levels_h_bias_colum_3">0.428</fraction>
     <fraction name="levels_h_bias_colum_4">0.569</fraction>
-    <fraction name="guideline_game_field_1">0.04</fraction>
-    <integer name="guideline_game_field_1_int">4</integer>
-    <fraction name="guideline_game_field_2">0.7</fraction>
-    <integer name="guideline_game_field_2_int">70</integer>
+    <fraction name="guideline_game_field_h_1">0.04</fraction>
+    <integer name="guideline_game_field_h_1_int">4</integer>
+    <fraction name="guideline_game_field_h_2">0.77</fraction>
+    <integer name="guideline_game_field_h_2_int">77</integer>
+    <fraction name="guideline_game_field_v_1">0.02</fraction>
+    <integer name="guideline_game_field_v_1_int">2</integer>
+    <fraction name="guideline_game_field_v_2">0.87</fraction>
+    <integer name="guideline_game_field_v_2_int">87</integer>
 </resources>

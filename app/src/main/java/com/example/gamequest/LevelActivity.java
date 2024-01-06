@@ -6,6 +6,7 @@ import static com.example.gamequest.gameCalsses.GameInstance.*;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -75,6 +76,8 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
         int levelId = getIntent().getIntExtra(INTENT_EXTRA_LEVEL_ID,1);
         handler = new Handler(Looper.getMainLooper());
         engineManager = new EngineManager(180, false);
+        //make the layout of the level invisible
+        findViewById(R.id.layout_game).setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.transparent)));
         //debug("about to create GameInstance");
         game = new GameInstance(this,(ViewGroup) findViewById(R.id.layout_game), engineManager,levelId);
         //debug("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");

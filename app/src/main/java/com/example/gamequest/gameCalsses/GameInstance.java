@@ -148,12 +148,15 @@ public class GameInstance extends Thread{
         //initialize the game manager
         this.engineManager = manager;
 
-        DisplayMetrics metrics = new DisplayMetrics();
-        context.getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
-        float heightPercentage = (context.getResources().getInteger(R.integer.guideline_game_field_2_int)-context.getResources().getInteger(R.integer.guideline_game_field_1_int))/100f;
-        CELL_SIZE = (int) (context.getResources().getDimensionPixelSize(R.dimen.cell_size)*metrics.heightPixels*heightPercentage/context.getResources().getDimensionPixelSize(R.dimen.game_layout_height));
         FIELD_WIDTH = context.getResources().getInteger(R.integer.game_layout_width_in_cells);
         FIELD_HEIGHT = context.getResources().getInteger(R.integer.game_layout_height_in_cells);
+        DisplayMetrics metrics = new DisplayMetrics();
+        context.getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
+        float heightPercentage = (context.getResources().getInteger(R.integer.guideline_game_field_h_2_int)-context.getResources().getInteger(R.integer.guideline_game_field_h_1_int))/100f;
+        float widthPercentage = (context.getResources().getInteger(R.integer.guideline_game_field_v_2_int)-context.getResources().getInteger(R.integer.guideline_game_field_v_1_int))/100f;
+        int cellSizeW = (int) (context.getResources().getDimensionPixelSize(R.dimen.cell_size)*metrics.widthPixels*widthPercentage/context.getResources().getDimensionPixelSize(R.dimen.game_layout_width));
+        int cellSizeH = (int) (context.getResources().getDimensionPixelSize(R.dimen.cell_size)*metrics.heightPixels*heightPercentage/context.getResources().getDimensionPixelSize(R.dimen.game_layout_height));
+        CELL_SIZE = (Math.min(cellSizeW, cellSizeH));
         //debug("FIELD_WIDTH:" + FIELD_WIDTH + "   FIELD_HEIGHT:" + FIELD_HEIGHT + "   CELL_SIZE:" + CELL_SIZE + " heightPercentage:" + heightPercentage);
 
         background = new GameObject[FIELD_WIDTH][FIELD_HEIGHT];
