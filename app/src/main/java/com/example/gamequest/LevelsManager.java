@@ -1,5 +1,7 @@
 package com.example.gamequest;
 
+import static com.example.gamequest.gameCalsses.GameInstance.debug;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
@@ -347,40 +349,20 @@ public class LevelsManager {
     }
     private static LevelsManager instance;
     private AppCompatActivity context;
+    private int lastCompletedDefaultLevel;
+    private int lastCompletedCustomLevel;
 
 
     //getInstance methods
     public static LevelsManager getInstance(AppCompatActivity context) {
         if (instance == null) {
-            instance = new LevelsManager();
+            instance = new LevelsManager(context);
         }
 
-        if(context != null){
+        if(context != null && context != instance.context){
             instance.context = context;
+
         }
-
-
-        File f = new File(instance.context.getFilesDir()+"/"+PLAYER_SAVES_FILE_NAME);
-        //debug("file: "+f.getPath());
-        if (!f.exists()){
-            //debug("the file does not exist");
-            try {
-                f.createNewFile();
-                FileOutputStream stream = new FileOutputStream(f);
-                stream.write(0);
-                //debug("write 0 on info files");
-                stream.close();
-                //debug("file created");
-
-            } catch (IOException e) {
-
-            }
-        }else{
-            //debug("the file does already exist");
-        }
-
-        //instance.getLastCompletedLevel(true);
-
 
         return instance;
     }
@@ -392,28 +374,65 @@ public class LevelsManager {
 
 
     //constructors
-    private LevelsManager(){}
+    private LevelsManager(AppCompatActivity context){
+        if(context != null){
+            this.context = context;
+            //debug("about to get the file");
+            File f = new File(context.getFilesDir()+"/"+PLAYER_SAVES_FILE_NAME);
+            //debug("file: "+f.getPath());
+            if (!f.exists()){
+                //debug("the file does not exist");
+                try {
+                    f.createNewFile();
+                    FileOutputStream stream = new FileOutputStream(f);
+                    stream.write(0);
+                    //debug("write 0 on info files");
+                    stream.close();
+                    //debug("file created");
+
+                } catch (IOException e) {
+
+                }
+            }else{
+                //debug("the file does already exist");
+            }//enshure the file exist
+
+
+            //debug("about to getLastCompletedLevelFromFile ");
+            lastCompletedDefaultLevel = getLastCompletedLevelFromFile(true);
+            lastCompletedCustomLevel = 0;
+        }else{
+            lastCompletedDefaultLevel = 0;
+            lastCompletedCustomLevel = 0;
+        }
+    }
 
 
     //other methods
     public void setLevelCompletion(int levelId, boolean isDefaultL, boolean completed){
         File f = new File(context.getFilesDir()+"/"+PLAYER_SAVES_FILE_NAME);
         int newLastCompletedLevel = getLastCompletedLevel(isDefaultL);
-        if(completed && getLastCompletedLevel(isDefaultL)< levelId){
+        if(completed && getLastCompletedLevel(isDefaultL)<levelId){
             newLastCompletedLevel = levelId;
         }
         if(!completed){
             newLastCompletedLevel = levelId - 1;
         }
-        //debug("newLastCompletedLevel:" + newLastCompletedLevel);
-        try {
-            //debug("about to write");
-            FileOutputStream stream = new FileOutputStream(f);
-            stream.write(newLastCompletedLevel);
-            stream.close();
-            //debug("wrote");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if(isDefaultL){
+            //debug("newLastCompletedLevel:" + newLastCompletedLevel);
+            try {
+                //debug("about to write");
+                FileOutputStream stream = new FileOutputStream(f);
+                stream.write(newLastCompletedLevel);
+                stream.close();
+                //debug("wrote");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            lastCompletedDefaultLevel = newLastCompletedLevel;
+        }else {
+            lastCompletedCustomLevel = newLastCompletedLevel;
+
         }
     }
 
@@ -426,6 +445,10 @@ public class LevelsManager {
         return 0;
     }
     public int getLastCompletedLevel(boolean defaultL){
+        return defaultL ? lastCompletedDefaultLevel : lastCompletedCustomLevel;
+
+    }
+    private int getLastCompletedLevelFromFile(boolean defaultL){
         if(defaultL){
             File f = new File(context.getFilesDir()+"/"+PLAYER_SAVES_FILE_NAME);
             int length = (int) f.length();
@@ -438,11 +461,13 @@ public class LevelsManager {
                 in.read(bytes);
                 in.close();
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                //debug("getLastCompletedLevelFromFile return 0 exception");
+                return 0;
             }
-            //debug("last completed level: "+(int)new String(bytes).charAt(0));
+            //debug("getLastCompletedLevelFromFile return actual val:"+(int)new String(bytes).charAt(0));
             return new String(bytes).charAt(0);
         }
+        //debug("getLastCompletedLevelFromFile return 0");
         return 0;
     }
     public boolean isCompleted(int id, boolean isDefaultL){
@@ -456,6 +481,7 @@ public class LevelsManager {
     }
     public boolean isAvailable(int id, boolean isDefaultL){
         return isCompleted(id-1, isDefaultL);
+
 
     }
     public boolean isLevel(int id, boolean isDefaultL){

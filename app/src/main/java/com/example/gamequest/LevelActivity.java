@@ -43,7 +43,6 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);//(hide softkey)
         setContentView(R.layout.activity_level);
         //debug("level activity");
-        //debug("about to get level manager");
         levelsManager = LevelsManager.getInstance(this);
         SoundManager.getInstance(this);
         SoundManager.getInstance().startMusicPlayer();
@@ -76,6 +75,7 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
         int levelId = getIntent().getIntExtra(INTENT_EXTRA_LEVEL_ID,1);
         handler = new Handler(Looper.getMainLooper());
         engineManager = new EngineManager(180, false);
+        //debug("about to create GameInstance");
         game = new GameInstance(this,(ViewGroup) findViewById(R.id.layout_game), engineManager,levelId);
         //debug("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
 

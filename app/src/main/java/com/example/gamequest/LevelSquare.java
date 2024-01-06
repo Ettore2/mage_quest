@@ -8,6 +8,9 @@ public class LevelSquare {
     public static final int IMG_LOCKED = R.drawable.level_blocked,
             IMG_UNLOCKED = R.drawable.level_unlocked,
             IMG_COMPLETED = R.drawable.level_completed;
+    public static final int IMG_LOCKED_SELECTED = R.drawable.level_blocked_selected,
+            IMG_UNLOCKED_SELECTED = R.drawable.level_unlocked_selected,
+            IMG_COMPLETED_SELECTED = R.drawable.level_completed_selected;
     public ImageButton btn;
     public TextView text;
     public LevelsManager.Level level;
@@ -21,15 +24,15 @@ public class LevelSquare {
 
     }
 
-    public void graphicUpdate(boolean available){
+    public void graphicUpdate(boolean available, boolean isSelected){
         if(level != null && available){
             if(LevelsManager.getInstance().isCompleted(level)){
-                btn.setImageResource(IMG_COMPLETED);
+                btn.setImageResource(isSelected ? IMG_COMPLETED_SELECTED : IMG_COMPLETED);
             }else {
-                btn.setImageResource(IMG_UNLOCKED);
+                btn.setImageResource(isSelected ? IMG_UNLOCKED_SELECTED : IMG_UNLOCKED);
             }
         }else {
-            btn.setImageResource(IMG_LOCKED);
+            btn.setImageResource(isSelected ? IMG_LOCKED_SELECTED : IMG_LOCKED);
         }
         text.setVisibility(level == null ? View.INVISIBLE : View.VISIBLE);
 

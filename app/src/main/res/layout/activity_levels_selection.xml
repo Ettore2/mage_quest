@@ -459,22 +459,6 @@
         app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="@id/guideline_text_3" />
 
-    <ImageView
-        android:id="@+id/img_level_pointer"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/level_selected_overlap"
-        android:foregroundTint="#000000"
-        android:onClick="levelsGreedBtn"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@id/guideline_levels_2"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline_levels_1"
-        app:layout_constraintVertical_bias="0.0" />
-
     <TextView
         android:id="@+id/text_pages_info"
         android:layout_width="0dp"

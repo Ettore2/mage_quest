@@ -1,5 +1,6 @@
 package com.example.gamequest.gameCalsses;
 
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -147,10 +148,13 @@ public class GameInstance extends Thread{
         //initialize the game manager
         this.engineManager = manager;
 
-        CELL_SIZE = context.getResources().getDimensionPixelSize(R.dimen.cell_size);
-        FIELD_WIDTH = context.getResources().getDimensionPixelSize(R.dimen.game_layout_width)/CELL_SIZE;
-        FIELD_HEIGHT = context.getResources().getDimensionPixelSize(R.dimen.game_layout_height)/CELL_SIZE;
-        //debug("FIELD_WIDTH:" + FIELD_WIDTH + "   FIELD_HEIGHT:" + FIELD_HEIGHT + "   CELL_SIZE:" + CELL_SIZE);
+        DisplayMetrics metrics = new DisplayMetrics();
+        context.getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
+        float heightPercentage = (context.getResources().getInteger(R.integer.guideline_game_field_2_int)-context.getResources().getInteger(R.integer.guideline_game_field_1_int))/100f;
+        CELL_SIZE = (int) (context.getResources().getDimensionPixelSize(R.dimen.cell_size)*metrics.heightPixels*heightPercentage/context.getResources().getDimensionPixelSize(R.dimen.game_layout_height));
+        FIELD_WIDTH = context.getResources().getInteger(R.integer.game_layout_width_in_cells);
+        FIELD_HEIGHT = context.getResources().getInteger(R.integer.game_layout_height_in_cells);
+        //debug("FIELD_WIDTH:" + FIELD_WIDTH + "   FIELD_HEIGHT:" + FIELD_HEIGHT + "   CELL_SIZE:" + CELL_SIZE + " heightPercentage:" + heightPercentage);
 
         background = new GameObject[FIELD_WIDTH][FIELD_HEIGHT];
         foreground = new Vector<>();

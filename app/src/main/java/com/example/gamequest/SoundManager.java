@@ -92,7 +92,7 @@ public class SoundManager{
                 sounds.get(soundRes).setVolume(effectsVol, effectsVol);
             }
 
-            debug(soundRes+"");
+            //debug(soundRes+"");
             if(sounds.get(soundRes).isPlaying()){
                 sounds.get(soundRes).seekTo(0);
             }else {

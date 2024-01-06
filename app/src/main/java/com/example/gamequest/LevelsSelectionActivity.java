@@ -1,5 +1,7 @@
 package com.example.gamequest;
 
+import static com.example.gamequest.gameCalsses.GameInstance.debug;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -18,7 +20,6 @@ public class LevelsSelectionActivity extends AppCompatActivity {
     public LevelSquare[][] levelsGreed;
     public ImageButton btnLeftArrow, btnRightArrow, btnPlay;
     public LevelSquare selectedLevel;
-    public ImageView levelPointer;
     public int currentPage;
     public int maxPages;
     public TextView textLevelName, textLevelHint, textPagesInfo;
@@ -32,7 +33,9 @@ public class LevelsSelectionActivity extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);//(hide softkey)
         setContentView(R.layout.activity_levels_selection);
 
+        //debug("about to get LevelsManager instance");
         levelsManager = LevelsManager.getInstance(this);
+        //debug("got LevelsManager instance");
         SoundManager.getInstance(this);
         SoundManager.getInstance().startMusicPlayer();
 
@@ -70,22 +73,8 @@ public class LevelsSelectionActivity extends AppCompatActivity {
         maxPages = levelsManager.getLevelsAmount(true)/(levelsGreed.length*levelsGreed[0].length) + ((levelsManager.getLevelsAmount(true)%(levelsGreed.length*levelsGreed[0].length)!=0) ? 1 : 0) - 1;
         selectedLevel = levelsGreed[(idTmp%(levelsGreed.length*levelsGreed[0].length))%levelsGreed.length][(idTmp%(levelsGreed.length*levelsGreed[0].length))/levelsGreed.length];
 
-
-        levelPointer = findViewById(R.id.img_level_pointer);
-        levelPointer.setZ(selectedLevel.btn.getZ()+1);
-
         //debug("before graphic update");
         graphicUpdate();
-
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (selectedLevel.btn.getX() == 0){}
-                graphicUpdate();
-            }
-        }).start();
-        //ensure a graphicUpdate() after gaining the position of the things ot the screen
     }
 
 
@@ -131,18 +120,15 @@ public class LevelsSelectionActivity extends AppCompatActivity {
 
     //function-methods
     private void graphicUpdate(){
+        //debug("start graphic update--------------------------------------------");
         for (int y = 0; y < levelsGreed[0].length; y++){
             for (int x = 0; x < levelsGreed.length; x++){
                 levelsGreed[x][y].level = levelsManager.getLevel(currentPage*(levelsGreed.length*levelsGreed[0].length) + x + y*levelsGreed.length + 1,true);
 
-                levelsGreed[x][y].graphicUpdate(levelsManager.isAvailable(currentPage*(levelsGreed.length*levelsGreed[0].length) + x + y*levelsGreed.length + 1, true));
+                levelsGreed[x][y].graphicUpdate(levelsManager.isAvailable(currentPage*(levelsGreed.length*levelsGreed[0].length) + x + y*levelsGreed.length + 1, true), selectedLevel.equals(levelsGreed[x][y]));
             }
 
         }
-
-        levelPointer.setX(selectedLevel.btn.getX());
-        levelPointer.setY(selectedLevel.btn.getY());
-        //debug(selectedLevel.btn.getX()+"   "+selectedLevel.btn.getY());
 
         if(selectedLevel.level != null){
             textLevelName.setText(selectedLevel.level.name);
@@ -169,6 +155,7 @@ public class LevelsSelectionActivity extends AppCompatActivity {
         }
 
         textPagesInfo.setText((currentPage+1)+"/"+(maxPages+1));
+        //debug("end graphic update--------------------------------------------");
     }
 
     @Override
