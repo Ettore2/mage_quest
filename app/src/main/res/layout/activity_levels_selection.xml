@@ -273,7 +273,8 @@
         app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_1"
         app:layout_constraintStart_toStartOf="@+id/img_btn_level_1"
         app:layout_constraintTop_toTopOf="@id/guideline_levels_1"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:maxLines="1"/>
 
     <TextView
         android:id="@+id/text_level_number_2"
@@ -287,7 +288,8 @@
         app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_2"
         app:layout_constraintStart_toStartOf="@+id/img_btn_level_2"
         app:layout_constraintTop_toTopOf="@id/guideline_levels_1"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:maxLines="1" />
 
     <TextView
         android:id="@+id/text_level_number_3"
@@ -301,7 +303,8 @@
         app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_3"
         app:layout_constraintStart_toStartOf="@+id/img_btn_level_3"
         app:layout_constraintTop_toTopOf="@id/guideline_levels_1"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:maxLines="1" />
 
     <TextView
         android:id="@+id/text_level_number_4"
@@ -315,7 +318,8 @@
         app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_4"
         app:layout_constraintStart_toStartOf="@+id/img_btn_level_4"
         app:layout_constraintTop_toTopOf="@id/guideline_levels_1"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:maxLines="1" />
 
     <TextView
         android:id="@+id/text_level_number_5"
@@ -329,7 +333,8 @@
         app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_1"
         app:layout_constraintStart_toStartOf="@+id/img_btn_level_5"
         app:layout_constraintTop_toTopOf="@id/guideline_levels_3"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:maxLines="1" />
 
     <TextView
         android:id="@+id/text_level_number_6"
@@ -343,7 +348,8 @@
         app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_2"
         app:layout_constraintStart_toStartOf="@+id/img_btn_level_6"
         app:layout_constraintTop_toTopOf="@id/guideline_levels_3"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:maxLines="1" />
 
     <TextView
         android:id="@+id/text_level_number_7"
@@ -357,7 +363,8 @@
         app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_3"
         app:layout_constraintStart_toStartOf="@+id/img_btn_level_7"
         app:layout_constraintTop_toTopOf="@id/guideline_levels_3"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:maxLines="1" />
 
     <TextView
         android:id="@+id/text_level_number_8"
@@ -368,10 +375,10 @@
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="@id/guideline_levels_text_2"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_4"
         app:layout_constraintStart_toStartOf="@+id/img_btn_level_8"
         app:layout_constraintTop_toTopOf="@id/guideline_levels_3"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:maxLines="1" />
 
     <TextView
         android:id="@+id/text_level_number_9"
@@ -385,7 +392,8 @@
         app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_1"
         app:layout_constraintStart_toStartOf="@+id/img_btn_level_9"
         app:layout_constraintTop_toTopOf="@id/guideline_levels_5"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:maxLines="1" />
 
     <TextView
         android:id="@+id/text_level_number_10"
@@ -396,10 +404,10 @@
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="@id/guideline_levels_text_3"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_2"
         app:layout_constraintStart_toStartOf="@+id/img_btn_level_10"
         app:layout_constraintTop_toTopOf="@id/guideline_levels_5"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0"
+        android:maxLines="1" />
 
     <TextView
         android:id="@+id/text_level_number_11"
@@ -413,7 +421,8 @@
         app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_3"
         app:layout_constraintStart_toStartOf="@+id/img_btn_level_11"
         app:layout_constraintTop_toTopOf="@id/guideline_levels_5"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:maxLines="1" />
 
     <TextView
         android:id="@+id/text_level_number_12"
@@ -427,7 +436,8 @@
         app:layout_constraintHorizontal_bias="@fraction/levels_h_bias_colum_4"
         app:layout_constraintStart_toStartOf="@+id/img_btn_level_12"
         app:layout_constraintTop_toTopOf="@id/guideline_levels_5"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:maxLines="1" />
 
     <TextView
         android:id="@+id/text_level_name"
