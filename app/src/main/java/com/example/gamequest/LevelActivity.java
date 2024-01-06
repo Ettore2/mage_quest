@@ -73,6 +73,18 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
         btnMenuRedo = findViewById(R.id.img_btn_menu_reset);
         btnMenuNext = findViewById(R.id.img_btn_menu_next);
 
+        //click shower
+        PressShower pressShower = new PressShower(getColor(R.color.pressed_btn_overlap_tint));
+        btnMoveRight.setOnTouchListener(pressShower);
+        btnMoveLeft.setOnTouchListener(pressShower);
+        btnMoveUp.setOnTouchListener(pressShower);
+        btnMoveDown.setOnTouchListener(pressShower);
+        btnMoveJump.setOnTouchListener(pressShower);
+        btnReset.setOnTouchListener(pressShower);
+        btnQuit.setOnTouchListener(pressShower);
+
+
+        //cell size things
         int levelId = getIntent().getIntExtra(INTENT_EXTRA_LEVEL_ID,1);
         handler = new Handler(Looper.getMainLooper());
         engineManager = new EngineManager(180, false);

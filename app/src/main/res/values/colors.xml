@@ -7,4 +7,5 @@
     <color name="selected_power_background">#B8AD45</color>
     <color name="deactivated_levels_arrow">#5E000000</color>
     <color name="activity_level_bg">#404040</color>
+    <color name="pressed_btn_overlap_tint">#51000000</color>
 </resources>

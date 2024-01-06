@@ -18,7 +18,7 @@ public class LevelsSelectionActivity extends AppCompatActivity {
 
     public LevelsManager levelsManager;
     public LevelSquare[][] levelsGreed;
-    public ImageButton btnLeftArrow, btnRightArrow, btnPlay;
+    public ImageButton btnLeftArrow, btnRightArrow;
     public LevelSquare selectedLevel;
     public int currentPage;
     public int maxPages;
@@ -38,8 +38,7 @@ public class LevelsSelectionActivity extends AppCompatActivity {
         //debug("got LevelsManager instance");
         SoundManager.getInstance(this);
         SoundManager.getInstance().startMusicPlayer();
-
-
+        PressShower pShower = new PressShower(getColor(R.color.pressed_btn_overlap_tint));
 
 
         //get views
@@ -58,7 +57,11 @@ public class LevelsSelectionActivity extends AppCompatActivity {
         levelsGreed[3][2] = new LevelSquare(findViewById(R.id.img_btn_level_12),findViewById(R.id.text_level_number_12), levelsManager.getLevel(12,false),this);
 
         btnLeftArrow = findViewById(R.id.img_btn_levels_left_arrow);
+        btnLeftArrow.setOnTouchListener(pShower);
         btnRightArrow = findViewById(R.id.img_btn_levels_right_arrow);
+        btnRightArrow.setOnTouchListener(pShower);
+
+        findViewById(R.id.img_btn_back).setOnTouchListener(pShower);
 
 
         textLevelName = findViewById(R.id.text_level_name);
@@ -144,14 +147,14 @@ public class LevelsSelectionActivity extends AppCompatActivity {
         }
 
         if(currentPage == 0){
-            btnLeftArrow.setColorFilter(getResources().getColor(R.color.deactivated_levels_arrow));
+            btnLeftArrow.setVisibility(View.INVISIBLE);
         }else {
-            btnLeftArrow.setColorFilter(null);
+            btnLeftArrow.setVisibility(View.VISIBLE);
         }
         if(currentPage == maxPages){
-            btnRightArrow.setColorFilter(getResources().getColor(R.color.deactivated_levels_arrow));
+            btnRightArrow.setVisibility(View.INVISIBLE);
         }else {
-            btnRightArrow.setColorFilter(null);
+            btnRightArrow.setVisibility(View.VISIBLE);
         }
 
         textPagesInfo.setText((currentPage+1)+"/"+(maxPages+1));

@@ -1,6 +1,7 @@
 package com.example.gamequest;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.compose.foundation.interaction.PressInteraction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ public class StartMenuActivity extends AppCompatActivity implements SeekBar.OnSe
     private boolean optionsVisible;
     private SeekBar musicBar, effectsBar;
     private SoundManager soundManager;
+    private int filterPressed;
 
 
     @Override
@@ -41,6 +43,10 @@ public class StartMenuActivity extends AppCompatActivity implements SeekBar.OnSe
         musicOptionsViews.add(effectsBar);
 
         optionsVisible = false;
+
+        PressShower pShower = new PressShower(getColor(R.color.pressed_btn_overlap_tint));
+        findViewById(R.id.btn_play_levels).setOnTouchListener(pShower);
+        findViewById(R.id.btn_options).setOnTouchListener(pShower);
 
         graphicUpdate();
     }

@@ -230,36 +230,32 @@
         android:id="@+id/img_btn_levels_right_arrow"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#00FFFFFF"
+        android:background="@drawable/levels_arrow"
         android:onClick="levelsArrow"
         android:scaleType="fitCenter"
         android:tintMode="src_over"
-        app:layout_constraintDimensionRatio="45:115"
+        app:layout_constraintDimensionRatio="256:608"
         app:layout_constraintTop_toTopOf="@id/guideline_generic_4"
         app:layout_constraintBottom_toBottomOf="@id/guideline_generic_5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.98"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/levels_arrow"
-        tools:srcCompat="@drawable/levels_arrow" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/img_btn_levels_left_arrow"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#005A1E1E"
+        android:background="@drawable/levels_arrow"
         android:onClick="levelsArrow"
         android:rotationY="180"
         android:scaleType="fitCenter"
         android:tintMode="src_over"
-        app:layout_constraintDimensionRatio="45:115"
+        app:layout_constraintDimensionRatio="256:608"
         app:layout_constraintTop_toTopOf="@id/guideline_generic_4"
         app:layout_constraintBottom_toBottomOf="@id/guideline_generic_5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.02"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/levels_arrow"
-        tools:srcCompat="@drawable/levels_arrow" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/text_level_number_1"
@@ -488,14 +484,13 @@
         android:maxLines="1"/>
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/img_btn_back"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#00FFFFFF"
+        android:background="@drawable/back_arrow"
         android:onClick="backBtn"
         android:scaleType="fitCenter"
-        android:src="@drawable/back_arrow"
-        app:layout_constraintDimensionRatio="91:45"
+        app:layout_constraintDimensionRatio="384:224"
         app:layout_constraintTop_toTopOf="@id/guideline_generic_1"
         app:layout_constraintBottom_toBottomOf="@id/guideline_generic_3"
         app:layout_constraintEnd_toEndOf="parent"
