@@ -73,8 +73,8 @@ public class StartMenuActivity extends AppCompatActivity implements SeekBar.OnSe
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
+    protected void onResume() {
+        super.onResume();
         //debug("hi");
 
         soundManager.startMusicPlayer();

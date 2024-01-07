@@ -162,8 +162,8 @@ public class LevelsSelectionActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
+    protected void onResume() {
+        super.onResume();
         //debug("hi");
 
         SoundManager.getInstance().startMusicPlayer();

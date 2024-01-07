@@ -363,8 +363,8 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
+    protected void onResume() {
+        super.onResume();
         //debug("hi");
 
         SoundManager.getInstance().startMusicPlayer();
