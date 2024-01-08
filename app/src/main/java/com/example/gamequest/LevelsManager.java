@@ -140,11 +140,11 @@ public class LevelsManager {
                     "4 2 4\n" +
                     "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,\n" +
                     "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1_C1,\n" +
-                    "E1_C1,E1,X1,X1,X1,E1,E1,E1_D1,E1_D1,E1_D1,E1_D1,E1_D1,E1,E1,E1,X1,X1,\n" +
+                    "E1_C1,E1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,\n" +
                     "X1,E1,E1,X1,X1,E1_C1,E1,E1,E1,E1_P1,E1,E1,E1,E1,E1,X1,X1,\n" +
                     "X1,E1,E1,E1,X1,X1,E1,E1,E1,X1,X1,X1,X1,E1_R1_L1,X1,X1,X1,\n" +
-                    "X1,E1,E1,E1,E1,X1,E1,E1,E1,E1,E1,E1,E1_D1_U1,E1,E1_D1_U1_C1,X1,X1,\n" +
-                    "X1,X1,X1,E1,E1,E1,E1,E1,X1,X1,X1,X1,X1,E1_R1_L1_C1,X1,X1,X1",
+                    "X1,E1,E1,E1,E1,X1,E1,E1,E1,E1,E1,E1,E1_D1_U1,E1,E1_C1,X1,X1,\n" +
+                    "X1,X1,X1,E1,E1,E1,E1,E1,X1,X1,X1,X1,X1,E1_C1,X1,X1,X1",
             "level 13\n" +
                     "power teleport: allow to teleport to the first empty cell in the choosen direction\n" +
                     "3 2\n" +
