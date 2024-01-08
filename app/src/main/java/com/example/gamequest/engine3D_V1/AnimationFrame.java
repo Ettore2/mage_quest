@@ -7,6 +7,5 @@ public class AnimationFrame<E> {
     public AnimationFrame(E info, float duration){
         this.info = info;
         this.duration = duration;
-
     }
 }

@@ -6,6 +6,7 @@ import android.widget.ImageView;
 
 import com.example.gamequest.R;
 import com.example.gamequest.engine3D_V1.BoxCollider;
+import com.example.gamequest.engine3D_V1.EngineObjectModel;
 import com.example.gamequest.engine3D_V1.Point3D;
 import com.example.gamequest.engine3D_V1.Vector3D;
 
@@ -45,4 +46,5 @@ public class Spike extends GameObject{
     public String getDescr() {
         return null;
     }
+
 }

@@ -200,12 +200,14 @@ public class LevelActivity extends AppCompatActivity implements Runnable{
         if(managerT == null){
             managerT = new Thread(this);
             managerT.start();
+            //debug("start thread");
         }
     }
     private void stopManagerThread(){
         if(managerT != null){
             managerT.interrupt();
             managerT = null;
+            //debug("stop thread");
         }
     }
 

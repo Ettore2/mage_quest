@@ -33,7 +33,7 @@ public class LevelsManager {
                         "not always all the coins in the level are required\n" +
                         "0 0\n" +
                         "5 5 2\n" +
-                        "X1,X1,X1,X1,X1,X1,E1,E1_D1,E1_D1,E1_D1,E1_D1,E1,X1,X1,\n" +
+                        "X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,X1,X1,\n" +
                         "X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1_C1,\n" +
                         "E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,\n" +
                         "E1,E1_P1,E1,E1,E1,E1,E1,X1,E1,E1,X1,E1,E1,E1_C1,\n" +
@@ -48,9 +48,9 @@ public class LevelsManager {
                     "X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,\n" +
                     "X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,E1,E1,E1,E1,E1,\n" +
                     "E1,E1,E1,E1,E1,X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1_C1,E1,\n" +
-                    "E1,E1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1_L1,X1,X1,X1,\n" +
-                    "E1_R1,E1,E1_P1,E1,E1,E1_M1,E1,E1_C1,E1_C1,E1_C1,X1,E1,E1,E1,E1_L1,X1,X1,X1,\n" +
-                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1_U1,E1_U1,E1_U1,E1_U1_L1,X1,X1,X1",
+                    "E1,E1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,\n" +
+                    "E1_R1,E1,E1_P1,E1,E1,E1_M1,E1,E1_C1,E1_C1,E1_C1,X1,E1,E1,E1,E1,X1,X1,X1,\n" +
+                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1_U1,E1_U1,E1_U1,E1_U1,X1,X1,X1",
             "level 4\n" +
                     "as soon as you grab the needed coin you will become invulnerable\n" +
                     "0 0\n" +
@@ -59,18 +59,18 @@ public class LevelsManager {
                     "X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,X1,\n" +
                     "X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,E1,E1,E1,\n" +
                     "E1,E1_P1,E1,E1_M1,E1_M1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1_M1,E1_C1,E1,E1,\n" +
-                    "X1,X1,X1,X1,X1,E1_U1,X1,X1,X1,E1_U1,E1_U1,E1_U1,X1,X1,X1,X1,X1,E1,\n" +
+                    "X1,X1,X1,X1,X1,E1,X1,X1,X1,E1_U1,E1_U1,E1_U1,X1,X1,X1,X1,X1,E1,\n" +
                     "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,\n" +
                     "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,\n" +
                     "X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,X1,E1_U1",
             "level 5\n" +
                     "power black cube: allow create a magic box adjacent to a wall (magic boxes smashing coins will collect them)\n" +
                     "2 1\n" +
-                    "3 4 1\n" +
-                    "E1_R1,E1,E1,E1,E1,E1,E1,E1,E1,E1_L1,\n" +
-                    "E1_R1,E1,E1,E1,E1,E1,E1,E1,E1,E1_L1,\n" +
-                    "E1_R1,E1,E1,E1,X1,X1,E1,E1,E1,E1_L1,\n" +
-                    "E1_R1,E1,E1_P1,E1,X1,X1,E1,E1_C1,E1,E1_L1",
+                    "6 4 1\n" +
+                    "E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,\n" +
+                    "E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,\n" +
+                    "E1,E1,E1,E1,X1,X1,E1,E1,E1,E1,\n" +
+                    "E1,E1,E1_P1,E1,X1,X1,E1,E1_C1,E1,E1",
 
             "level 6\n" +
                     "level 6\n" +
@@ -91,14 +91,14 @@ public class LevelsManager {
                     "X1,E1,E1,E1,X1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,E1,E1,E1,E1,\n" +
                     "E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,E1,E1,E1,E1,X1,\n" +
                     "X1,E1,E1,E1,E1,E1,E1,E1_C1,E1,E1,E1,E1_C1,X1,X1,X1,X1,E1,E1,E1,E1,\n" +
-                    "X1,X1,E1,E1,E1_P1,E1,E1,E1_M1,E1,E1,E1,X1,X1,X1,E1_C1,E1_U1_D1,E1,E1,E1,X1",
+                    "X1,X1,E1,E1,E1_P1,E1,E1,E1_M1,E1,E1,E1,X1,X1,X1,E1_C1,E1_U1,E1,E1,E1,X1",
             "level 8\n" +
                     "level 8\n" +
                     "2 2\n" +
                     "7 4 4\n" +
-                    "X1,X1,E1_D1,E1_D1,X1,X1,X1,X1,E1_D1,X1,X1,X1,X1,X1,X1,X1,\n" +
+                    "X1,X1,E1,E1,X1,X1,X1,X1,E1,X1,X1,X1,X1,X1,X1,X1,\n" +
                     "X1,X1,E1,E1,E1,X1,X1,E1,E1,E1,X1,X1,X1,X1,X1,X1,\n" +
-                    "X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1_D1,X1,X1,X1,X1,\n" +
+                    "X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,X1,X1,X1,\n" +
                     "E1,E1,E1,E1,E1,E1,E1,E1,E1_P1,E1,E1,E1,E1,E1,E1,X1,\n" +
                     "E1_C1,E1,E1,E1,E1,E1,E1,E1,X1,E1,E1,E1,E1,E1,E1,E1_C1,\n" +
                     "X1,X1,X1,E1,E1,E1,E1,E1,X1,E1,E1_C1,E1,E1,E1,X1,X1,\n" +
@@ -111,7 +111,7 @@ public class LevelsManager {
                     "X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,\n" +
                     "X1,X1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,\n" +
                     "E1,E1,E1_P1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,X1,E1,E1,E1,\n" +
-                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,E1_U1,E1_U1,X1,E1,E1,E1_C1",
+                    "X1,X1,X1,X1,X1,X1,X1,X1,X1,E1,E1,E1,E1,X1,E1,E1,E1_C1",
             "level 10\n" +
                     "level 10\n" +
                     "1 1 2 1\n" +
